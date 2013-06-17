@@ -60,15 +60,13 @@ class SettingsSection
    */
   public function setFields($fields)
   {
-    if(!is_array($fields))
-    {
+    if (!is_array($fields)) {
       $fields = array($fields);
     };
 
     foreach($fields as $field)
     {
-      if(!($field instanceof SettingsField))
-      {
+      if (!($field instanceof SettingsField)) {
         throw new Exception('$field must be an instance of SettingsField');
       }
     }
@@ -95,8 +93,7 @@ class SettingsSection
     add_settings_section( $this->group_key, $this->group_title, function()
       {echo 'test';}, $this->group_page );
 
-    foreach($this->fields as $field)
-    {
+    foreach ($this->fields as $field) {
       add_settings_field( $field->getFieldKey(), $field->getFieldTitle(), function()
         {echo 'test';}, $this->group_page, $this->group_key);
       register_setting( $this->group_key, $field->getFieldKey(), array($field, 'getFieldPostParse') );
@@ -110,14 +107,13 @@ class SettingsSection
 
   public function updateListener()
   {
-    if(is_null(Input::post()))
+    if (is_null(Input::post()))
       return;
 
-    if(!wp_verify_nonce(Input::post('_wpnonce'), $this->group_key))
+    if (!wp_verify_nonce(Input::post('_wpnonce'), $this->group_key))
       die('Could not verify nonce');
 
-    foreach($this->fields as $field)
-    {
+    foreach ($this->fields as $field) {
       $field->updateFieldValue(Input::post());
     }
   }

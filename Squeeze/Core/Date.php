@@ -24,8 +24,7 @@ class Date
    */
   public function __construct(DateTime $date = null)
   {
-    if(is_null($date))
-    {
+    if (is_null($date)) {
       $this->date = new \DateTime;
     }
     else {
@@ -55,8 +54,7 @@ class Date
   public function getWeekDateRange()
   {
     $startDate = $this->date->modify('midnight');
-    if($startDate->format('l') !== 'Sunday')
-    {
+    if ($startDate->format('l') !== 'Sunday') {
       $startDate = $this->date->modify('last Sunday');
     }
 

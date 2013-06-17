@@ -39,14 +39,11 @@ class Options
     $this->key = $key;
     $this->value = get_option($key);
 
-    if(!$this->value)
-    {
+    if (!$this->value) {
       $this->encoding_type = 'json';
     }
-    else
-    {
-      if($this->isJson($this->value))
-      {
+    else {
+      if ($this->isJson($this->value)) {
         $this->value = json_decode($this->value);
         $this->encoding_type = 'json';
       }
@@ -83,10 +80,9 @@ class Options
    * @access public
    */
   public function push($value) {
-    if(!is_array($this->value)) return false;
+    if (!is_array($this->value)) return false;
 
-    if(!is_array($value))
-    {
+    if (!is_array($value)) {
       $value = array($value);
     }
 
@@ -106,8 +102,7 @@ class Options
   public function save()
   {
     $value = $this->value;
-    if($this->encoding_type == 'json' && (is_object($this->value) || is_array($this->value)) )
-    {
+    if ($this->encoding_type == 'json' && (is_object($this->value) || is_array($this->value)) ) {
       $value = json_encode($value);
     }
 

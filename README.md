@@ -12,6 +12,7 @@ Features
 * Create custom settings/options pages
 * Manage Users (Insert, Update, Delete, Set Roles)
 * Manage Posts (Insert, Update, Delete, Trash)
+* Manage WordPress Options in an object-oriented fashion.
 * Fetch and Save User Metadata
 * Add columns to the User List
 * Represents data in an object-oriented fashion

@@ -18,24 +18,24 @@ function squeeze_init() {
   $adminUsers = new App\AdminUsers();
   $adminOptions = new App\AdminOptions();
 
-  // Create Menu
-  $testMenu = new Core\Menu();
-  $testMenu->setPageTitle('Test Menu');
-  $testMenu->setMenuTitle('Test Menu');
-  $testMenu->setMenuCapability('manage_options');
-  $testMenu->setSlug('SQ_menu');
-  $testMenu->setFunction(array($adminOptions, 'options_page')); // Assign a callback that's set in our application
-  $testMenu->execute();
+  // // Create Menu
+  // $testMenu = new Core\Menu();
+  // $testMenu->setPageTitle('Test Menu');
+  // $testMenu->setMenuTitle('Test Menu');
+  // $testMenu->setMenuCapability('manage_options');
+  // $testMenu->setSlug('SQ_menu');
+  // $testMenu->setFunction(array($adminOptions, 'options_page')); // Assign a callback that's set in our application
+  // $testMenu->execute();
 
-  // A sub-menu
-  $testSubMenu = new Core\Menu();
-  $testSubMenu->setMenuParent('SQ_menu');
-  $testSubMenu->setPageTitle('Sub Menu');
-  $testSubMenu->setMenuTitle('Sub Menu');
-  $testSubMenu->setMenuCapability('manage_options');
-  $testSubMenu->setSlug('SQ_sub_menu');
-  $testSubMenu->setFunction(array($adminOptions, 'settings_page')); // Again, assign a callback from the application file.
-  $testSubMenu->execute();
+  // // A sub-menu
+  // $testSubMenu = new Core\Menu();
+  // $testSubMenu->setMenuParent('SQ_menu');
+  // $testSubMenu->setPageTitle('Sub Menu');
+  // $testSubMenu->setMenuTitle('Sub Menu');
+  // $testSubMenu->setMenuCapability('manage_options');
+  // $testSubMenu->setSlug('SQ_sub_menu');
+  // $testSubMenu->setFunction(array($adminOptions, 'settings_page')); // Again, assign a callback from the application file.
+  // $testSubMenu->execute();
 
   // Display Custom Profile Fields
   add_action( 'show_user_profile', array($adminUsers, 'addUserFields') );

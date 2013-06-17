@@ -64,11 +64,9 @@ class Post
    */
   public function __construct($ID = null)
   {
-    if(!is_null($ID))
-    {
+    if (!is_null($ID)) {
       $post = WP_Post::get_instance($ID);
-      if($post)
-      {
+      if ($post) {
         $this->hydrate($post);
       }
     }
@@ -87,10 +85,8 @@ class Post
     unset($default_vars['meta']);
 
     $this->meta = array();
-    foreach($post as $key=>$val)
-    {
-      if(array_key_exists($key, $default_vars))
-      {
+    foreach ($post as $key=>$val) {
+      if (array_key_exists($key, $default_vars)) {
         $this->$key = $val;
       }
       else {
@@ -111,8 +107,7 @@ class Post
    */
   public function set($key, $val)
   {
-    if(property_exists($this, $key))
-    {
+    if (property_exists($this, $key)) {
       $this->$key = $val;
     }
     else $this->meta[$key] = $val;
@@ -130,13 +125,11 @@ class Post
    */
   public function get($key = null)
   {
-    if(is_null($key))
-    {
+    if (is_null($key)) {
       return get_object_vars($this);
     }
 
-    if(property_exists($this, $key))
-    {
+    if (property_exists($this, $key)) {
       return $this->$key;
     }
 
@@ -153,8 +146,7 @@ class Post
    */
   public function save()
   {
-    if($this->ID)
-    {
+    if ($this->ID) {
       return $this->update();
     }
 
@@ -172,8 +164,7 @@ class Post
    */
   public function delete()
   {
-    if($this->ID)
-    {
+    if ($this->ID) {
       wp_delete_post($this->ID, true);
       return true;
     }
@@ -188,8 +179,7 @@ class Post
    */
   public function trash()
   {
-    if($this->ID)
-    {
+    if ($this->ID) {
       wp_delete_post($this->ID, false);
       return true;
     }
@@ -219,10 +209,8 @@ class Post
    */
   private function save_meta()
   {
-    if(is_array($this->meta))
-    {
-      foreach($this->meta as $key=>$val)
-      {
+    if (is_array($this->meta)) {
+      foreach ($this->meta as $key=>$val) {
         update_post_meta($this->ID, $key, $val);
       }
     }

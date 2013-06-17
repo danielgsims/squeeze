@@ -33,8 +33,7 @@ class Input
    */
   public static function post($var = null)
   {
-    if(is_null($var))
-    {
+    if (is_null($var)) {
       return (!empty($_POST)) ? $_POST : null;
     }
 
@@ -53,8 +52,7 @@ class Input
    */
   public static function cookie($var = null)
   {
-    if(is_null($var))
-    {
+    if (is_null($var)) {
       return (!empty($_COOKIE)) ? $_COOKIE : null;
     }
 
@@ -73,8 +71,7 @@ class Input
    */
   public static function get($var = null)
   {
-    if(is_null($var))
-    {
+    if (is_null($var)) {
       return (!empty($_GET)) ? $_GET : null;
     }
 
@@ -93,8 +90,7 @@ class Input
    */
   public static function server($var = null)
   {
-    if(is_null($var))
-    {
+    if (is_null($var)) {
       return (!empty($_SERVER)) ? $_SERVER : null;
     }
 

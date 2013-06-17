@@ -9,12 +9,12 @@ include "SplClassLoader.php";
 $classLoader = new SplClassLoader('Squeeze', SQ_PLUGIN_PATH);
 $classLoader->register();
 
-if(function_exists('\Squeeze\squeeze_init'))
-{
+include SQ_PLUGIN_PATH .'/Routes.php';
+
+if (function_exists('\Squeeze\squeeze_init')) {
   add_action('init', '\Squeeze\squeeze_init');
 }
 
-if(function_exists('\Squeeze\squeeze_admin_init'))
-{
+if (function_exists('\Squeeze\squeeze_admin_init')) {
   add_action('admin_init', '\Squeeze\squeeze_admin_init');
 }

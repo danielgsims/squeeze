@@ -148,13 +148,11 @@ class Menu
    */
   public function register_menu_page()
   {
-    if(!$this->menu_icon)
-    {
+    if (!$this->menu_icon) {
       $this->menu_icon = plugins_url( 'myplugin/images/icon.png' );
     }
 
-    if($this->menu_parent)
-    {
+    if ($this->menu_parent) {
       add_submenu_page( $this->menu_parent, $this->page_title, $this->menu_title, $this->menu_capability, $this->slug, $this->function );
     }
     else {
