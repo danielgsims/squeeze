@@ -1,6 +1,6 @@
 <?php
 
-namespace Squeeze\Core;
+namespace Squeeze\Core\Util;
 /**
  * Date
  * Date Helper Functions

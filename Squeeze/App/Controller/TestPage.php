@@ -2,7 +2,7 @@
 
 namespace Squeeze\App\Controller;
 
-class TestPage
+class TestPage extends \Squeeze\Core\Mvc\Controller
 {
   public function index()
   {

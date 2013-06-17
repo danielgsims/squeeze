@@ -1,6 +1,8 @@
 <?php
 
-namespace Squeeze\Core;
+namespace Squeeze\Core\Router;
+
+use \Squeeze\Core\Util as Util;
 
 class AdminRoutePage
 {
@@ -79,7 +81,7 @@ class AdminRoutePage
       }
 
       if (!isset($args['controller_name'])) {
-        $name = String::firstCharUpperCase($this->slug);
+        $name = Util\String::firstCharUpperCase($this->slug);
         $this->controller_name = $name;
       }
 
@@ -87,6 +89,10 @@ class AdminRoutePage
         $this->controller_method = 'index';
       }
     }
+
+    $controllerName = '\Squeeze\App\Controller\\'. $this->getControllerName();
+    $this->controller = new $controllerName;
+    $this->controller->pre();
   }
 
   public function getSlug()
@@ -117,9 +123,7 @@ class AdminRoutePage
   public function getFunction()
   {
     if (!$this->function) {
-      $controllerName = '\Squeeze\App\Controller\\'. $this->getControllerName();
-      $controller = new $controllerName;
-      return array($controller, $this->getControllerMethod());
+      return array($this->controller, $this->getControllerMethod());
     }
 
     return $this->function;

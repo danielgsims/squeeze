@@ -2,15 +2,15 @@
 
 namespace Squeeze;
 
-$testRouteGroup = new Core\AdminRouteGroup;
+$testRouteGroup = new Core\Router\AdminRouteGroup;
 
-$testRouteGroup->page(new Core\AdminRoutePage('testPage', array(
+$testRouteGroup->page(new Core\Router\AdminRoutePage('testPage', array(
   'page_title' => 'Test Page',
   'menu_title' => 'Test Page',
   'menu_capability' => 'manage_options',
 )));
 
-$testRouteGroup->page(new Core\AdminRoutePage('testPage2', array(
+$testRouteGroup->page(new Core\Router\AdminRoutePage('testPage2', array(
   'page_title' => 'Test Page 2',
   'menu_title' => 'Test Page 2',
   'menu_capability' => 'manage_options',

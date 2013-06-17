@@ -5,7 +5,9 @@
  * This is the class that holds everything together.
  * A workable Router will enable true MVC.
  */
-namespace Squeeze\Core;
+namespace Squeeze\Core\Router;
+
+use \Squeeze\Core as Core;
 
 class AdminRouteGroup
 {
@@ -27,7 +29,7 @@ class AdminRouteGroup
     }
 
     foreach ($this->routes as $key=>$route) {
-      $menu = new Menu();
+      $menu = new Core\Menu();
       $menu->setPageTitle($route->getPageTitle());
       $menu->setMenuTitle($route->getMenuTitle());
       $menu->setMenuCapability($route->getMenuCapability());
