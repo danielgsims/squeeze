@@ -2,11 +2,11 @@
 
 namespace Squeeze\Core;
 
-use \Squeeze\App\Controller as Controller;
-
 class Bootstrapper
 {
   private static $instance;
+  private $loadedControllers = array();
+  private $controllers = array();
 
   public static function init()
   {
@@ -19,7 +19,6 @@ class Bootstrapper
 
   private function mapControllers()
   {
-    $this->controllers = array();
     $dirMembers = scandir(\SQ_PLUGIN_PATH .'/Squeeze/App/Controller');
 
     array_walk($dirMembers, function($arr) {
@@ -28,10 +27,13 @@ class Bootstrapper
       }
     });
 
-    foreach($this->controllers as $controller) {
-      $controllerName = '\Squeeze\App\Controller\\'. $controller;
-      $this->$controller = new $controllerName;
-      $this->$controller->bootstrap();
+    foreach($this->controllers as $class) {
+      $controllerName = '\Squeeze\App\Controller\\'. $class;
+
+      if(class_exists($controllerName)) {
+        $this->loadedControllers[$class] = new $controllerName;
+        $this->loadedControllers[$class]->bootstrap();
+      }
     }
   }
 }

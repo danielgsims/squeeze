@@ -2,11 +2,11 @@
 
 namespace Squeeze\App\Controller;
 
-class TestPage extends \Squeeze\Core\Mvc\AdminPageController
+class AnotherPage extends \Squeeze\Core\Mvc\AdminPageController
 {
-  protected $page_title = 'My Test Page';
+  protected $page_title = 'Another Page';
   protected $capability = 'manage_options';
-  // protected $parent = 'AnotherPage';
+  protected $parent = 'TestPage';
 
   public function __construct()
   {
@@ -17,5 +17,4 @@ class TestPage extends \Squeeze\Core\Mvc\AdminPageController
   {
     echo 'test';
   }
-
 }

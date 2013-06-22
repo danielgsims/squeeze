@@ -9,6 +9,9 @@ namespace Squeeze\Core;
 class Menu
 {
 
+  private static $registered_menus = array();
+  private static $enqueued_menus = array();
+
   /**
    * @var string
    * @access private
@@ -55,7 +58,7 @@ class Menu
    * @var int
    * @access private
    */
-  private $menu_priority = 99;
+  private $menu_priority;
 
   /**
    * setMenuParent
@@ -132,11 +135,23 @@ class Menu
   /**
    * execute
    * Once we've set all the required menu parameters, register the menu page.
+   * WordPress won't create a submenu item with a parent that hasn't been declared yet.
+   * To get around this, we're creating a static registry of declared menus.
+   * If a menu hasn't been declared yet, we'll save an instance of the Menu object.
+   * When a top-level menu is created, we'll check to see if there are any enqueued submenus.
+   * If so, we'll create them at that point.
    * @access public
    * @return null
    */
-  public function execute()
+  public function execute($retry = false)
   {
+    self::$registered_menus[] = $this->slug;
+    if ($this->menu_parent) {
+      if (!in_array($this->menu_parent, self::$registered_menus)) {
+        self::$enqueued_menus[$this->menu_parent][] = $this;
+        return;
+      }
+    }
     add_action( 'admin_menu', array($this, 'register_menu_page') );
   }
 
@@ -148,15 +163,19 @@ class Menu
    */
   public function register_menu_page()
   {
-    if (!$this->menu_icon) {
-      $this->menu_icon = plugins_url( 'myplugin/images/icon.png' );
-    }
-
     if ($this->menu_parent) {
       add_submenu_page( $this->menu_parent, $this->page_title, $this->menu_title, $this->menu_capability, $this->slug, $this->function );
     }
     else {
       add_menu_page( $this->page_title, $this->menu_title, $this->menu_capability, $this->slug, $this->function, $this->menu_icon, $this->menu_priority );
+
+      if(array_key_exists($this->slug, self::$enqueued_menus)) {
+        foreach(self::$enqueued_menus[$this->slug] as $submenu) {
+          $submenu->register_menu_page();
+        }
+
+        unset(self::$enqueued_menus[$this->slug]);
+      }
     }
   }
 }
