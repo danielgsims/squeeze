@@ -13,5 +13,6 @@ echo $myPost->save(); // The new post ID
 
 // Change the value of a stored Option
 $myOption = new \Squeeze\Core\Options('storedOption');
+echo $myOption->get();
 $myOption->set('My New Value');
 $myOption->save();

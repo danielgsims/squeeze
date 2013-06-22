@@ -3,6 +3,7 @@
 namespace Squeeze;
 
 $testRouteGroup = new Core\Router\AdminRouteGroup;
+// $myWidget = new Core\Router\WidgetRoute;
 
 $testRouteGroup->page(new Core\Router\AdminRoutePage('testPage', array(
   'page_title' => 'Test Page',
@@ -17,5 +18,9 @@ $testRouteGroup->page(new Core\Router\AdminRoutePage('testPage2', array(
   'controller_name' => 'testPage',
   'controller_method' => 'sub_page'
 )));
+
+// $myWidget->
+
+
 
 $testRouteGroup->parseRoutes();
