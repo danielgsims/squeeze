@@ -9,7 +9,7 @@ class View
     extract($data);
 
     ob_start();
-    include \Squeeze\SQ_PLUGIN_PATH .'/views/'. $view .'.php';
+    include SQ_PLUGIN_PATH .'/views/'. $view .'.php';
     $viewData = ob_get_contents();
     ob_end_clean();
 

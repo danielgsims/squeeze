@@ -1,6 +1,6 @@
 <?php
 
-namespace Squeeze;
+namespace Squeeze\Core;
 
 /**
  * SplClassLoader implementation that implements the technical interoperability
