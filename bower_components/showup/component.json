@@ -1,0 +1,8 @@
+{
+  "name": "showup",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stephenplusplus/showup.git"
+  }
+}
