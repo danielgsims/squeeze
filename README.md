@@ -1,9 +1,9 @@
 SQUEEZE Plugin Framework
 ========================
 
-A small collection of libraries for writing WordPress plugins. It's by no means a complete product. I'm just adding to it as I need new things.
+Rapid WordPress plugin development using modern techniques and principles. I was tired of writing WordPress plugins that sucked. So I started writing Squeeze. Squeeze provides an MVC structure for plugin development, utilizing modern principles such as namespacing and autoloading, parameterized queries and more.
 
-I was tired of writing WordPress plugins that sucked. So I tried to write something that struck a balance between decently structured code and stay-out-of-my-way-osity. Whether I accomplished that is up to someone else to judge!
+Squeeze is meant for software engineers. But more than that, Squeeze is meant for anyone who wants to rapidly develop maintainable, standards-based plugins for the most popular platform on earth.
 
 If you find this useful please let me know. If you've got a question, please let me know. If you want to contribute, I'd be stoked.
 
@@ -16,7 +16,10 @@ Features
 * Fetch and Save User Metadata
 * Add columns to the User List
 * Represents data in an object-oriented fashion
+* PDO wrapper for parameterized queries
+* MVC structure
 
 TODO
 ====
 * Add Test Coverage
+* Add ability to generate tables from any dataset.
