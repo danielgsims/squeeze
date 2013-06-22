@@ -4,6 +4,7 @@ namespace Squeeze\App\Controller;
 
 class TestPage extends \Squeeze\Core\Mvc\Controller
 {
+
   public function index()
   {
     echo 'test';
@@ -13,4 +14,5 @@ class TestPage extends \Squeeze\Core\Mvc\Controller
   {
     echo 'test2';
   }
+
 }
