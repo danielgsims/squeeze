@@ -8,9 +8,23 @@ namespace Squeeze\Core\Api;
  */
 class Menu
 {
-
   private static $registered_menus = array();
+
   private static $enqueued_menus = array();
+
+  private $default_menus = array(
+    'dashboard' => 'add_dashboard_menu',
+    'posts' => 'add_posts_page',
+    'media' => 'add_media_page',
+    'links' => 'add_links_page',
+    'pages' => 'add_pages_page',
+    'comments' => 'add_comments_page',
+    'appearance' => 'add_theme_page',
+    'plugins' => 'add_plugins_page',
+    'users' => 'add_users_page',
+    'tools' => 'add_management_page',
+    'settings' => 'add_options_page',
+  );
 
   /**
    * @var string
@@ -147,7 +161,7 @@ class Menu
   {
     self::$registered_menus[] = $this->slug;
     if ($this->menu_parent) {
-      if (!in_array($this->menu_parent, self::$registered_menus)) {
+      if (!in_array($this->menu_parent, self::$registered_menus) && !array_key_exists($this->menu_parent, $this->default_menus)) {
         self::$enqueued_menus[$this->menu_parent][] = $this;
         return;
       }
@@ -164,7 +178,18 @@ class Menu
   public function register_menu_page()
   {
     if ($this->menu_parent) {
-      add_submenu_page( $this->menu_parent, $this->page_title, $this->menu_title, $this->menu_capability, $this->slug, $this->function );
+      if (array_key_exists($this->menu_parent, $this->default_menus)) {
+        call_user_func_array($this->default_menus[$this->menu_parent], array(
+          $this->page_title,
+          $this->menu_title,
+          $this->menu_capability,
+          $this->slug,
+          $this->function
+        ));
+      }
+      else {
+        add_submenu_page( $this->menu_parent, $this->page_title, $this->menu_title, $this->menu_capability, $this->slug, $this->function );
+      }
     }
     else {
       add_menu_page( $this->page_title, $this->menu_title, $this->menu_capability, $this->slug, $this->function, $this->menu_icon, $this->menu_priority );

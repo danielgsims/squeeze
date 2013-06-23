@@ -6,7 +6,7 @@ class AnotherPage extends \Squeeze\Core\Mvc\AdminPageController
 {
   protected $page_title = 'Another Page';
   protected $capability = 'manage_options';
-  protected $parent = 'TestPage';
+  protected $parent = 'posts';
 
   public function __construct()
   {
