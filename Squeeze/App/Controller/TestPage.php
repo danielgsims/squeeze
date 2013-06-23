@@ -15,7 +15,9 @@ class TestPage extends \Squeeze\Core\Mvc\AdminPageController
 
   public function index()
   {
-    echo 'test';
+    $PDO = \Squeeze\Core\Db\PDO::instance();
+    $query = $PDO->query('SELECT * FROM wp_posts LIMIT 1');
+    echo $query->fetchObject()->post_title;
   }
 
 }
