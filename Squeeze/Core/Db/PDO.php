@@ -14,6 +14,8 @@ class PDO extends \PDO
 
       self::$instance = $this;
     }
+
+    return self::instance();
   }
 
   public static function instance()

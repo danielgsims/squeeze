@@ -16,7 +16,7 @@ class AdminPageController
 
   public function bootstrap()
   {
-    $adminMenuItem = new \Squeeze\Core\Menu();
+    $adminMenuItem = new \Squeeze\Core\Api\Menu();
     $adminMenuItem->setPageTitle($this->getPageTitle());
     $adminMenuItem->setMenuTitle($this->getMenuTitle());
     $adminMenuItem->setMenuCapability($this->getCapability());
