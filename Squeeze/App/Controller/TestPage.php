@@ -17,7 +17,13 @@ class TestPage extends \Squeeze\Core\Mvc\AdminPageController
   {
     $PDO = \Squeeze\Core\Db\PDO::instance();
     $query = $PDO->query('SELECT * FROM wp_posts LIMIT 1');
-    echo $query->fetchObject()->post_title;
+
+    $post = $query->fetch();
+    $mustache = new \Mustache_Engine(array(
+      'loader' => new \Mustache_Loader_FilesystemLoader(\SQ_PLUGIN_PATH .'/Squeeze/App/Views')
+    ));
+    $template = $mustache->loadTemplate('Test');
+    echo $template->render($post);
   }
 
 }

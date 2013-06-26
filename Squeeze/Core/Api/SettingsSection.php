@@ -9,12 +9,8 @@ class SettingsSection
   private $group_title;
   private $fields = array();
 
-  private $view;
-
   public function __construct()
-  {
-    $this->view = new View;
-  }
+  {}
 
   /**
    * setGroupKey
@@ -80,12 +76,12 @@ class SettingsSection
 
     $fields = $this->showFields();
 
-    return $this->view->load('settings/section', array(
-      'fields'      => $fields,
-      'group_title' => $this->group_title,
-      'group_key'   => $this->group_key,
-      'group_page'  => $this->group_page
-    ));
+    // return $this->view->load('settings/section', array(
+    //   'fields'      => $fields,
+    //   'group_title' => $this->group_title,
+    //   'group_key'   => $this->group_key,
+    //   'group_page'  => $this->group_page
+    // ));
   }
 
   public function execute()
