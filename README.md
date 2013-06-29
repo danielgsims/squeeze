@@ -14,12 +14,89 @@ Features
 * Create custom settings/options pages
 * Manage Users (Insert, Update, Delete, Set Roles)
 * Manage Posts (Insert, Update, Delete, Trash)
+* Manage Comments (Insert, Update, Delete, Trash)
 * Manage WordPress Options in an object-oriented fashion.
 * Fetch and Save User Metadata
 * Add columns to the User List
 * Represents data in an object-oriented fashion
 * PDO wrapper for parameterized queries
 * MVC structure
+
+Examples
+========
+* Create an Admin Page
+
+    ```
+    cd Squeeze/App/Controller
+    touch MyAdminPage.php
+    ```
+    ```
+    <?php
+    
+    namespace Squeeze\App\Controller;
+    
+    class MyAdminPage extends \Squeeze\Core\Mvc\AdminPageController
+    {
+      protected $page_title = 'My Admin Page';
+      protected $capability = 'manage_options';
+    
+      public function __construct()
+      {
+        parent::__construct();
+      }
+    
+      public function index()
+      {
+        echo "Hello World!";
+      }
+    
+    }
+    ```
+* Create an Admin Dashboard Widget
+
+    ```
+    cd Squeeze/App/Controller
+    touch MyDashboardWidget.php
+    ```
+    ```
+    <?php
+
+    namespace Squeeze\App\Controller;
+    
+    class MyDashboardWidget extends \Squeeze\Core\Mvc\DashboardWidget
+    {
+      protected $title = 'Squeezed Widget';
+    
+      public function index()
+      {
+        echo "Hello World!";
+      }
+    }
+    ```
+* Change a Post Title and increment the value of a meta field
+
+    ```
+    <?php
+    
+    $post_ID = 1;
+    $myPost = new \Squeeze\Core\Api\Post($post_ID);
+    $myPost->set('post_title', 'Hello World');
+    $meta_value = $myPost->get('number_of_views');
+    $myPost->set('number_of_views', $meta_value++);
+    $myPost->save();
+    ```
+* Create a custom MySQL Query
+
+    ````
+    <?php
+    $PDO = \Squeeze\Core\Db\PDO::instance();
+    $query = $PDO->query('SELECT * FROM wp_posts LIMIT 1');
+
+    $post = $query->fetch();
+    echo $post->post_title();
+    ````
+    
+    
 
 TODO
 ====
