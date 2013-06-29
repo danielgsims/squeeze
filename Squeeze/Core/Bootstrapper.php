@@ -20,6 +20,7 @@ class Bootstrapper
 
     self::$instance->mapControllers();
     self::$instance->loadVendorPackages();
+    self::$instance->activationHooks();
 
     return;
   }
@@ -52,6 +53,28 @@ class Bootstrapper
     else {
       throw new Exception('Packagist packages not installed');
     }
+  }
+
+  private function activationHooks()
+  {
+    $pluginFilePath = \SQ_PLUGIN_PATH .'/'. \SQ_PLUGIN_FILENAME;
+
+    if (class_exists('\Squeeze\App\Activation')) {
+      $activationObject = '\Squeeze\App\Activation';
+    }
+    else {
+      $activationObject = '\Squeeze\Core\Activation';
+    }
+
+    if (class_exists('\Squeeze\App\Deactivation')) {
+      $deactivationObject = '\Squeeze\App\Deactivation';
+    }
+    else {
+      $deactivationObject = '\Squeeze\Core\Deactivation';
+    }
+
+    register_activation_hook( $pluginFilePath, array($activationObject::instance(), 'activation') );
+    register_activation_hook( $pluginFilePath, array($deactivationObject::instance(), 'deactivation') );
   }
 
   private function listFilesInDirectory($directory)

@@ -48,4 +48,9 @@ class PDOStatement extends \PDOStatement
 
     return "'". $v ."'";
   }
+
+  public function insertId()
+  {
+    return $this->dbh->lastInsertId();
+  }
 }
