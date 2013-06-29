@@ -1,6 +1,6 @@
 <?php
 
-namespace Squeeze\Core;
+namespace Squeeze\Core\Api;
 
 class SettingsField
 {
@@ -17,12 +17,8 @@ class SettingsField
   const FIELD_CHECKBOX = 'settings/checkbox';
   const FIELD_RADIO    = 'settings/radio';
 
-  private $view;
-
   public function __construct()
-  {
-    $this->view = new View;
-  }
+  {}
 
   public function setFieldKey($fieldKey)
   {
@@ -95,18 +91,18 @@ class SettingsField
 
   public function getFieldHtml()
   {
-    $field = $this->view->load($this->field_type, array(
-      'field_key'   => $this->field_key,
-      'field_value' => $this->getFieldPreParse($this->value)
-    ));
+    // $field = $this->view->load($this->field_type, array(
+    //   'field_key'   => $this->field_key,
+    //   'field_value' => $this->getFieldPreParse($this->value)
+    // ));
 
-    return $this->view->load('settings/wrapper', array(
-      'field_key'          => $this->field_key,
-      'field_title'        => $this->field_title,
-      'field_type'         => $this->field_type,
-      'field_instructions' => $this->field_instructions,
-      'field'              => $field
-    ));
+    // return $this->view->load('settings/wrapper', array(
+    //   'field_key'          => $this->field_key,
+    //   'field_title'        => $this->field_title,
+    //   'field_type'         => $this->field_type,
+    //   'field_instructions' => $this->field_instructions,
+    //   'field'              => $field
+    // ));
   }
 
   public function updateFieldValue($haystack)

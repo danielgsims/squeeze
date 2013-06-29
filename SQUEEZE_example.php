@@ -10,5 +10,6 @@ Author URI: http://johnpedrie.com
 License: TBD
 */
 
-namespace Squeeze;
+define(SQ_PLUGIN_FILENAME, 'SQUEEZE_example.php');
+
 include "Squeeze/Core/squeeze.php";
