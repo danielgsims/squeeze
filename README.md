@@ -12,6 +12,7 @@ If you find this useful please let me know. If you've got a question, please let
 Features
 ========
 * Create custom settings/options pages
+* Custom Post Type Support
 * Manage Users (Insert, Update, Delete, Set Roles)
 * Manage Posts (Insert, Update, Delete, Trash)
 * Manage Comments (Insert, Update, Delete, Trash)
@@ -95,11 +96,10 @@ Examples
     $post = $query->fetch();
     echo $post->post_title();
     ````
-    
-    
 
 TODO
 ====
-* Add Test Coverage
+* Add Test Coverage.
+* Add support for Post Type meta boxes.
 * Add ability to generate tables from any dataset.
 * Add Pake support for build process (Prevent namespace collisions with multiple Squeeze instances).

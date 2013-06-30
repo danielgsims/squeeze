@@ -9,6 +9,9 @@ class Bootstrapper
   private $loadedControllers = array();
   private $controllers = array();
 
+  private $loadedPostTypes = array();
+  private $postTypes = array();
+
   private $loadedVendors = array();
   private $vendors = array();
 
@@ -18,8 +21,10 @@ class Bootstrapper
       self::$instance = new self;
     }
 
-    self::$instance->mapControllers();
     self::$instance->loadVendorPackages();
+
+    self::$instance->mapControllers();
+    self::$instance->mapPostTypes();
     self::$instance->activationHooks();
 
     return;
@@ -41,6 +46,26 @@ class Bootstrapper
       if(class_exists($controllerName)) {
         $this->loadedControllers[$class] = new $controllerName;
         $this->loadedControllers[$class]->bootstrap();
+      }
+    }
+  }
+
+  private function mapPostTypes()
+  {
+    $dirMembers = $this->listFilesInDirectory('Squeeze/App/PostType');
+
+    array_walk($dirMembers, function($arr) {
+      if(strpos($arr, '.php') !== false) {
+        $this->postTypes[] = str_replace('.php', '', $arr);
+      }
+    });
+
+    foreach($this->postTypes as $class) {
+      $postTypeName = '\Squeeze\App\PostType\\'. $class;
+
+      if(class_exists($postTypeName)) {
+        $this->loadedPostTypes[$class] = new $postTypeName;
+        $this->loadedPostTypes[$class]->bootstrap();
       }
     }
   }
