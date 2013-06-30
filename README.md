@@ -1,5 +1,4 @@
-SQUEEZE Plugin Framework
-========================
+# SQUEEZE Plugin Framework
 
 Rapid WordPress plugin development using modern techniques and principles. I was tired of writing WordPress plugins that sucked. So I started writing Squeeze. Squeeze provides an MVC structure for plugin development, utilizing modern principles such as namespacing and autoloading, parameterized queries, object oriented data management and API access and more.
 
@@ -9,10 +8,10 @@ If you've ever taken a freelance job working on a WordPress project, you may fin
 
 If you find this useful please let me know. If you've got a question, please let me know. If you want to contribute, I'd be stoked.
 
-Features
-========
+## Features
 * Create custom settings/options pages
 * Custom Post Type Support
+* Custom Meta Boxes on Custom and Core post types.
 * Manage Users (Insert, Update, Delete, Set Roles)
 * Manage Posts (Insert, Update, Delete, Trash)
 * Manage Comments (Insert, Update, Delete, Trash)
@@ -23,8 +22,7 @@ Features
 * PDO wrapper for parameterized queries
 * MVC structure
 
-Examples
-========
+## Examples
 * Create an Admin Page
 
     ```
@@ -97,9 +95,7 @@ Examples
     echo $post->post_title();
     ````
 
-TODO
-====
+## TODO
 * Add Test Coverage.
-* Add support for Post Type meta boxes.
 * Add ability to generate tables from any dataset.
 * Add Pake support for build process (Prevent namespace collisions with multiple Squeeze instances).

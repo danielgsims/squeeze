@@ -101,16 +101,16 @@ namespace Squeeze\Core\PostType
 
     public function bootstrap()
     {
-      if (array_key_exists($this->getSlug(), self::$existingPostTypes)) {
-        throw new \Squeeze\Core\Exception('Post Type already exists');
+      $this->executeMetaBox();
+
+      if (!array_key_exists($this->getSlug(), self::$existingPostTypes)) {
+        self::$existingPostTypes[$this->getSlug()] = $this->getSlug();
+
+        $this->createLabels();
+        $this->setRewrite();
+
+        add_action('init', array($this, 'execute'));
       }
-
-      self::$existingPostTypes[$this->getSlug()] = $this->getSlug();
-
-      $this->createLabels();
-      $this->setRewrite();
-
-      add_action('init', array($this, 'execute'));
     }
 
     private function createLabels()
@@ -141,6 +141,15 @@ namespace Squeeze\Core\PostType
       register_post_type( $this->getSlug(), $args );
     }
 
+    public function executeMetaBox()
+    {
+      if (isset($this->metaBoxes)) {
+        foreach ($this->metaBoxes as $metaBox) {
+          $this->loadMetaBox($metaBox);
+        }
+      }
+    }
+
     private function getSlug()
     {
       $className = get_called_class();
@@ -151,6 +160,21 @@ namespace Squeeze\Core\PostType
     private function getLabel()
     {
       return (isset($this->label)) ? $this->label : 'Squeeze';
+    }
+
+    private function loadMetaBox($key)
+    {
+      $className = '\Squeeze\App\PostType\MetaBox\\'. $key;
+
+      if (class_exists($className)) {
+        $metaBox = new $className;
+
+        add_action('add_meta_boxes', array($metaBox, 'execute'), $this->getSlug(), 1);
+
+        if (method_exists($metaBox, 'save')) {
+          add_action('save_post', array($metaBox, 'save'));
+        }
+      }
     }
   }
 }
