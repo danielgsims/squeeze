@@ -26,15 +26,15 @@ If you find this useful please let me know. If you've got a question, please let
 * Create an Admin Page
 
     ```
-    cd Squeeze/App/Controller
+    cd SqueezeExample/App/Controller
     touch MyAdminPage.php
     ```
     ```
     <?php
     
-    namespace Squeeze\App\Controller;
+    namespace SqueezeExample\App\Controller;
     
-    class MyAdminPage extends \Squeeze\Core\Mvc\AdminPageController
+    class MyAdminPage extends \Squeeze1_0\Core\Mvc\AdminPageController
     {
       protected $page_title = 'My Admin Page';
       protected $capability = 'manage_options';
@@ -54,7 +54,7 @@ If you find this useful please let me know. If you've got a question, please let
 * Create an Admin Dashboard Widget
 
     ```
-    cd Squeeze/App/Controller
+    cd SqueezeExample/App/Controller
     touch MyDashboardWidget.php
     ```
     ```
@@ -62,7 +62,7 @@ If you find this useful please let me know. If you've got a question, please let
 
     namespace Squeeze\App\Controller;
     
-    class MyDashboardWidget extends \Squeeze\Core\Mvc\DashboardWidget
+    class MyDashboardWidget extends \Squeeze1_0\Core\Mvc\DashboardWidget
     {
       protected $title = 'Squeezed Widget';
     
@@ -78,7 +78,7 @@ If you find this useful please let me know. If you've got a question, please let
     <?php
     
     $post_ID = 1;
-    $myPost = new \Squeeze\Core\Api\Post($post_ID);
+    $myPost = new \Squeeze1_0\Api\Post($post_ID);
     $myPost->set('post_title', 'Hello World');
     $meta_value = $myPost->get('number_of_views');
     $myPost->set('number_of_views', $meta_value++);
@@ -88,7 +88,7 @@ If you find this useful please let me know. If you've got a question, please let
 
     ````
     <?php
-    $PDO = \Squeeze\Core\Db\PDO::instance();
+    $PDO = \Squeeze1_0\Db\PDO::instance();
     $query = $PDO->query('SELECT * FROM wp_posts LIMIT 1');
 
     $post = $query->fetch();
