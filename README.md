@@ -8,7 +8,10 @@ If you've ever taken a freelance job working on a WordPress project, you may fin
 
 If you find this useful please let me know. If you've got a question, please let me know. If you want to contribute, I'd be stoked.
 
-## Features
+### Developing An App
+Squeeze functions as an external dependency that lives in your `wp-content/plugins` directory. For an example of how Squeeze is implemented as a development framework, check out the **[squeezeExample WordPress Plugin](https://github.com/jdpedrie/squeezeExample)**.
+
+### Features
 * Create custom settings/options pages
 * Custom Post Type Support
 * Custom Meta Boxes on Custom and Core post types.
@@ -22,7 +25,7 @@ If you find this useful please let me know. If you've got a question, please let
 * PDO wrapper for parameterized queries
 * MVC structure
 
-## Examples
+### Examples
 * Create an Admin Page
 
     ```
@@ -94,8 +97,3 @@ If you find this useful please let me know. If you've got a question, please let
     $post = $query->fetch();
     echo $post->post_title();
     ````
-
-## TODO
-* Add Test Coverage.
-* Add ability to generate tables from any dataset.
-* Add Pake support for build process (Prevent namespace collisions with multiple Squeeze instances).
