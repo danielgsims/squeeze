@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>Squeeze1_0\Api\Comment | API</title>
+                    <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="../../classes.html">Classes</a></li>
+                            <li><a href="../../namespaces.html">Namespaces</a></li>
+                        <li><a href="../../interfaces.html">Interfaces</a></li>
+            <li><a href="../../doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title">API</div>
+
+            <div class="type">Class</div>
+    <h1><a href="../../Squeeze1_0/Api.html">Squeeze1_0\Api</a>\Comment</h1>
+    </div>
+        <div class="content">
+                <p>class    <strong>Comment</strong></p>
+
+    
+    
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    object
+                </td>
+                <td class="last">
+                    <a href="#method___construct">__construct</a>(int|null $commentId = NULL)
+                    <p>__construct Attempt to load a comment if $commentId is set</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    object
+                </td>
+                <td class="last">
+                    <a href="#method_set">set</a>(string $key, string $val)
+                    <p>set Set or change the value of a comment variable If the key exists in Comment::$core_fields, use that, otherwise store as metadata.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <abbr title="Squeeze1_0\Api\mixed;">mixed;</abbr>
+                </td>
+                <td class="last">
+                    <a href="#method_get">get</a>(string $key)
+                    <p>get Get a stored value First try to fetch from Comment::$core_fields then fall back to Comment::$meta.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    int
+                </td>
+                <td class="last">
+                    <a href="#method_save">save</a>()
+                    <p>save Insert or update the comment</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_delete">delete</a>()
+                    <p>delete Will delete a comment.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_trash">trash</a>()
+                    <p>trash Will trash a comment.</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method___construct">
+        <div class="location">at line 99</div>
+        <code>            public            object
+    <strong>__construct</strong>(int|null $commentId = NULL)</code>
+    </h3>
+    <div class="details">
+        <p>__construct Attempt to load a comment if $commentId is set</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>int|null</td>
+                <td>$commentId</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>object</td>
+            <td>\Squeeze1_0\Api\Comment</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_set">
+        <div class="location">at line 133</div>
+        <code>            public            object
+    <strong>set</strong>(string $key, string $val)</code>
+    </h3>
+    <div class="details">
+        <p>set Set or change the value of a comment variable If the key exists in Comment::$core_fields, use that, otherwise store as metadata.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$val</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>object</td>
+            <td>\Squeeze1_0\Api\Comment;</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_get">
+        <div class="location">at line 154</div>
+        <code>            public            <abbr title="Squeeze1_0\Api\mixed;">mixed;</abbr>
+    <strong>get</strong>(string $key)</code>
+    </h3>
+    <div class="details">
+        <p>get Get a stored value First try to fetch from Comment::$core_fields then fall back to Comment::$meta.</p>
+        <p>Return null if nothing found.</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><abbr title="Squeeze1_0\Api\mixed;">mixed;</abbr></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_save">
+        <div class="location">at line 168</div>
+        <code>            public            int
+    <strong>save</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>save Insert or update the comment</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>int</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_delete">
+        <div class="location">at line 185</div>
+        <code>            public            bool
+    <strong>delete</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>delete Will delete a comment.</p>
+        <p>NOTE: This attempts to complete a true delete.
+Use Comment::trash() to trash a comment</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_trash">
+        <div class="location">at line 201</div>
+        <code>            public            bool
+    <strong>trash</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>trash Will trash a comment.</p>
+        <p>NOTE: This function will move a comment to the trash
+Use Comment::delete() to delete a comment</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>

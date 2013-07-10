@@ -1,0 +1,17 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  color:#DBB260;
+}
+
+.wrapper {
+  margin:auto;
+  width:400px;
+  text-align:center;
+}
+
+.wrapper img {
+  width:300px;
+}
