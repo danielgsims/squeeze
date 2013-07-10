@@ -4,14 +4,18 @@ namespace Squeeze1_0\Mvc;
 
 class AdminPageController
 {
+  protected $appOptions;
+
   public function __construct()
   {}
 
   public function pre()
   {}
 
-  public function bootstrap()
+  public function bootstrap($appOptions)
   {
+    $this->appOptions = $appOptions;
+
     $adminMenuItem = new \Squeeze1_0\Api\Menu();
     $adminMenuItem->setPageTitle($this->getPageTitle());
     $adminMenuItem->setMenuTitle($this->getMenuTitle());

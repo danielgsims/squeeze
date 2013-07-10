@@ -5,11 +5,15 @@ namespace Squeeze1_0\Mvc;
 // This isn't implemented yet.
 class DashboardWidget
 {
+  protected $appOptions;
+
   public function pre()
   {}
 
-  public function bootstrap()
+  public function bootstrap($appOptions)
   {
+    $this->appOptions = $appOptions;
+
     $dashboardWidget = new \Squeeze1_0\Api\DashboardWidget;
     $dashboardWidget->setWidgetId($this->getSlug());
     $dashboardWidget->setWidgetTitle($this->getTitle());

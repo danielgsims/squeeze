@@ -10,6 +10,8 @@ class WidgetController
   public function pre()
   {}
 
-  public function bootstrap()
-  {}
+  public function bootstrap($appOptions)
+  {
+    $this->appOptions = $appOptions;
+  }
 }
