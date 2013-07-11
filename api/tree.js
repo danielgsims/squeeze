@@ -33,6 +33,7 @@ var tree = [["Squeeze1_0","Squeeze1_0.html","",
                 [        ]],["Deactivation","Squeeze1_0\/Deactivation.html","",
                 [        ]],["Exception","Squeeze1_0\/Exception.html"," < Exception",
                 [        ]],["Mustache","Squeeze1_0\/Mustache.html"," < Mustache_Engine",
+                [        ]],["SplClassLoader","Squeeze1_0\/SplClassLoader.html","",
                 [        ]],["Vendor","Squeeze1_0\/Vendor.html","",
                 [        ]]        ]]        ]
 
