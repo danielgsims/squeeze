@@ -1,0 +1,8 @@
+<?php
+
+pake_desc('Generate Documentation');
+pake_task('doc'); // second and the following parameters list tasks, which current task depends on
+function run_doc()
+{
+    pake_sh("php /Users/jdp/Sites/squeeze-dev/wordpress/wp-content/plugins/squeeze/vendor/sami/sami/sami.php update /Users/jdp/Sites/squeeze-dev/wordpress/wp-content/plugins/squeeze/sami.php", true);
+}

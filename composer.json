@@ -1,5 +1,6 @@
 {
   "require": {
-    "sami/sami": "1.0.*@dev"
+    "sami/sami": "1.0.*@dev",
+    "indeyets/pake": "dev-master"
   }
 }
