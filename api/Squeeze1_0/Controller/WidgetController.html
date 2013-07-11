@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="robots" content="index, follow, all" />
-        <title>Squeeze1_0\Mvc\AdminPageController | API</title>
+        <title>Squeeze1_0\Controller\WidgetController | API</title>
                     <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
                             </head>
         <body id="class">
@@ -19,13 +19,32 @@
         <div id="title">API</div>
 
             <div class="type">Class</div>
-    <h1><a href="../../Squeeze1_0/Mvc.html">Squeeze1_0\Mvc</a>\AdminPageController</h1>
+    <h1><a href="../../Squeeze1_0/Controller.html">Squeeze1_0\Controller</a>\WidgetController</h1>
     </div>
         <div class="content">
-                <p>class    <strong>AdminPageController</strong></p>
+                <p>abstract class    <strong>WidgetController</strong>        implements
+        <a href="../../Squeeze1_0/Implementable/iController.html"><abbr title="Squeeze1_0\Implementable\iController">iController</abbr></a></p>
 
+            <div class="description">
+            <p>The base controller for implementing WordPress Theme Widgets</p>
+            <p>This feature has not yet been implemented.</p>
+        </div>
     
     
+            <h2>Properties</h2>
+
+            <table>
+                    <tr>
+                <td>
+                                                                                protected                                    </td>
+                <td class="type" id="property_appOptions">
+                                        protected                    array
+                </td>
+                <td>$appOptions</td>
+                <td class="last">An array containing the current application options.</td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
@@ -38,8 +57,7 @@
                 </td>
                 <td class="last">
                     <a href="#method___construct">__construct</a>()
-                    <p>
-</p>
+                    <p>Base constructor.</p>
                 </td>
                 <td></td>
             </tr>
@@ -58,9 +76,22 @@
             </tr>
                     <tr>
                 <td class="type">
-                                                                                public                                                        </td>
+                                        abstract                                        public                                                        </td>
                 <td>
                     
+                </td>
+                <td class="last">
+                    <a href="#method_index">index</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                                                                                public                                                        </td>
+                <td>
+                    void
                 </td>
                 <td class="last">
                     <a href="#method_bootstrap">bootstrap</a>($appOptions)
@@ -75,15 +106,13 @@
         <h2>Details</h2>
 
                         <h3 id="method___construct">
-        <div class="location">at line 9</div>
+        <div class="location">at line 27</div>
         <code>            public            
     <strong>__construct</strong>()</code>
     </h3>
     <div class="details">
-        <p>
-</p>
-        <p>
-</p>
+        <p>Base constructor.</p>
+        <p>May be extended by the implementation</p>
         <div class="tags">
             
             
@@ -92,7 +121,7 @@
     </div>
 
                 <h3 id="method_pre">
-        <div class="location">at line 12</div>
+        <div class="location">at line 35</div>
         <code>            public            
     <strong>pre</strong>()</code>
     </h3>
@@ -108,9 +137,26 @@
                     </div>
     </div>
 
+                <h3 id="method_index">
+        <div class="location">at line 43</div>
+        <code>    abstract        public            
+    <strong>index</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
                 <h3 id="method_bootstrap">
-        <div class="location">at line 15</div>
-        <code>            public            
+        <div class="location">at line 54</div>
+        <code>            public            void
     <strong>bootstrap</strong>($appOptions)</code>
     </h3>
     <div class="details">
@@ -131,6 +177,16 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>

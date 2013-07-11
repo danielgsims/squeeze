@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="robots" content="index, follow, all" />
-        <title>Squeeze1_0\Util\Table | API</title>
+        <title>Squeeze1_0\Implementable\iApi | API</title>
                     <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
                             </head>
         <body id="class">
@@ -18,34 +18,14 @@
 
         <div id="title">API</div>
 
-            <div class="type">Class</div>
-    <h1><a href="../../Squeeze1_0/Util.html">Squeeze1_0\Util</a>\Table</h1>
+            <div class="type">Interface</div>
+    <h1><a href="../../Squeeze1_0/Implementable.html">Squeeze1_0\Implementable</a>\iApi</h1>
     </div>
         <div class="content">
-                <p>class    <strong>Table</strong></p>
+                <p>interface    <strong>iApi</strong></p>
 
-            <div class="description">
-            <p>A utility to create a table from an array, object, or PDO object</p>
-            <p>
-</p>
-        </div>
     
     
-            <h2>Properties</h2>
-
-            <table>
-                    <tr>
-                <td>
-                                                                                                    private                </td>
-                <td class="type" id="property_options">
-                                                            
-                </td>
-                <td>$options</td>
-                <td class="last">
-</td>
-            </tr>
-            </table>
-
     
             <h2>Methods</h2>
 
@@ -57,7 +37,7 @@
                     
                 </td>
                 <td class="last">
-                    <a href="#method___construct">__construct</a>($data, $options = array())
+                    <a href="#method_get">get</a>($key)
                     <p>
 </p>
                 </td>
@@ -70,7 +50,7 @@
                     
                 </td>
                 <td class="last">
-                    <a href="#method_execute">execute</a>()
+                    <a href="#method_set">set</a>($key, $val)
                     <p>
 </p>
                 </td>
@@ -83,7 +63,7 @@
                     
                 </td>
                 <td class="last">
-                    <a href="#method_setOption">setOption</a>($key, $val)
+                    <a href="#method_save">save</a>()
                     <p>
 </p>
                 </td>
@@ -96,7 +76,20 @@
                     
                 </td>
                 <td class="last">
-                    <a href="#method_tableHeader">tableHeader</a>()
+                    <a href="#method_delete">delete</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                                                                                public                                                        </td>
+                <td>
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_trash">trash</a>()
                     <p>
 </p>
                 </td>
@@ -107,10 +100,10 @@
 
         <h2>Details</h2>
 
-                        <h3 id="method___construct">
-        <div class="location">at line 12</div>
+                        <h3 id="method_get">
+        <div class="location">at line 7</div>
         <code>            public            
-    <strong>__construct</strong>($data, $options = array())</code>
+    <strong>get</strong>($key)</code>
     </h3>
     <div class="details">
         <p>
@@ -123,13 +116,7 @@
                     <table>
                     <tr>
                 <td></td>
-                <td>$data</td>
-                <td>
-</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$options</td>
+                <td>$key</td>
                 <td>
 </td>
             </tr>
@@ -141,27 +128,10 @@
                     </div>
     </div>
 
-                <h3 id="method_execute">
-        <div class="location">at line 18</div>
+                <h3 id="method_set">
+        <div class="location">at line 8</div>
         <code>            public            
-    <strong>execute</strong>()</code>
-    </h3>
-    <div class="details">
-        <p>
-</p>
-        <p>
-</p>
-        <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-                <h3 id="method_setOption">
-        <div class="location">at line 25</div>
-        <code>            public            
-    <strong>setOption</strong>($key, $val)</code>
+    <strong>set</strong>($key, $val)</code>
     </h3>
     <div class="details">
         <p>
@@ -192,10 +162,44 @@
                     </div>
     </div>
 
-                <h3 id="method_tableHeader">
-        <div class="location">at line 31</div>
+                <h3 id="method_save">
+        <div class="location">at line 9</div>
         <code>            public            
-    <strong>tableHeader</strong>()</code>
+    <strong>save</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_delete">
+        <div class="location">at line 10</div>
+        <code>            public            
+    <strong>delete</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_trash">
+        <div class="location">at line 11</div>
+        <code>            public            
+    <strong>trash</strong>()</code>
     </h3>
     <div class="details">
         <p>

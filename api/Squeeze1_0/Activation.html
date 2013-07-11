@@ -22,37 +22,55 @@
     <h1><a href="../Squeeze1_0.html">Squeeze1_0</a>\Activation</h1>
     </div>
         <div class="content">
-                <p>class    <strong>Activation</strong></p>
+                <p>abstract class    <strong>Activation</strong></p>
 
+            <div class="description">
+            <p>Allows running operations at activation.</p>
+            <p>
+</p>
+        </div>
     
     
+            <h2>Properties</h2>
+
+            <table>
+                    <tr>
+                <td>
+                                        static                                                            private                </td>
+                <td class="type" id="property_instance">
+                    static                                        object
+                </td>
+                <td>$instance</td>
+                <td class="last">
+</td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
             <table>
                     <tr>
                 <td class="type">
-                                                            static                    public                                                        </td>
+                    final                                        static                    public                                                        </td>
                 <td>
-                    
+                    object
                 </td>
                 <td class="last">
                     <a href="#method_instance">instance</a>()
-                    <p>
-</p>
+                    <p>Create a singleton</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
-                                                                                public                                                        </td>
+                                        abstract                                        public                                                        </td>
                 <td>
                     
                 </td>
                 <td class="last">
                     <a href="#method_activation">activation</a>()
-                    <p>
-</p>
+                    <p>The activation function.</p>
                 </td>
                 <td></td>
             </tr>
@@ -62,32 +80,38 @@
         <h2>Details</h2>
 
                         <h3 id="method_instance">
-        <div class="location">at line 10</div>
-        <code>        static    public            
+        <div class="location">at line 24</div>
+        <code>final        static    public            object
     <strong>instance</strong>()</code>
     </h3>
     <div class="details">
-        <p>
-</p>
+        <p>Create a singleton</p>
         <p>
 </p>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>object</td>
+            <td>\Squeeze1_0\Activation</td>
+        </tr>
+    </table>
+
             
             
                     </div>
     </div>
 
                 <h3 id="method_activation">
-        <div class="location">at line 19</div>
-        <code>            public            
+        <div class="location">at line 39</div>
+        <code>    abstract        public            
     <strong>activation</strong>()</code>
     </h3>
     <div class="details">
-        <p>
-</p>
-        <p>
-</p>
+        <p>The activation function.</p>
+        <p>Implementations of this class must provide an activation function.</p>
         <div class="tags">
             
             

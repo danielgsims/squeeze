@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="robots" content="index, follow, all" />
-        <title>Squeeze1_0\Mvc\DashboardWidget | API</title>
+        <title>Squeeze1_0\Controller\PageController | API</title>
                     <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
                             </head>
         <body id="class">
@@ -19,11 +19,16 @@
         <div id="title">API</div>
 
             <div class="type">Class</div>
-    <h1><a href="../../Squeeze1_0/Mvc.html">Squeeze1_0\Mvc</a>\DashboardWidget</h1>
+    <h1><a href="../../Squeeze1_0/Controller.html">Squeeze1_0\Controller</a>\PageController</h1>
     </div>
         <div class="content">
-                <p>class    <strong>DashboardWidget</strong></p>
+                <p>abstract class    <strong>PageController</strong>        implements
+        <a href="../../Squeeze1_0/Implementable/iController.html"><abbr title="Squeeze1_0\Implementable\iController">iController</abbr></a></p>
 
+            <div class="description">
+            <p>The base controller for implementing WordPress Admin Pages</p>
+            <p>This feature has not yet been implemented.</p>
+        </div>
     
     
             <h2>Properties</h2>
@@ -33,11 +38,10 @@
                 <td>
                                                                                 protected                                    </td>
                 <td class="type" id="property_appOptions">
-                                        protected                    
+                                        protected                    array
                 </td>
                 <td>$appOptions</td>
-                <td class="last">
-</td>
+                <td class="last">An array containing the current application options.</td>
             </tr>
             </table>
 
@@ -45,6 +49,18 @@
             <h2>Methods</h2>
 
             <table>
+                    <tr>
+                <td class="type">
+                                                                                public                                                        </td>
+                <td>
+                    
+                </td>
+                <td class="last">
+                    <a href="#method___construct">__construct</a>()
+                    <p>Base constructor.</p>
+                </td>
+                <td></td>
+            </tr>
                     <tr>
                 <td class="type">
                                                                                 public                                                        </td>
@@ -60,51 +76,25 @@
             </tr>
                     <tr>
                 <td class="type">
-                                                                                public                                                        </td>
+                                        abstract                                        public                                                        </td>
                 <td>
                     
+                </td>
+                <td class="last">
+                    <a href="#method_index">index</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                                                                                public                                                        </td>
+                <td>
+                    void
                 </td>
                 <td class="last">
                     <a href="#method_bootstrap">bootstrap</a>($appOptions)
-                    <p>
-</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
-                                                                                                                        private                </td>
-                <td>
-                    
-                </td>
-                <td class="last">
-                    <a href="#method_getSlug">getSlug</a>()
-                    <p>
-</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
-                                                                                                                        private                </td>
-                <td>
-                    
-                </td>
-                <td class="last">
-                    <a href="#method_getTitle">getTitle</a>()
-                    <p>
-</p>
-                </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type">
-                                                                                                                        private                </td>
-                <td>
-                    
-                </td>
-                <td class="last">
-                    <a href="#method_getUpdateFunction">getUpdateFunction</a>()
                     <p>
 </p>
                 </td>
@@ -115,8 +105,23 @@
 
         <h2>Details</h2>
 
-                        <h3 id="method_pre">
-        <div class="location">at line 10</div>
+                        <h3 id="method___construct">
+        <div class="location">at line 27</div>
+        <code>            public            
+    <strong>__construct</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Base constructor.</p>
+        <p>May be extended by the implementation</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_pre">
+        <div class="location">at line 35</div>
         <code>            public            
     <strong>pre</strong>()</code>
     </h3>
@@ -132,9 +137,26 @@
                     </div>
     </div>
 
+                <h3 id="method_index">
+        <div class="location">at line 43</div>
+        <code>    abstract        public            
+    <strong>index</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
                 <h3 id="method_bootstrap">
-        <div class="location">at line 13</div>
-        <code>            public            
+        <div class="location">at line 53</div>
+        <code>            public            void
     <strong>bootstrap</strong>($appOptions)</code>
     </h3>
     <div class="details">
@@ -155,57 +177,16 @@
             </table>
 
             
-            
-            
-                    </div>
-    </div>
+                            <h4>Return Value</h4>
 
-                <h3 id="method_getSlug">
-        <div class="location">at line 25</div>
-        <code>                    private    
-    <strong>getSlug</strong>()</code>
-    </h3>
-    <div class="details">
-        <p>
-</p>
-        <p>
-</p>
-        <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
+                    <table>
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
 
-                <h3 id="method_getTitle">
-        <div class="location">at line 32</div>
-        <code>                    private    
-    <strong>getTitle</strong>()</code>
-    </h3>
-    <div class="details">
-        <p>
-</p>
-        <p>
-</p>
-        <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-                <h3 id="method_getUpdateFunction">
-        <div class="location">at line 39</div>
-        <code>                    private    
-    <strong>getUpdateFunction</strong>()</code>
-    </h3>
-    <div class="details">
-        <p>
-</p>
-        <p>
-</p>
-        <div class="tags">
-            
             
             
                     </div>
