@@ -1,123 +1,130 @@
 <?php
 
-namespace Squeeze1_0\Api;
-
-class SettingsField
-{
-  private $field_key;
-  private $field_title;
-  private $field_type;
-  private $field_instructions;
-  private $field_pre_parse;
-  private $field_post_parse;
-  private $value;
-
-  const FIELD_TEXTAREA = 'settings/textarea';
-  const FIELD_TEXT     = 'settings/text';
-  const FIELD_CHECKBOX = 'settings/checkbox';
-  const FIELD_RADIO    = 'settings/radio';
-
-  public function __construct()
-  {}
-
-  public function setFieldKey($fieldKey)
+namespace Squeeze1_0\Api {
+  /**
+   * Settings Field API.
+   *
+   * This API is not fully implemented yet and should not be used.
+   *
+   * It's also not documented.
+   */
+  class SettingsField
   {
-    $this->field_key = $fieldKey;
-    $this->value = get_option($this->field_key);
-    return $this;
-  }
+    private $field_key;
+    private $field_title;
+    private $field_type;
+    private $field_instructions;
+    private $field_pre_parse;
+    private $field_post_parse;
+    private $value;
 
-  public function getFieldKey()
-  { return $this->field_key; }
+    const FIELD_TEXTAREA = 'settings/textarea';
+    const FIELD_TEXT     = 'settings/text';
+    const FIELD_CHECKBOX = 'settings/checkbox';
+    const FIELD_RADIO    = 'settings/radio';
 
-  public function setFieldTitle($fieldTitle)
-  {
-    $this->field_title = $fieldTitle;
-    return $this;
-  }
+    public function __construct()
+    {}
 
-  public function getFieldTitle()
-  { return $this->field_title; }
+    public function setFieldKey($fieldKey)
+    {
+      $this->field_key = $fieldKey;
+      $this->value = get_option($this->field_key);
+      return $this;
+    }
 
-  public function setFieldType($fieldType)
-  {
-    $this->field_type = $fieldType;
-    return $this;
-  }
+    public function getFieldKey()
+    { return $this->field_key; }
 
-  public function getFieldType()
-  { return $this->field_type; }
+    public function setFieldTitle($fieldTitle)
+    {
+      $this->field_title = $fieldTitle;
+      return $this;
+    }
 
-  public function setFieldInstructions($fieldInstructions)
-  {
-    $this->field_instructions = $fieldInstructions;
-    return $this;
-  }
+    public function getFieldTitle()
+    { return $this->field_title; }
 
-  public function getFieldInstructions()
-  { return $this->field_instructions; }
+    public function setFieldType($fieldType)
+    {
+      $this->field_type = $fieldType;
+      return $this;
+    }
 
-  public function setFieldPreParse($fieldPreParse)
-  {
-    $this->field_pre_parse = $fieldPreParse;
-    return $this;
-  }
+    public function getFieldType()
+    { return $this->field_type; }
 
-  public function getFieldPreParse()
-  {
-    $args = func_get_args();
+    public function setFieldInstructions($fieldInstructions)
+    {
+      $this->field_instructions = $fieldInstructions;
+      return $this;
+    }
 
-    if(!$this->field_pre_parse)
-      return $args[0];
+    public function getFieldInstructions()
+    { return $this->field_instructions; }
 
-    return call_user_func_array($this->field_pre_parse, $args);
-  }
+    public function setFieldPreParse($fieldPreParse)
+    {
+      $this->field_pre_parse = $fieldPreParse;
+      return $this;
+    }
 
-  public function setFieldPostParse($fieldPostParse)
-  {
-    $this->field_post_parse = $fieldPostParse;
-    return $this;
-  }
+    public function getFieldPreParse()
+    {
+      $args = func_get_args();
 
-  public function getFieldPostParse()
-  {
-    $args = func_get_args();
+      if(!$this->field_pre_parse)
+        return $args[0];
 
-    if(!$this->field_post_parse)
-      return $args[0];
+      return call_user_func_array($this->field_pre_parse, $args);
+    }
 
-    return call_user_func_array($this->field_post_parse, $args);
-  }
+    public function setFieldPostParse($fieldPostParse)
+    {
+      $this->field_post_parse = $fieldPostParse;
+      return $this;
+    }
 
-  public function getFieldHtml()
-  {
-    // $field = $this->view->load($this->field_type, array(
-    //   'field_key'   => $this->field_key,
-    //   'field_value' => $this->getFieldPreParse($this->value)
-    // ));
+    public function getFieldPostParse()
+    {
+      $args = func_get_args();
 
-    // return $this->view->load('settings/wrapper', array(
-    //   'field_key'          => $this->field_key,
-    //   'field_title'        => $this->field_title,
-    //   'field_type'         => $this->field_type,
-    //   'field_instructions' => $this->field_instructions,
-    //   'field'              => $field
-    // ));
-  }
+      if(!$this->field_post_parse)
+        return $args[0];
 
-  public function updateFieldValue($haystack)
-  {
-    $value = (isset($haystack[$this->field_key])) ? $haystack[$this->field_key] : null;
+      return call_user_func_array($this->field_post_parse, $args);
+    }
 
-    if(is_null($value))
-      return false;
+    public function getFieldHtml()
+    {
+      // $field = $this->view->load($this->field_type, array(
+      //   'field_key'   => $this->field_key,
+      //   'field_value' => $this->getFieldPreParse($this->value)
+      // ));
 
-    if($this->getFieldPreParse($this->value) == $value)
-      return false;
+      // return $this->view->load('settings/wrapper', array(
+      //   'field_key'          => $this->field_key,
+      //   'field_title'        => $this->field_title,
+      //   'field_type'         => $this->field_type,
+      //   'field_instructions' => $this->field_instructions,
+      //   'field'              => $field
+      // ));
+    }
 
-    $this->value = $this->getFieldPostParse($value);
-    update_option($this->field_key, $this->value);
+    public function updateFieldValue($haystack)
+    {
+      $value = (isset($haystack[$this->field_key])) ? $haystack[$this->field_key] : null;
 
-    return true;
+      if(is_null($value))
+        return false;
+
+      if($this->getFieldPreParse($this->value) == $value)
+        return false;
+
+      $this->value = $this->getFieldPostParse($value);
+      update_option($this->field_key, $this->value);
+
+      return true;
+    }
   }
 }

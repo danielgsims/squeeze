@@ -15,7 +15,7 @@ class DashboardWidget
     $this->appOptions = $appOptions;
 
     $dashboardWidget = new \Squeeze1_0\Api\DashboardWidget;
-    $dashboardWidget->setWidgetId($this->getSlug());
+    $dashboardWidget->setWidgetSlug($this->getSlug());
     $dashboardWidget->setWidgetTitle($this->getTitle());
     $dashboardWidget->setFunction(array($this, 'index'));
     $dashboardWidget->setUpdateFunction($this->getUpdateFunction());

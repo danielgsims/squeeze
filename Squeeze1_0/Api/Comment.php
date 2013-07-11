@@ -9,37 +9,29 @@ namespace Squeeze1_0\Api
   {
 
     /**
-     * PDO
      * Holds our PDO instance
      * @var object
-     * @access private
      */
     private $PDO;
 
     /**
-     * table
      * The Comments Table name
      * @var string
-     * @access private
      */
     private $table;
 
     /**
-     * missing_fields
      * An array that's populated with any required fields that aren't filled out.
      * Used by Comment::checkRequiredFields()
      * @var array
-     * @access private
      */
     private $missing_fields = array();
 
     /**
-     * core_fields
      * A list of fields in the comments table.
      * If a variable is set that doesn't exist in this array,
      * it will be saved as metadata.
      * @var array
-     * @access private
      */
     private $core_fields = array(
       'comment_ID' => false,
@@ -60,10 +52,8 @@ namespace Squeeze1_0\Api
     );
 
     /**
-     * required_fields
      * A list of fields required to insert a comment
      * @var array
-     * @access private
      */
     private $required_fields = array(
       'comment_post_ID',
@@ -74,24 +64,19 @@ namespace Squeeze1_0\Api
     );
 
     /**
-     * meta
      * Any variables set that don't exist in Comment::$core_fields are stored here
      * and saved as metadata.
      * @var array
-     * @access private
      */
     private $meta = array();
 
     /**
-     * comment_ID
      * If we're trying to load an existing comment, the comment ID will be stored here
      * @var int
-     * @access private
      */
     private $comment_ID;
 
     /**
-     * __construct
      * Attempt to load a comment if $commentId is set
      * @param int|null $commentId
      * @return object \Squeeze1_0\Api\Comment
@@ -122,7 +107,6 @@ namespace Squeeze1_0\Api
     }
 
     /**
-     * set
      * Set or change the value of a comment variable
      * If the key exists in Comment::$core_fields, use that,
      * otherwise store as metadata.
@@ -143,7 +127,6 @@ namespace Squeeze1_0\Api
     }
 
     /**
-     * get
      * Get a stored value
      * First try to fetch from Comment::$core_fields
      * then fall back to Comment::$meta.
@@ -161,7 +144,6 @@ namespace Squeeze1_0\Api
     }
 
     /**
-     * save
      * Insert or update the comment
      * @return int
      */
@@ -176,7 +158,6 @@ namespace Squeeze1_0\Api
     }
 
     /**
-     * delete
      * Will delete a comment.
      * NOTE: This attempts to complete a true delete.
      * Use Comment::trash() to trash a comment
@@ -192,7 +173,6 @@ namespace Squeeze1_0\Api
     }
 
     /**
-     * trash
      * Will trash a comment.
      * NOTE: This function will move a comment to the trash
      * Use Comment::delete() to delete a comment
@@ -208,7 +188,6 @@ namespace Squeeze1_0\Api
     }
 
     /**
-     * hydrate
      * Populate the object with the comment values retrieved from the database
      * @param stdClass $comment
      * @return void
@@ -228,7 +207,6 @@ namespace Squeeze1_0\Api
     }
 
     /**
-     * insertComment
      * Attempt to perform an INSERT
      * @return void|int
      */
@@ -254,7 +232,6 @@ namespace Squeeze1_0\Api
     }
 
     /**
-     * updateComment
      * Attempt to update a comment
      * @return int \Squeeze1_0\Api\Comment::comment_ID
      */
@@ -280,7 +257,6 @@ namespace Squeeze1_0\Api
     }
 
     /**
-     * checkRequiredFields
      * Check the values stored in Comment::$core_fields
      * against those in Comment::$required_fields
      * Throw an exception if fields are missing

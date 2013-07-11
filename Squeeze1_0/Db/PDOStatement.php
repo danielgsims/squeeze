@@ -1,56 +1,62 @@
 <?php
 
-namespace Squeeze1_0\Db;
-
-class PDOStatement extends \PDOStatement
+namespace Squeeze1_0\Db
 {
-  protected $_debugValues = null;
-  public $dbh;
-
-  protected function __construct($dbh) {
-    $this->dbh = $dbh;
-  }
-
-  public function execute($values=array())
+  /**
+   * Extends PHP's core PDOStatement class.
+   *
+   * Provides a bit of additional query debugging and a few utility functions.
+   */
+  class PDOStatement extends \PDOStatement
   {
-    $this->_debugValues = $values;
-    try {
-      $t = parent::execute($values);
-      // maybe do some logging here?
-    } catch (\PDOException $e) {
-      // maybe do some logging here?
-      throw $e;
+    protected $_debugValues = null;
+    public $dbh;
+
+    protected function __construct($dbh) {
+      $this->dbh = $dbh;
     }
 
-    return $t;
-  }
+    public function execute($values=array())
+    {
+      $this->_debugValues = $values;
+      try {
+        $t = parent::execute($values);
+        // maybe do some logging here?
+      } catch (\PDOException $e) {
+        // maybe do some logging here?
+        throw $e;
+      }
 
-  public function _debugQuery($replaced=true)
-  {
-    $q = $this->queryString;
-
-    if (!$replaced) {
-      return $q;
+      return $t;
     }
 
-    return preg_replace_callback('/:([0-9a-z_]+)/i', array($this, '_debugReplace'), $q);
-  }
+    public function _debugQuery($replaced=true)
+    {
+      $q = $this->queryString;
 
-  protected function _debugReplace($m)
-  {
-    $v = $this->_debugValues[$m[1]];
-    if ($v === null) {
-      return "NULL";
-    }
-    if (!is_numeric($v)) {
-      $v = str_replace("'", "''", $v);
+      if (!$replaced) {
+        return $q;
+      }
+
+      return preg_replace_callback('/:([0-9a-z_]+)/i', array($this, '_debugReplace'), $q);
     }
 
-    return "'". $v ."'";
-  }
+    protected function _debugReplace($m)
+    {
+      $v = $this->_debugValues[$m[1]];
+      if ($v === null) {
+        return "NULL";
+      }
+      if (!is_numeric($v)) {
+        $v = str_replace("'", "''", $v);
+      }
 
-  public function insertId()
-  {
-    return $this->dbh->lastInsertId();
+      return "'". $v ."'";
+    }
+
+    public function insertId()
+    {
+      return $this->dbh->lastInsertId();
+    }
   }
 }
