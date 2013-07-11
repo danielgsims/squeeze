@@ -25,9 +25,12 @@
                 <p>class    <strong>Post</strong></p>
 
             <div class="description">
-            <p>Post WordPress has a class called WP<em>Post Sort of like WP</em>User whoo! Oh wait, it's declared as final so I can't extend it Thanks a lot guys.</p>
-            <p>
-</p>
+            <p>WordPress has a class called WP_Post</p>
+            <p>Sort of like WP_User whoo!</p>
+
+<p>Oh wait, it's declared as final so I can't extend it</p>
+
+<p>Thanks a lot guys.</p>
         </div>
     
             <h2>Constants</h2>
@@ -36,8 +39,7 @@
                     <tr>
                 <td>TYPE_POST</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -45,8 +47,7 @@
                     <tr>
                 <td>TYPE_PAGE</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -54,8 +55,7 @@
                     <tr>
                 <td>TYPE_ATTACHMENT</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -63,8 +63,7 @@
                     <tr>
                 <td>TYPE_LINK</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -72,8 +71,7 @@
                     <tr>
                 <td>TYPE_NAV_MENU_ITEM</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -81,8 +79,7 @@
                     <tr>
                 <td>TYPE_CUSTOM</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -90,8 +87,7 @@
                     <tr>
                 <td>STATUS_DRAFT</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -99,8 +95,7 @@
                     <tr>
                 <td>STATUS_PUBLISH</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -108,8 +103,7 @@
                     <tr>
                 <td>STATUS_PENDING</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -117,8 +111,7 @@
                     <tr>
                 <td>STATUS_FUTURE</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -126,8 +119,7 @@
                     <tr>
                 <td>STATUS_PRIVATE</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -135,8 +127,7 @@
                     <tr>
                 <td>STATUS_CUSTOM</td>
                 <td class="last">
-                    <p><em>
-</em></p>
+                    <p><em>Unimplemented</em></p>
                     <p>
 </p>
                 </td>
@@ -144,67 +135,363 @@
             </table>
 
     
+            <h2>Properties</h2>
+
+            <table>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_meta">
+                                                            
+                </td>
+                <td>$meta</td>
+                <td class="last">An array of all the meta fields on the loaded post.</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_ID">
+                                                            int
+                </td>
+                <td>$ID</td>
+                <td class="last">The Post ID</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_menu_order">
+                                                            int
+                </td>
+                <td>$menu_order</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_comment_status">
+                                                            string
+                </td>
+                <td>$comment_status</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_ping_status">
+                                                            string
+                </td>
+                <td>$ping_status</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_pinged">
+                                                            string
+                </td>
+                <td>$pinged</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_author">
+                                                            int
+                </td>
+                <td>$post_author</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_content">
+                                                            string
+                </td>
+                <td>$post_content</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_date">
+                                                            <abbr title="Squeeze1_0\Api\datetime">datetime</abbr>
+                </td>
+                <td>$post_date</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_date_gmt">
+                                                            <abbr title="Squeeze1_0\Api\datetime">datetime</abbr>
+                </td>
+                <td>$post_date_gmt</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_excerpt">
+                                                            string
+                </td>
+                <td>$post_excerpt</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_name">
+                                                            string
+                </td>
+                <td>$post_name</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_parent">
+                                                            int
+                </td>
+                <td>$post_parent</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_password">
+                                                            string
+                </td>
+                <td>$post_password</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_status">
+                                                            string
+                </td>
+                <td>$post_status</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_title">
+                                                            string
+                </td>
+                <td>$post_title</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_type">
+                                                            string
+                </td>
+                <td>$post_type</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_tags_input">
+                                                            string
+                </td>
+                <td>$tags_input</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_to_ping">
+                                                            string
+                </td>
+                <td>$to_ping</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_tax_input">
+                                                            string
+                </td>
+                <td>$tax_input</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_modified">
+                                                            <abbr title="Squeeze1_0\Api\datetime">datetime</abbr>
+                </td>
+                <td>$post_modified</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_modified_gmt">
+                                                            <abbr title="Squeeze1_0\Api\datetime">datetime</abbr>
+                </td>
+                <td>$post_modified_gmt</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_content_filtered">
+                                                            string
+                </td>
+                <td>$post_content_filtered</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_guid">
+                                                            string
+                </td>
+                <td>$guid</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_post_mime_type">
+                                                            string
+                </td>
+                <td>$post_mime_type</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_comment_count">
+                                                            int
+                </td>
+                <td>$comment_count</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_filter">
+                                                            string
+                </td>
+                <td>$filter</td>
+                <td class="last">Database-driven value</td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
             <table>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     
                 </td>
                 <td class="last">
                     <a href="#method___construct">__construct</a>(null|int $ID = null)
-                    <p>__construct If an ID is supplied, this class will try and fetch the post then hydrate the new instance with the details.</p>
+                    <p>If an ID is supplied, this class will try and fetch the post then hydrate the new instance with the details.</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                                                                                                                        private                </td>
+                <td>
+                    null
+                </td>
+                <td class="last">
+                    <a href="#method_hydrate">hydrate</a>(<abbr title="Squeeze1_0\Api\WP_Post">WP_Post</abbr> $post)
+                    <p>This function will populate the current instance with the post data passed to it by the constructor.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     <a href="../../Squeeze1_0/Api/Post.html"><abbr title="Squeeze1_0\Api\Post">Post</abbr></a>
                 </td>
                 <td class="last">
                     <a href="#method_set">set</a>(string $key, string $val)
-                    <p>set Set the value of a key.</p>
+                    <p>Set the value of a key.</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     mixed
                 </td>
                 <td class="last">
                     <a href="#method_get">get</a>(string $key = null)
-                    <p>get Return the value of the given key.</p>
+                    <p>Return the value of the given key.</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     <a href="../../Squeeze1_0/Api/Post.html"><abbr title="Squeeze1_0\Api\Post">Post</abbr></a>
                 </td>
                 <td class="last">
                     <a href="#method_save">save</a>()
-                    <p>save Save the given post to the database.</p>
+                    <p>Save the given post to the database.</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     bool
                 </td>
                 <td class="last">
                     <a href="#method_delete">delete</a>()
-                    <p>delete Delete a given post</p>
+                    <p>Delete a given post</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     bool
                 </td>
                 <td class="last">
                     <a href="#method_trash">trash</a>()
-                    <p>trash Trash a given post</p>
+                    <p>Trash a given post</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                                                                                                                        private                </td>
+                <td>
+                    <a href="../../Squeeze1_0/Api/Post.html"><abbr title="Squeeze1_0\Api\Post">Post</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_update">update</a>()
+                    <p>Update an existing post.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                                                                                                                        private                </td>
+                <td>
+                    bool
+                </td>
+                <td class="last">
+                    <a href="#method_save_meta">save_meta</a>()
+                    <p>Helper function to update all the meta fields on the post</p>
                 </td>
                 <td></td>
             </tr>
@@ -214,12 +501,12 @@
         <h2>Details</h2>
 
                         <h3 id="method___construct">
-        <div class="location">at line 65</div>
+        <div class="location">at line 246</div>
         <code>            public            
     <strong>__construct</strong>(null|int $ID = null)</code>
     </h3>
     <div class="details">
-        <p>__construct If an ID is supplied, this class will try and fetch the post then hydrate the new instance with the details.</p>
+        <p>If an ID is supplied, this class will try and fetch the post then hydrate the new instance with the details.</p>
         <p>
 </p>
         <div class="tags">
@@ -240,13 +527,50 @@
                     </div>
     </div>
 
+                <h3 id="method_hydrate">
+        <div class="location">at line 262</div>
+        <code>                    private    null
+    <strong>hydrate</strong>(<abbr title="Squeeze1_0\Api\WP_Post">WP_Post</abbr> $post)</code>
+    </h3>
+    <div class="details">
+        <p>This function will populate the current instance with the post data passed to it by the constructor.</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="Squeeze1_0\Api\WP_Post">WP_Post</abbr></td>
+                <td>$post</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>null</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
                 <h3 id="method_set">
-        <div class="location">at line 108</div>
+        <div class="location">at line 287</div>
         <code>            public            <a href="../../Squeeze1_0/Api/Post.html"><abbr title="Squeeze1_0\Api\Post">Post</abbr></a>
     <strong>set</strong>(string $key, string $val)</code>
     </h3>
     <div class="details">
-        <p>set Set the value of a key.</p>
+        <p>Set the value of a key.</p>
         <p>If the key does not exist, add the value to the meta array</p>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -282,12 +606,12 @@
     </div>
 
                 <h3 id="method_get">
-        <div class="location">at line 126</div>
+        <div class="location">at line 304</div>
         <code>            public            mixed
     <strong>get</strong>(string $key = null)</code>
     </h3>
     <div class="details">
-        <p>get Return the value of the given key.</p>
+        <p>Return the value of the given key.</p>
         <p>If the key does not exist, try and get the value from the meta array.
 If that doesn't exist, return null.</p>
         <div class="tags">
@@ -319,12 +643,12 @@ If that doesn't exist, return null.</p>
     </div>
 
                 <h3 id="method_save">
-        <div class="location">at line 147</div>
+        <div class="location">at line 324</div>
         <code>            public            <a href="../../Squeeze1_0/Api/Post.html"><abbr title="Squeeze1_0\Api\Post">Post</abbr></a>
     <strong>save</strong>()</code>
     </h3>
     <div class="details">
-        <p>save Save the given post to the database.</p>
+        <p>Save the given post to the database.</p>
         <p>If no ID is set on the current instance, will attempt to create a post.
 Otherwise, it will update.</p>
         <div class="tags">
@@ -344,12 +668,12 @@ Otherwise, it will update.</p>
     </div>
 
                 <h3 id="method_delete">
-        <div class="location">at line 165</div>
+        <div class="location">at line 341</div>
         <code>            public            bool
     <strong>delete</strong>()</code>
     </h3>
     <div class="details">
-        <p>delete Delete a given post</p>
+        <p>Delete a given post</p>
         <p>
 </p>
         <div class="tags">
@@ -370,12 +694,62 @@ Otherwise, it will update.</p>
     </div>
 
                 <h3 id="method_trash">
-        <div class="location">at line 180</div>
+        <div class="location">at line 355</div>
         <code>            public            bool
     <strong>trash</strong>()</code>
     </h3>
     <div class="details">
-        <p>trash Trash a given post</p>
+        <p>Trash a given post</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>bool</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_update">
+        <div class="location">at line 371</div>
+        <code>                    private    <a href="../../Squeeze1_0/Api/Post.html"><abbr title="Squeeze1_0\Api\Post">Post</abbr></a>
+    <strong>update</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Update an existing post.</p>
+        <p>Should only be called from the save() function.</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../../Squeeze1_0/Api/Post.html"><abbr title="Squeeze1_0\Api\Post">Post</abbr></a></td>
+            <td>$this</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_save_meta">
+        <div class="location">at line 383</div>
+        <code>                    private    bool
+    <strong>save_meta</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Helper function to update all the meta fields on the post</p>
         <p>
 </p>
         <div class="tags">

@@ -24,18 +24,70 @@
         <div class="content">
                 <p>class    <strong>DashboardWidget</strong></p>
 
+            <div class="description">
+            <p>Create Admin Dashboard Widgets.</p>
+            <p>This class is a simple API for hooking into the WordPress page.
+It's implemented in core in <code>Mvc\DashboardWidget</code>.</p>
+        </div>
     
     
+            <h2>Properties</h2>
+
+            <table>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_widget_slug">
+                                                            
+                </td>
+                <td>$widget_slug</td>
+                <td class="last">
+</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_widget_title">
+                                                            
+                </td>
+                <td>$widget_title</td>
+                <td class="last">
+</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_function">
+                                                            
+                </td>
+                <td>$function</td>
+                <td class="last">
+</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_update_function">
+                                                            
+                </td>
+                <td>$update_function</td>
+                <td class="last">
+</td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
             <table>
                     <tr>
                 <td class="type">
-                    
+                                                                                public                                                        </td>
+                <td>
+                    <a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a>
                 </td>
                 <td class="last">
-                    <a href="#method_setWidgetId">setWidgetId</a>($widgetId)
+                    <a href="#method_setWidgetSlug">setWidgetSlug</a>($widgetSlug)
                     <p>
 </p>
                 </td>
@@ -43,7 +95,9 @@
             </tr>
                     <tr>
                 <td class="type">
-                    
+                                                                                public                                                        </td>
+                <td>
+                    <a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a>
                 </td>
                 <td class="last">
                     <a href="#method_setWidgetTitle">setWidgetTitle</a>($widgetTitle)
@@ -54,7 +108,9 @@
             </tr>
                     <tr>
                 <td class="type">
-                    
+                                                                                public                                                        </td>
+                <td>
+                    <a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a>
                 </td>
                 <td class="last">
                     <a href="#method_setFunction">setFunction</a>($function)
@@ -65,7 +121,9 @@
             </tr>
                     <tr>
                 <td class="type">
-                    
+                                                                                public                                                        </td>
+                <td>
+                    <a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a>
                 </td>
                 <td class="last">
                     <a href="#method_setUpdateFunction">setUpdateFunction</a>($updateFunction)
@@ -76,23 +134,25 @@
             </tr>
                     <tr>
                 <td class="type">
+                    final                                                            public                                                        </td>
+                <td>
                     
                 </td>
                 <td class="last">
                     <a href="#method_execute">execute</a>()
-                    <p>
-</p>
+                    <p>Invoke the WordPress hook.</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                    final                                                            public                                                        </td>
+                <td>
                     
                 </td>
                 <td class="last">
                     <a href="#method_addDashboardWidget">addDashboardWidget</a>()
-                    <p>
-</p>
+                    <p><strong>Do not call this function directly.</strong> Should be accessed via the <code>execute()</code> method.</p>
                 </td>
                 <td></td>
             </tr>
@@ -101,10 +161,10 @@
 
         <h2>Details</h2>
 
-                        <h3 id="method_setWidgetId">
-        <div class="location">at line 12</div>
-        <code>            public            
-    <strong>setWidgetId</strong>($widgetId)</code>
+                        <h3 id="method_setWidgetSlug">
+        <div class="location">at line 21</div>
+        <code>            public            <a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a>
+    <strong>setWidgetSlug</strong>($widgetSlug)</code>
     </h3>
     <div class="details">
         <p>
@@ -117,21 +177,31 @@
                     <table>
                     <tr>
                 <td></td>
-                <td>$widgetId</td>
+                <td>$widgetSlug</td>
                 <td>
 </td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>
     </div>
 
                 <h3 id="method_setWidgetTitle">
-        <div class="location">at line 18</div>
-        <code>            public            
+        <div class="location">at line 30</div>
+        <code>            public            <a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a>
     <strong>setWidgetTitle</strong>($widgetTitle)</code>
     </h3>
     <div class="details">
@@ -152,14 +222,24 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>
     </div>
 
                 <h3 id="method_setFunction">
-        <div class="location">at line 24</div>
-        <code>            public            
+        <div class="location">at line 39</div>
+        <code>            public            <a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a>
     <strong>setFunction</strong>($function)</code>
     </h3>
     <div class="details">
@@ -180,14 +260,24 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>
     </div>
 
                 <h3 id="method_setUpdateFunction">
-        <div class="location">at line 30</div>
-        <code>            public            
+        <div class="location">at line 48</div>
+        <code>            public            <a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a>
     <strong>setUpdateFunction</strong>($updateFunction)</code>
     </h3>
     <div class="details">
@@ -208,19 +298,28 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../../Squeeze1_0/Api/DashboardWidget.html"><abbr title="Squeeze1_0\Api\DashboardWidget">DashboardWidget</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>
     </div>
 
                 <h3 id="method_execute">
-        <div class="location">at line 36</div>
-        <code>            public            
+        <div class="location">at line 59</div>
+        <code>final            public            
     <strong>execute</strong>()</code>
     </h3>
     <div class="details">
-        <p>
-</p>
+        <p>Invoke the WordPress hook.</p>
         <p>
 </p>
         <div class="tags">
@@ -231,13 +330,12 @@
     </div>
 
                 <h3 id="method_addDashboardWidget">
-        <div class="location">at line 41</div>
-        <code>            public            
+        <div class="location">at line 70</div>
+        <code>final            public            
     <strong>addDashboardWidget</strong>()</code>
     </h3>
     <div class="details">
-        <p>
-</p>
+        <p><strong>Do not call this function directly.</strong> Should be accessed via the <code>execute()</code> method.</p>
         <p>
 </p>
         <div class="tags">

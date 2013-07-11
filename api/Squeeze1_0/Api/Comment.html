@@ -26,67 +26,195 @@
 
     
     
+            <h2>Properties</h2>
+
+            <table>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_PDO">
+                                                            object
+                </td>
+                <td>$PDO</td>
+                <td class="last">Holds our PDO instance</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_table">
+                                                            string
+                </td>
+                <td>$table</td>
+                <td class="last">The Comments Table name</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_missing_fields">
+                                                            array
+                </td>
+                <td>$missing_fields</td>
+                <td class="last">An array that's populated with any required fields that aren't filled out.</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_core_fields">
+                                                            array
+                </td>
+                <td>$core_fields</td>
+                <td class="last">A list of fields in the comments table.</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_required_fields">
+                                                            array
+                </td>
+                <td>$required_fields</td>
+                <td class="last">A list of fields required to insert a comment</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_meta">
+                                                            array
+                </td>
+                <td>$meta</td>
+                <td class="last">Any variables set that don't exist in Comment::$core_fields are stored here and saved as metadata.</td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    private                </td>
+                <td class="type" id="property_comment_ID">
+                                                            int
+                </td>
+                <td>$comment_ID</td>
+                <td class="last">If we're trying to load an existing comment, the comment ID will be stored here</td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
             <table>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     object
                 </td>
                 <td class="last">
                     <a href="#method___construct">__construct</a>(int|null $commentId = NULL)
-                    <p>__construct Attempt to load a comment if $commentId is set</p>
+                    <p>Attempt to load a comment if $commentId is set</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     object
                 </td>
                 <td class="last">
                     <a href="#method_set">set</a>(string $key, string $val)
-                    <p>set Set or change the value of a comment variable If the key exists in Comment::$core_fields, use that, otherwise store as metadata.</p>
+                    <p>Set or change the value of a comment variable If the key exists in Comment::$core_fields, use that, otherwise store as metadata.</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     <abbr title="Squeeze1_0\Api\mixed;">mixed;</abbr>
                 </td>
                 <td class="last">
                     <a href="#method_get">get</a>(string $key)
-                    <p>get Get a stored value First try to fetch from Comment::$core_fields then fall back to Comment::$meta.</p>
+                    <p>Get a stored value First try to fetch from Comment::$core_fields then fall back to Comment::$meta.</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     int
                 </td>
                 <td class="last">
                     <a href="#method_save">save</a>()
-                    <p>save Insert or update the comment</p>
+                    <p>Insert or update the comment</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     bool
                 </td>
                 <td class="last">
                     <a href="#method_delete">delete</a>()
-                    <p>delete Will delete a comment.</p>
+                    <p>Will delete a comment.</p>
                 </td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type">
+                                                                                public                                                        </td>
+                <td>
                     bool
                 </td>
                 <td class="last">
                     <a href="#method_trash">trash</a>()
-                    <p>trash Will trash a comment.</p>
+                    <p>Will trash a comment.</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                                                                                                                        private                </td>
+                <td>
+                    void
+                </td>
+                <td class="last">
+                    <a href="#method_hydrate">hydrate</a>(<abbr title="Squeeze1_0\Api\stdClass">stdClass</abbr> $comment)
+                    <p>Populate the object with the comment values retrieved from the database</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                                                                                                                        private                </td>
+                <td>
+                    void|int
+                </td>
+                <td class="last">
+                    <a href="#method_insertComment">insertComment</a>()
+                    <p>Attempt to perform an INSERT</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                                                                                                                        private                </td>
+                <td>
+                    int
+                </td>
+                <td class="last">
+                    <a href="#method_updateComment">updateComment</a>()
+                    <p>Attempt to update a comment</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                                                                                                                        private                </td>
+                <td>
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_checkRequiredFields">checkRequiredFields</a>()
+                    <p>Check the values stored in Comment::$core<em>fields against those in Comment::$required</em>fields Throw an exception if fields are missing</p>
                 </td>
                 <td></td>
             </tr>
@@ -96,12 +224,12 @@
         <h2>Details</h2>
 
                         <h3 id="method___construct">
-        <div class="location">at line 99</div>
+        <div class="location">at line 84</div>
         <code>            public            object
     <strong>__construct</strong>(int|null $commentId = NULL)</code>
     </h3>
     <div class="details">
-        <p>__construct Attempt to load a comment if $commentId is set</p>
+        <p>Attempt to load a comment if $commentId is set</p>
         <p>
 </p>
         <div class="tags">
@@ -132,12 +260,12 @@
     </div>
 
                 <h3 id="method_set">
-        <div class="location">at line 133</div>
+        <div class="location">at line 117</div>
         <code>            public            object
     <strong>set</strong>(string $key, string $val)</code>
     </h3>
     <div class="details">
-        <p>set Set or change the value of a comment variable If the key exists in Comment::$core_fields, use that, otherwise store as metadata.</p>
+        <p>Set or change the value of a comment variable If the key exists in Comment::$core_fields, use that, otherwise store as metadata.</p>
         <p>
 </p>
         <div class="tags">
@@ -174,12 +302,12 @@
     </div>
 
                 <h3 id="method_get">
-        <div class="location">at line 154</div>
+        <div class="location">at line 137</div>
         <code>            public            <abbr title="Squeeze1_0\Api\mixed;">mixed;</abbr>
     <strong>get</strong>(string $key)</code>
     </h3>
     <div class="details">
-        <p>get Get a stored value First try to fetch from Comment::$core_fields then fall back to Comment::$meta.</p>
+        <p>Get a stored value First try to fetch from Comment::$core_fields then fall back to Comment::$meta.</p>
         <p>Return null if nothing found.</p>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -210,12 +338,12 @@
     </div>
 
                 <h3 id="method_save">
-        <div class="location">at line 168</div>
+        <div class="location">at line 150</div>
         <code>            public            int
     <strong>save</strong>()</code>
     </h3>
     <div class="details">
-        <p>save Insert or update the comment</p>
+        <p>Insert or update the comment</p>
         <p>
 </p>
         <div class="tags">
@@ -236,12 +364,12 @@
     </div>
 
                 <h3 id="method_delete">
-        <div class="location">at line 185</div>
+        <div class="location">at line 166</div>
         <code>            public            bool
     <strong>delete</strong>()</code>
     </h3>
     <div class="details">
-        <p>delete Will delete a comment.</p>
+        <p>Will delete a comment.</p>
         <p>NOTE: This attempts to complete a true delete.
 Use Comment::trash() to trash a comment</p>
         <div class="tags">
@@ -262,12 +390,12 @@ Use Comment::trash() to trash a comment</p>
     </div>
 
                 <h3 id="method_trash">
-        <div class="location">at line 201</div>
+        <div class="location">at line 181</div>
         <code>            public            bool
     <strong>trash</strong>()</code>
     </h3>
     <div class="details">
-        <p>trash Will trash a comment.</p>
+        <p>Will trash a comment.</p>
         <p>NOTE: This function will move a comment to the trash
 Use Comment::delete() to delete a comment</p>
         <div class="tags">
@@ -282,6 +410,110 @@ Use Comment::delete() to delete a comment</p>
         </tr>
     </table>
 
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_hydrate">
+        <div class="location">at line 195</div>
+        <code>                    private    void
+    <strong>hydrate</strong>(<abbr title="Squeeze1_0\Api\stdClass">stdClass</abbr> $comment)</code>
+    </h3>
+    <div class="details">
+        <p>Populate the object with the comment values retrieved from the database</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><abbr title="Squeeze1_0\Api\stdClass">stdClass</abbr></td>
+                <td>$comment</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_insertComment">
+        <div class="location">at line 213</div>
+        <code>                    private    void|int
+    <strong>insertComment</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Attempt to perform an INSERT</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>void|int</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_updateComment">
+        <div class="location">at line 238</div>
+        <code>                    private    int
+    <strong>updateComment</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Attempt to update a comment</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>int</td>
+            <td>\Squeeze1<em>0\Api\Comment::comment</em>ID</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_checkRequiredFields">
+        <div class="location">at line 265</div>
+        <code>                    private    
+    <strong>checkRequiredFields</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Check the values stored in Comment::$core<em>fields against those in Comment::$required</em>fields Throw an exception if fields are missing</p>
+        <p>
+</p>
+        <div class="tags">
+            
             
             
                     </div>
