@@ -1,99 +1,97 @@
 <?php
 
-namespace Squeeze1_0\Util;
-
-/**
- * Input helper functions
- */
-class Input
+namespace Squeeze1_0\Util
 {
-
   /**
-   * sanitize
-   * Cleans the input for DB insertion
-   * @param string $string
-   * @return string
-   * @access public
-   * @static
+   * Input helper functions
    */
-  public static function sanitize($string)
+  class Input
   {
-    return mysql_real_escape_string($string);
-  }
 
-  /**
-   * post
-   * Attempts to fetch a given key from the _POST superglobal.
-   * If no key is given, return entire array.
-   * If key doesn't exist, return null
-   * @param mixed $var
-   * @return string|array|null
-   * @access public
-   * @static
-   */
-  public static function post($var = null)
-  {
-    if (is_null($var)) {
-      return (!empty($_POST)) ? $_POST : null;
+    /**
+     * Cleans the input for DB insertion
+     * @param string $string
+     * @return string
+     * @access public
+     * @static
+     */
+    public static function sanitize($string)
+    {
+      return mysql_real_escape_string($string);
     }
 
-    return (isset($_POST[$var])) ? $_POST[$var] : null;
-  }
-
-  /**
-   * cookie
-   * Attempts to fetch a given key from the _COOKIE superglobal.
-   * If no key is given, return entire array.
-   * If key doesn't exist, return null
-   * @param mixed $var
-   * @return string|array|null
-   * @access public
-   * @static
-   */
-  public static function cookie($var = null)
-  {
-    if (is_null($var)) {
-      return (!empty($_COOKIE)) ? $_COOKIE : null;
+    /**
+     * Attempts to fetch a given key from the _POST superglobal.
+     * If no key is given, return entire array.
+     * If key doesn't exist, return null
+     * @param mixed $var
+     * @return string|array|null
+     * @access public
+     * @static
+     */
+    public static function post($var = null)
+    {
+      return self::getFromArray($_POST, $var);
     }
 
-    return (isset($_COOKIE[$var])) ? $_COOKIE[$var] : null;
-  }
-
-  /**
-   * get
-   * Attempts to fetch a given key from the _GET superglobal.
-   * If no key is given, return entire array.
-   * If key doesn't exist, return null
-   * @param mixed $var
-   * @return string|array|null
-   * @access public
-   * @static
-   */
-  public static function get($var = null)
-  {
-    if (is_null($var)) {
-      return (!empty($_GET)) ? $_GET : null;
+    /**
+     * Attempts to fetch a given key from the _COOKIE superglobal.
+     * If no key is given, return entire array.
+     * If key doesn't exist, return null
+     * @param mixed $var
+     * @return string|array|null
+     * @access public
+     * @static
+     */
+    public static function cookie($var = null)
+    {
+      return self::getFromArray($_COOKIE, $var);
     }
 
-    return (isset($_GET[$var])) ? $_GET[$var] : null;
-  }
-
-  /**
-   * server
-   * Attempts to fetch a given key from the _SERVER superglobal.
-   * If no key is given, return entire array.
-   * If key doesn't exist, return null
-   * @param mixed $var
-   * @return string|array|null
-   * @access public
-   * @static
-   */
-  public static function server($var = null)
-  {
-    if (is_null($var)) {
-      return (!empty($_SERVER)) ? $_SERVER : null;
+    /**
+     * Attempts to fetch a given key from the _GET superglobal.
+     * If no key is given, return entire array.
+     * If key doesn't exist, return null
+     * @param mixed $var
+     * @return string|array|null
+     * @access public
+     * @static
+     */
+    public static function get($var = null)
+    {
+      return self::getFromArray($_GET, $var);
     }
 
-    return (isset($_SERVER[$var])) ? $_SERVER[$var] : null;
+    /**
+     * Attempts to fetch a given key from the _SERVER superglobal.
+     * If no key is given, return entire array.
+     * If key doesn't exist, return null
+     * @param mixed $var
+     * @return string|array|null
+     * @access public
+     * @static
+     */
+    public static function server($var = null)
+    {
+      return self::getFromArray($_SERVER, $var);
+    }
+
+    /**
+     * A generic function to fetch a value from an array
+     * If no key is given, return entire array.
+     * If key doesn't exist, return null
+     * @param mixed $var
+     * @return string|array|null
+     * @access public
+     * @static
+     */
+    public static getFromArray($arr, $var = null)
+    {
+      if (is_null($var)) {
+        return (!empty($arr)) ? $arr : null;
+      }
+
+      return (isset($arr[$var])) ? $arr[$var] : null;
+    }
   }
 }

@@ -1,6 +1,7 @@
 <?php
 
-namespace Squeeze1_0\Api {
+namespace Squeeze1_0\Api
+{
 
   /**
    * Settings Section API

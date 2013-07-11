@@ -1,6 +1,7 @@
 <?php
 
-namespace Squeeze1_0\Api {
+namespace Squeeze1_0\Api
+{
   /**
    * A class to get, set and manage settings stored in the WordPress database.
    *

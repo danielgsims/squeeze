@@ -1,35 +1,36 @@
 <?php
 
-namespace Squeeze1_0\Util;
-
-/**
- * A utility to create a table from an array, object, or PDO object
- */
-class Table
+namespace Squeeze1_0\Util
 {
-  private $options = array();
-
-  public function __construct($data, $options = array())
+  /**
+   * A utility to create a table from an array, object, or PDO object
+   */
+  class Table
   {
-    $this->data = $data;
-    $this->options = $options;
-  }
+    private $options = array();
 
-  public function execute()
-  {
-    $rows = array();
+    public function __construct($data, $options = array())
+    {
+      $this->data = $data;
+      $this->options = $options;
+    }
 
-    $rows[] = $this->tableHeader();
-  }
+    public function execute()
+    {
+      $rows = array();
 
-  public function setOption($key, $val)
-  {
-    $this->options[$key] = $val;
-    return $this;
-  }
+      $rows[] = $this->tableHeader();
+    }
 
-  public function tableHeader()
-  {
-    $columns = $options['columns'];
+    public function setOption($key, $val)
+    {
+      $this->options[$key] = $val;
+      return $this;
+    }
+
+    public function tableHeader()
+    {
+      $columns = $options['columns'];
+    }
   }
 }

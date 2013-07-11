@@ -5,7 +5,7 @@
  */
 namespace Squeeze1_0\Api
 {
-  class Comment
+  class Comment implements \Squeeze1_0\Implementable\iApi
   {
 
     /**

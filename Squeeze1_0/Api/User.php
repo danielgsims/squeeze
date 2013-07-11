@@ -1,6 +1,7 @@
 <?php
 
-namespace Squeeze1_0\Api {
+namespace Squeeze1_0\Api
+{
   /**
    * Adds a layer of functionality on top of the default WP_User class.
    */

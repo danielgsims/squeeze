@@ -1,0 +1,111 @@
+<?php
+
+namespace Squeeze1_0\Controller
+{
+
+  /**
+   * The base controller for creating Admin Dashboard Widgets.
+   *
+   * Extend this in your app.
+   */
+  abstract class DashboardWidget implements \Squeeze1_0\Implementable\iController
+  {
+    /**
+     * An array containing the current application options.
+     *
+     * Injected into the `bootstrap()` method by the core bootstrapper class.
+     * @var array
+     */
+    protected $appOptions = array();
+
+    /**
+     * Base constructor.
+     *
+     * May be extended by the implementation
+     */
+    public function __construct()
+    {}
+
+    /**
+     * A function that is called prior to anything else in the controller.
+     *
+     * Useful for injecting additional hooks and such
+     */
+    public function pre()
+    {}
+
+    /**
+     * The main callback function page.
+     *
+     * Must be defined by all implementations.
+     */
+    public abstract function index();
+
+    /**
+     * The bootstrap function.
+     *
+     * This function will do the legwork of actually creating the widget.
+     * @final
+     * @param array $appOptions
+     * @return void
+     * @uses \Squeeze1_0\Api\DashboardWidget
+     */
+    public final function bootstrap($appOptions)
+    {
+      $this->appOptions = $appOptions;
+
+      $dashboardWidget = new \Squeeze1_0\Api\DashboardWidget;
+      $dashboardWidget->setWidgetSlug($this->getSlug());
+      $dashboardWidget->setWidgetTitle($this->getTitle());
+      $dashboardWidget->setFunction(array($this, 'index'));
+      $dashboardWidget->setUpdateFunction($this->getUpdateFunction());
+      $dashboardWidget->execute();
+    }
+
+    /**
+     * A private, un-overridable function to fetch the widget slug from the implementation.
+     *
+     * Squeeze uses the class names as slugs.
+     * @return string
+     * @final
+     */
+    private final function getSlug()
+    {
+      $className = get_called_class();
+      $className = explode('\\', $className);
+      return end($className);
+    }
+
+    /**
+     * A private, un-overridable function to fetch the widget title from the implementation.
+     *
+     * If it is not defined, we'll return a default value.
+     * @return string
+     * @final
+     */
+    private final function getTitle()
+    {
+      if(isset($this->title)) return $this->title;
+
+      return 'Squeeze1_0 Widget';
+    }
+
+    /**
+     * A private, un-overridable function to fetch the update method from the implementation.
+     *
+     * If it is not defined, no posted values will be saved.
+     *
+     * To define, create a public method called `updateCallback` in your implementation.
+     * @return string
+     * @final
+     */
+    private final function getUpdateFunction()
+    {
+      if (method_exists($this, 'updateCallback')) {
+        return array($this, 'updateCallback');
+      }
+
+      return null;
+    }
+  }
+}

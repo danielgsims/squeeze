@@ -1,13 +1,27 @@
 <?php
 
-namespace Squeeze1_0 {
+namespace Squeeze1_0
+{
 
-  class Activation
+  /**
+   * Allows running operations at activation.
+   */
+  abstract class Activation
   {
 
+    /**
+     * @var object
+     * @static
+     */
     private static $instance;
 
-    public static function instance()
+    /**
+     * Create a singleton
+     * @return object \Squeeze1_0\Activation
+     * @static
+     * @final
+     */
+    public final static function instance()
     {
       if (!is_a(self::$instance, self)) {
         self::$instance = new self;
@@ -16,9 +30,13 @@ namespace Squeeze1_0 {
       return self::$instance;
     }
 
-    public function activation()
-    {}
-
+    /**
+     * The activation function.
+     *
+     * Implementations of this class must provide an activation function.
+     * @abstract
+     */
+    public abstract function activation();
   }
 
 }
