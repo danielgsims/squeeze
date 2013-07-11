@@ -38,6 +38,8 @@ namespace Squeeze1_0\Controller
     /**
      * The main callback function page.
      *
+     * In the context of a widget, this is what will be displayed to the user.
+     *
      * Must be defined by all implementations.
      */
     public abstract function index();

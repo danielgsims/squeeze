@@ -90,20 +90,13 @@ namespace Squeeze1_0
 
       if (class_exists($appOptions['app_namespace'] .'App\Activation')) {
         $activationObject = $appOptions['app_namespace'] .'App\Activation';
-      }
-      else {
-        $activationObject = 'Squeeze1_0\Activation';
+        register_activation_hook( $pluginFilePath, array($activationObject::instance(), 'activation') );
       }
 
       if (class_exists($appOptions['app_namespace'] .'App\Deactivation')) {
         $deactivationObject = $appOptions['app_namespace'] .'App\Deactivation';
+        register_activation_hook( $pluginFilePath, array($deactivationObject::instance(), 'deactivation') );
       }
-      else {
-        $deactivationObject = 'Squeeze1_0\Deactivation';
-      }
-
-      register_activation_hook( $pluginFilePath, array($activationObject::instance(), 'activation') );
-      register_activation_hook( $pluginFilePath, array($deactivationObject::instance(), 'deactivation') );
     }
 
     private function listFilesInDirectory($appOptions, $directory)
