@@ -4,6 +4,7 @@ namespace Squeeze1_0\Util
 {
   /**
    * Input helper functions
+   * @since 1.0
    */
   class Input
   {
@@ -14,6 +15,7 @@ namespace Squeeze1_0\Util
      * @return string
      * @access public
      * @static
+     * @since 1.0
      */
     public static function sanitize($string)
     {
@@ -28,6 +30,7 @@ namespace Squeeze1_0\Util
      * @return string|array|null
      * @access public
      * @static
+     * @since 1.0
      */
     public static function post($var = null)
     {
@@ -42,6 +45,7 @@ namespace Squeeze1_0\Util
      * @return string|array|null
      * @access public
      * @static
+     * @since 1.0
      */
     public static function cookie($var = null)
     {
@@ -56,6 +60,7 @@ namespace Squeeze1_0\Util
      * @return string|array|null
      * @access public
      * @static
+     * @since 1.0
      */
     public static function get($var = null)
     {
@@ -70,6 +75,7 @@ namespace Squeeze1_0\Util
      * @return string|array|null
      * @access public
      * @static
+     * @since 1.0
      */
     public static function server($var = null)
     {
@@ -84,6 +90,7 @@ namespace Squeeze1_0\Util
      * @return string|array|null
      * @access public
      * @static
+     * @since 1.0
      */
     public static getFromArray($arr, $var = null)
     {

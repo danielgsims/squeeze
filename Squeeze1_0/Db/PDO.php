@@ -7,6 +7,7 @@ namespace Squeeze1_0\Db
    * PDO Wrapper. Creates a singleton instance and connects to the database.
    *
    * I like using PDO more than $wpdb, so here we are.
+   * @since 1.0
    */
   class PDO extends \PDO
   {
@@ -14,6 +15,7 @@ namespace Squeeze1_0\Db
     /**
      * @var object
      * @static
+     * @since 1.0
      */
     private static $instance;
 
@@ -22,6 +24,7 @@ namespace Squeeze1_0\Db
      *
      * If we're creating a new instance, we'll inject the WordPress database credentials too
      * @return object \Squeeze1_0\Db\PDO
+     * @since 1.0
      */
     public function __construct() {
       if (!is_a(self, self::$instance)) {
@@ -38,6 +41,7 @@ namespace Squeeze1_0\Db
     /**
      * Return a stored instance or create a new one
      * @return object \Squeeze1_0\Db\PDO
+     * @since 1.0
      */
     public static function instance()
     {

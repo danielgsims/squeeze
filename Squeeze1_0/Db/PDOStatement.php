@@ -6,16 +6,31 @@ namespace Squeeze1_0\Db
    * Extends PHP's core PDOStatement class.
    *
    * Provides a bit of additional query debugging and a few utility functions.
+   * @since 1.0
    */
   class PDOStatement extends \PDOStatement
   {
+
+    /**
+     * @since 1.0
+     */
     protected $_debugValues = null;
+
+    /**
+     * @since 1.0
+     */
     public $dbh;
 
+    /**
+     * @since 1.0
+     */
     protected function __construct($dbh) {
       $this->dbh = $dbh;
     }
 
+    /**
+     * @since 1.0
+     */
     public function execute($values=array())
     {
       $this->_debugValues = $values;
@@ -30,6 +45,9 @@ namespace Squeeze1_0\Db
       return $t;
     }
 
+    /**
+     * @since 1.0
+     */
     public function _debugQuery($replaced=true)
     {
       $q = $this->queryString;
@@ -41,6 +59,9 @@ namespace Squeeze1_0\Db
       return preg_replace_callback('/:([0-9a-z_]+)/i', array($this, '_debugReplace'), $q);
     }
 
+    /**
+     * @since 1.0
+     */
     protected function _debugReplace($m)
     {
       $v = $this->_debugValues[$m[1]];
@@ -54,6 +75,9 @@ namespace Squeeze1_0\Db
       return "'". $v ."'";
     }
 
+    /**
+     * @since 1.0
+     */
     public function insertId()
     {
       return $this->dbh->lastInsertId();

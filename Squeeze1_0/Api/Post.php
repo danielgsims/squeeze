@@ -10,6 +10,7 @@ namespace Squeeze1_0\Api
    * Oh wait, it's declared as final so I can't extend it
    *
    * Thanks a lot guys.
+   * @since 1.0
    */
   class Post
   {
@@ -76,6 +77,7 @@ namespace Squeeze1_0\Api
 
     /**
      * An array of all the meta fields on the loaded post.
+     * @since 1.0
      */
     private $meta = array();
 
@@ -84,156 +86,182 @@ namespace Squeeze1_0\Api
      *
      * Database-driven value
      * @var int
+     * @since 1.0
      */
     private $ID;
 
     /**
      * Database-driven value
      * @var int
+     * @since 1.0
      */
     private $menu_order;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $comment_status;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $ping_status;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $pinged;
 
     /**
      * Database-driven value
      * @var int
+     * @since 1.0
      */
     private $post_author;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $post_content;
 
     /**
      * Database-driven value
      * @var datetime
+     * @since 1.0
      */
     private $post_date;
 
     /**
      * Database-driven value
      * @var datetime
+     * @since 1.0
      */
     private $post_date_gmt;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $post_excerpt;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $post_name;
 
     /**
      * Database-driven value
      * @var int
+     * @since 1.0
      */
     private $post_parent;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $post_password;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $post_status;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $post_title;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $post_type;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $tags_input;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $to_ping;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $tax_input;
 
     /**
      * Database-driven value
      * @var datetime
+     * @since 1.0
      */
     private $post_modified;
 
     /**
      * Database-driven value
      * @var datetime
+     * @since 1.0
      */
     private $post_modified_gmt;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $post_content_filtered;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $guid;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $post_mime_type;
 
     /**
      * Database-driven value
      * @var int
+     * @since 1.0
      */
     private $comment_count;
 
     /**
      * Database-driven value
      * @var string
+     * @since 1.0
      */
     private $filter;
 
@@ -242,6 +270,7 @@ namespace Squeeze1_0\Api
      * @param null|int $ID
      * @uses WP_Post
      * @access public
+     * @since 1.0
      */
     public function __construct($ID = null)
     {
@@ -258,6 +287,7 @@ namespace Squeeze1_0\Api
      * @param WP_Post $post
      * @return null
      * @access private
+     * @since 1.0
      */
     private function hydrate(WP_Post $post)
     {
@@ -283,6 +313,7 @@ namespace Squeeze1_0\Api
      * @param string $val
      * @return Post $this
      * @access public
+     * @since 1.0
      */
     public function set($key, $val)
     {
@@ -300,6 +331,7 @@ namespace Squeeze1_0\Api
      * @param string $key
      * @return mixed
      * @access public
+     * @since 1.0
      */
     public function get($key = null)
     {
@@ -320,6 +352,7 @@ namespace Squeeze1_0\Api
      * Otherwise, it will update.
      * @return Post $this
      * @access public
+     * @since 1.0
      */
     public function save()
     {
@@ -337,6 +370,7 @@ namespace Squeeze1_0\Api
     /**
      * Delete a given post
      * @return bool
+     * @since 1.0
      */
     public function delete()
     {
@@ -351,6 +385,7 @@ namespace Squeeze1_0\Api
     /**
      * Trash a given post
      * @return bool
+     * @since 1.0
      */
     public function trash()
     {
@@ -367,6 +402,7 @@ namespace Squeeze1_0\Api
      * Should only be called from the save() function.
      * @access private
      * @return Post $this
+     * @since 1.0
      */
     private function update()
     {
@@ -379,6 +415,7 @@ namespace Squeeze1_0\Api
      * Helper function to update all the meta fields on the post
      * @access private
      * @return bool
+     * @since 1.0
      */
     private function save_meta()
     {

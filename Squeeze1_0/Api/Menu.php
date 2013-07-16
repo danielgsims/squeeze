@@ -4,13 +4,24 @@ namespace Squeeze1_0\Api
 {
   /**
    * Create WordPress navigation menus
+   * @since 1.0
    */
   class Menu
   {
+
+    /**
+     * @since 1.0
+     */
     private static $registered_menus = array();
 
+    /**
+     * @since 1.0
+     */
     private static $enqueued_menus = array();
 
+    /**
+     * @since 1.0
+     */
     private $default_menus = array(
       'dashboard' => 'add_dashboard_menu',
       'posts' => 'add_posts_page',
@@ -28,48 +39,56 @@ namespace Squeeze1_0\Api
     /**
      * @var string
      * @access private
+     * @since 1.0
      */
     private $menu_parent;
 
     /**
      * @var string
      * @access private
+     * @since 1.0
      */
     private $page_title;
 
     /**
      * @var string
      * @access private
+     * @since 1.0
      */
     private $menu_title;
 
     /**
      * @var string
      * @access private
+     * @since 1.0
      */
     private $menu_capability;
 
     /**
      * @var string
      * @access private
+     * @since 1.0
      */
     private $slug;
 
     /**
      * @var callback
      * @access private
+     * @since 1.0
      */
     private $function;
 
     /**
      * @var string
      * @access private
+     * @since 1.0
      */
     private $menu_icon;
 
     /**
      * @var int
      * @access private
+     * @since 1.0
      */
     private $menu_priority;
 
@@ -78,6 +97,7 @@ namespace Squeeze1_0\Api
      * @access public
      * @param string $menuParent
      * @return Menu $this
+     * @since 1.0
      */
     public function setMenuParent($menuParent)
     {
@@ -90,6 +110,7 @@ namespace Squeeze1_0\Api
      * @access public
      * @param string $pageTitle
      * @return Menu $this
+     * @since 1.0
      */
     public function setPageTitle($pageTitle)
     {
@@ -102,6 +123,7 @@ namespace Squeeze1_0\Api
      * @access public
      * @param string $menuTitle
      * @return Menu $this
+     * @since 1.0
      */
     public function setMenuTitle($menuTitle)
     {
@@ -114,6 +136,7 @@ namespace Squeeze1_0\Api
      * @access public
      * @param string $menuCapability
      * @return Menu $this
+     * @since 1.0
      */
     public function setMenuCapability($menuCapability)
     {
@@ -126,6 +149,7 @@ namespace Squeeze1_0\Api
      * @access public
      * @param string $slug
      * @return Menu $this
+     * @since 1.0
      */
     public function setSlug($slug)
     {
@@ -138,6 +162,7 @@ namespace Squeeze1_0\Api
      * @access public
      * @param callback $function
      * @return Menu $this
+     * @since 1.0
      */
     public function setFunction($function)
     {
@@ -155,6 +180,7 @@ namespace Squeeze1_0\Api
      * If so, we'll create them at that point.
      * @access public
      * @return null
+     * @since 1.0
      */
     public function execute($retry = false)
     {
@@ -173,6 +199,7 @@ namespace Squeeze1_0\Api
      * This is public to allow WordPress to access it. Don't call this directly.
      * @access public
      * @return null
+     * @since 1.0
      */
     public function register_menu_page()
     {

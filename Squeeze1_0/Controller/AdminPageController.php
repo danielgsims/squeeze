@@ -6,6 +6,7 @@ namespace Squeeze1_0\Controller
   /**
    * The base controller for implementing WordPress Admin Pages
    * @abstract
+   * @since 1.0
    */
   abstract class AdminPageController implements \Squeeze1_0\Implementable\iController
   {
@@ -14,6 +15,7 @@ namespace Squeeze1_0\Controller
      *
      * Injected into the `bootstrap()` method by the core bootstrapper class.
      * @var array
+     * @since 1.0
      */
     protected $appOptions = array();
 
@@ -21,6 +23,7 @@ namespace Squeeze1_0\Controller
      * Base constructor.
      *
      * May be extended by the implementation
+     * @since 1.0
      */
     public function __construct()
     {}
@@ -29,6 +32,7 @@ namespace Squeeze1_0\Controller
      * A function that is called prior to anything else in the controller.
      *
      * Useful for injecting additional hooks and such
+     * @since 1.0
      */
     public function pre()
     {}
@@ -37,6 +41,7 @@ namespace Squeeze1_0\Controller
      * The main callback function page.
      *
      * Must be defined by all implementations.
+     * @since 1.0
      */
     public abstract function index();
 
@@ -48,6 +53,7 @@ namespace Squeeze1_0\Controller
      * @param array $appOptions
      * @return void
      * @uses \Squeeze1_0\Api\Menu
+     * @since 1.0
      */
     public final function bootstrap($appOptions)
     {
@@ -73,6 +79,7 @@ namespace Squeeze1_0\Controller
      * Squeeze uses the class names as slugs.
      * @return string
      * @final
+     * @since 1.0
      */
     private final function getSlug()
     {
@@ -87,6 +94,7 @@ namespace Squeeze1_0\Controller
      * If it is not defined, we'll return a default value.
      * @return string
      * @final
+     * @since 1.0
      */
     private final function getTitle()
     {
@@ -107,6 +115,7 @@ namespace Squeeze1_0\Controller
      * If it is not defined, we'll return a default value.
      * @return string
      * @final
+     * @since 1.0
      */
     private final function getMenuTitle()
     {
@@ -129,6 +138,7 @@ namespace Squeeze1_0\Controller
      * Define in your controller by adding a protected property called `$capability`.
      * @return string
      * @final
+     * @since 1.0
      */
     private final function getCapability()
     {
@@ -147,6 +157,7 @@ namespace Squeeze1_0\Controller
      * Set the parent by adding a protected property called `$parent`.
      * @return string
      * @final
+     * @since 1.0
      */
     private final function getMenuParent()
     {

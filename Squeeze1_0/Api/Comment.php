@@ -2,6 +2,7 @@
 
 /**
  * An API for managing comments
+ * @since 1.0
  */
 namespace Squeeze1_0\Api
 {
@@ -11,12 +12,14 @@ namespace Squeeze1_0\Api
     /**
      * Holds our PDO instance
      * @var object
+     * @since 1.0
      */
     private $PDO;
 
     /**
      * The Comments Table name
      * @var string
+     * @since 1.0
      */
     private $table;
 
@@ -24,6 +27,7 @@ namespace Squeeze1_0\Api
      * An array that's populated with any required fields that aren't filled out.
      * Used by Comment::checkRequiredFields()
      * @var array
+     * @since 1.0
      */
     private $missing_fields = array();
 
@@ -32,6 +36,7 @@ namespace Squeeze1_0\Api
      * If a variable is set that doesn't exist in this array,
      * it will be saved as metadata.
      * @var array
+     * @since 1.0
      */
     private $core_fields = array(
       'comment_ID' => false,
@@ -54,6 +59,7 @@ namespace Squeeze1_0\Api
     /**
      * A list of fields required to insert a comment
      * @var array
+     * @since 1.0
      */
     private $required_fields = array(
       'comment_post_ID',
@@ -67,12 +73,14 @@ namespace Squeeze1_0\Api
      * Any variables set that don't exist in Comment::$core_fields are stored here
      * and saved as metadata.
      * @var array
+     * @since 1.0
      */
     private $meta = array();
 
     /**
      * If we're trying to load an existing comment, the comment ID will be stored here
      * @var int
+     * @since 1.0
      */
     private $comment_ID;
 
@@ -80,6 +88,7 @@ namespace Squeeze1_0\Api
      * Attempt to load a comment if $commentId is set
      * @param int|null $commentId
      * @return object \Squeeze1_0\Api\Comment
+     * @since 1.0
      */
     public function __construct($commentId = NULL)
     {
@@ -113,6 +122,7 @@ namespace Squeeze1_0\Api
      * @param string $key
      * @param string $val
      * @return object \Squeeze1_0\Api\Comment;
+     * @since 1.0
      */
     public function set($key, $val)
     {
@@ -133,6 +143,7 @@ namespace Squeeze1_0\Api
      * Return null if nothing found.
      * @param string $key
      * @return mixed;
+     * @since 1.0
      */
     public function get($key)
     {
@@ -146,6 +157,7 @@ namespace Squeeze1_0\Api
     /**
      * Insert or update the comment
      * @return int
+     * @since 1.0
      */
     public function save()
     {
@@ -162,6 +174,7 @@ namespace Squeeze1_0\Api
      * NOTE: This attempts to complete a true delete.
      * Use Comment::trash() to trash a comment
      * @return bool
+     * @since 1.0
      */
     public function delete()
     {
@@ -177,6 +190,7 @@ namespace Squeeze1_0\Api
      * NOTE: This function will move a comment to the trash
      * Use Comment::delete() to delete a comment
      * @return bool
+     * @since 1.0
      */
     public function trash()
     {
@@ -191,6 +205,7 @@ namespace Squeeze1_0\Api
      * Populate the object with the comment values retrieved from the database
      * @param stdClass $comment
      * @return void
+     * @since 1.0
      */
     private function hydrate($comment)
     {
@@ -209,6 +224,7 @@ namespace Squeeze1_0\Api
     /**
      * Attempt to perform an INSERT
      * @return void|int
+     * @since 1.0
      */
     private function insertComment()
     {
@@ -234,6 +250,7 @@ namespace Squeeze1_0\Api
     /**
      * Attempt to update a comment
      * @return int \Squeeze1_0\Api\Comment::comment_ID
+     * @since 1.0
      */
     private function updateComment()
     {
@@ -261,6 +278,7 @@ namespace Squeeze1_0\Api
      * against those in Comment::$required_fields
      * Throw an exception if fields are missing
      * @todo Find a better way to show errors than exceptions.
+     * @since 1.0
      */
     private function checkRequiredFields()
     {

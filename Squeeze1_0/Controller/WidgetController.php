@@ -8,6 +8,7 @@ namespace Squeeze1_0\Controller
    *
    * This feature has not yet been implemented.
    * @abstract
+   * @since 1.0
    */
   abstract class WidgetController implements \Squeeze1_0\Implementable\iController
   {
@@ -16,6 +17,7 @@ namespace Squeeze1_0\Controller
      *
      * Injected into the `bootstrap()` method by the core bootstrapper class.
      * @var array
+     * @since 1.0
      */
     protected $appOptions = array();
 
@@ -23,6 +25,7 @@ namespace Squeeze1_0\Controller
      * Base constructor.
      *
      * May be extended by the implementation
+     * @since 1.0
      */
     public function __construct()
     {}
@@ -31,6 +34,7 @@ namespace Squeeze1_0\Controller
      * A function that is called prior to anything else in the controller.
      *
      * Useful for injecting additional hooks and such
+     * @since 1.0
      */
     public function pre()
     {}
@@ -41,6 +45,7 @@ namespace Squeeze1_0\Controller
      * In the context of a widget, this is what will be displayed to the user.
      *
      * Must be defined by all implementations.
+     * @since 1.0
      */
     public abstract function index();
 
@@ -52,6 +57,7 @@ namespace Squeeze1_0\Controller
      * @param array $appOptions
      * @return void
      * @uses \Squeeze1_0\Api\Menu
+     * @since 1.0
      */
     public function bootstrap($appOptions)
     {

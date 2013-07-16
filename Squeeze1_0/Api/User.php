@@ -4,6 +4,7 @@ namespace Squeeze1_0\Api
 {
   /**
    * Adds a layer of functionality on top of the default WP_User class.
+   * @since 1.0
    */
   class User extends \WP_User
   {
@@ -12,6 +13,7 @@ namespace Squeeze1_0\Api
      * These are all the fields that are exempted from being saved as usermeta.
      * @var array $insert_fields
      * @access private
+     * @since 1.0
      */
     private $insert_fields = array(
       'ID', 'user_pass', 'user_login', 'user_nicename', 'user_url', 'user_email', 'display_name', 'nickname', 'first_name', 'last_name', 'description', 'rich_editing', 'user_registered', 'role', 'jabber', 'aim', 'yim'
@@ -20,7 +22,7 @@ namespace Squeeze1_0\Api
     /**
      * @param $key string
      * @return string
-     * @is_chainable false
+     * @since 1.0
      */
     public function get($key)
     {
@@ -31,7 +33,7 @@ namespace Squeeze1_0\Api
      * @param $key string
      * @param $value string
      * @return object
-     * @is_chainable true
+     * @since 1.0
      */
     public function set($key, $value)
     {
@@ -52,6 +54,7 @@ namespace Squeeze1_0\Api
      * Save the given user.
      * If ID is not set it'll attempt to insert the user.
      * @return bool
+     * @since 1.0
      */
     public function save()
     {
@@ -75,6 +78,7 @@ namespace Squeeze1_0\Api
      * NOTE: Leaving the $reassign parameter unset will delete all posts by the given user.
      * @param $reassign int|null
      * @return bool
+     * @since 1.0
      */
     public function delete($reassign = null)
     {

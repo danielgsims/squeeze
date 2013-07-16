@@ -7,6 +7,7 @@ namespace Squeeze1_0\Controller
    * The base controller for creating Admin Dashboard Widgets.
    *
    * Extend this in your app.
+   * @since 1.0
    */
   abstract class DashboardWidget implements \Squeeze1_0\Implementable\iController
   {
@@ -15,6 +16,7 @@ namespace Squeeze1_0\Controller
      *
      * Injected into the `bootstrap()` method by the core bootstrapper class.
      * @var array
+     * @since 1.0
      */
     protected $appOptions = array();
 
@@ -22,6 +24,7 @@ namespace Squeeze1_0\Controller
      * Base constructor.
      *
      * May be extended by the implementation
+     * @since 1.0
      */
     public function __construct()
     {}
@@ -30,6 +33,7 @@ namespace Squeeze1_0\Controller
      * A function that is called prior to anything else in the controller.
      *
      * Useful for injecting additional hooks and such
+     * @since 1.0
      */
     public function pre()
     {}
@@ -38,6 +42,7 @@ namespace Squeeze1_0\Controller
      * The main callback function page.
      *
      * Must be defined by all implementations.
+     * @since 1.0
      */
     public abstract function index();
 
@@ -49,6 +54,7 @@ namespace Squeeze1_0\Controller
      * @param array $appOptions
      * @return void
      * @uses \Squeeze1_0\Api\DashboardWidget
+     * @since 1.0
      */
     public final function bootstrap($appOptions)
     {
@@ -68,6 +74,7 @@ namespace Squeeze1_0\Controller
      * Squeeze uses the class names as slugs.
      * @return string
      * @final
+     * @since 1.0
      */
     private final function getSlug()
     {
@@ -82,6 +89,7 @@ namespace Squeeze1_0\Controller
      * If it is not defined, we'll return a default value.
      * @return string
      * @final
+     * @since 1.0
      */
     private final function getTitle()
     {
@@ -98,6 +106,7 @@ namespace Squeeze1_0\Controller
      * To define, create a public method called `updateCallback` in your implementation.
      * @return string
      * @final
+     * @since 1.0
      */
     private final function getUpdateFunction()
     {

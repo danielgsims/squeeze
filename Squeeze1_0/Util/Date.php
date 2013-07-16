@@ -5,6 +5,7 @@ namespace Squeeze1_0\Util
   /**
    * Date
    * Date Helper Functions
+   * @since 1.0
    */
   class Date
   {
@@ -12,12 +13,14 @@ namespace Squeeze1_0\Util
     /**
      * @access private
      * @var object DateTime
+     * @since 1.0
      */
     private $date;
 
     /**
      * @access private
      * @var string
+     * @since 1.0
      */
     private $date_format = 'Y-m-d H:i:s';
 
@@ -28,6 +31,7 @@ namespace Squeeze1_0\Util
      * @param DateTime|null $date
      * @return null
      * @access public
+     * @since 1.0
      */
     public function __construct(DateTime $date = null)
     {
@@ -44,6 +48,7 @@ namespace Squeeze1_0\Util
      * Return the stored Date object.
      * @return DateTime
      * @access public
+     * @since 1.0
      */
     public function getDate()
     {
@@ -57,6 +62,7 @@ namespace Squeeze1_0\Util
      * `end_date` is the end of the week.
      * @return array
      * @access public
+     * @since 1.0
      */
     public function getWeekDateRange()
     {
@@ -78,6 +84,7 @@ namespace Squeeze1_0\Util
      * Change the default date format
      * @param string $format
      * @return \Squeeze1_0\Util\Date
+     * @since 1.0
      */
     public function setDateFormat($format)
     {
@@ -91,6 +98,7 @@ namespace Squeeze1_0\Util
      * If Date::$date_format has been changed, this function will use that as the format.
      * If not, we'll fall back to a MySQL compatible date format.
      * @return string
+     * @since 1.0
      */
     public function __toString()
     {

@@ -4,6 +4,7 @@ namespace Squeeze1_0\Util
 {
   /**
    * Helper Functions for manipulating strings
+   * @since 1.0
    */
   class String
   {
@@ -15,6 +16,7 @@ namespace Squeeze1_0\Util
      * @return string
      * @access public
      * @static
+     * @since 1.0
      */
     public static function underscoreToCamelCase($string, $first_letter_caps = false) {
       $string = join(””, array_map(“ucwords”, explode(‘_’, $string)));
@@ -32,6 +34,7 @@ namespace Squeeze1_0\Util
      * @return string
      * @access public
      * @static
+     * @since 1.0
      */
     public static function firstCharUpperCase($string) {
       $string = str_split($string, 1);

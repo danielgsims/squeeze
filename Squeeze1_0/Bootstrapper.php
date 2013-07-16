@@ -2,21 +2,55 @@
 
 namespace Squeeze1_0
 {
+
+  /**
+   * @since 1.0
+   */
   class Bootstrapper
   {
+    /**
+     * @since 1.0
+     */
     private static $instance;
 
+    /**
+     * @since 1.0
+     */
     private static $appOptions = array();
 
+    /**
+     * @since 1.0
+     */
     private $loadedControllers = array();
+
+    /**
+     * @since 1.0
+     */
     private $controllers = array();
 
+    /**
+     * @since 1.0
+     */
     private $loadedPostTypes = array();
+
+    /**
+     * @since 1.0
+     */
     private $postTypes = array();
 
+    /**
+     * @since 1.0
+     */
     private $loadedVendors = array();
+
+    /**
+     * @since 1.0
+     */
     private $vendors = array();
 
+    /**
+     * @since 1.0
+     */
     public static function init($appOptions)
     {
       if (!is_a(self::$instance, self)) {
@@ -34,6 +68,9 @@ namespace Squeeze1_0
       return;
     }
 
+    /**
+     * @since 1.0
+     */
     private function mapControllers($appOptions)
     {
       $dirMembers = $this->listFilesInDirectory($appOptions, 'App/Controller');
@@ -54,6 +91,9 @@ namespace Squeeze1_0
       }
     }
 
+    /**
+     * @since 1.0
+     */
     private function mapPostTypes($appOptions)
     {
       $dirMembers = $this->listFilesInDirectory($appOptions, 'App/PostType');
@@ -74,6 +114,9 @@ namespace Squeeze1_0
       }
     }
 
+    /**
+     * @since 1.0
+     */
     private function loadVendorPackages($appOptions)
     {
       if ( \file_exists($appOptions['app_path'] .'/vendor/autoload.php') ) {
@@ -84,6 +127,9 @@ namespace Squeeze1_0
       }
     }
 
+    /**
+     * @since 1.0
+     */
     private function activationHooks($appOptions)
     {
       $pluginFilePath = $appOptions['app_path'] .'/'. $appOptions['filename'];
@@ -99,6 +145,9 @@ namespace Squeeze1_0
       }
     }
 
+    /**
+     * @since 1.0
+     */
     private function listFilesInDirectory($appOptions, $directory)
     {
       return scandir($appOptions['app_path'] . $directory);

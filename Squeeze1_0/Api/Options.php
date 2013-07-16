@@ -6,6 +6,7 @@ namespace Squeeze1_0\Api
    * A class to get, set and manage settings stored in the WordPress database.
    *
    * For each option, create a new instance of this API.
+   * @since 1.0
    */
   class Options
   {
@@ -13,18 +14,21 @@ namespace Squeeze1_0\Api
     /**
      * @var string
      * @access private
+     * @since 1.0
      */
     private $key;
 
     /**
      * @var mixed
      * @access private
+     * @since 1.0
      */
     private $value;
 
     /**
      * @var string
      * @access private
+     * @since 1.0
      */
     private $encoding_type;
 
@@ -33,6 +37,7 @@ namespace Squeeze1_0\Api
      * @param string $key
      * @return null
      * @access public
+     * @since 1.0
      */
     public function __construct($key)
     {
@@ -54,6 +59,7 @@ namespace Squeeze1_0\Api
      * Return the stored value.
      * @return mixed
      * @access public
+     * @since 1.0
      */
     public function get() {
       return $this->value;
@@ -64,6 +70,7 @@ namespace Squeeze1_0\Api
      * @param mixed $value
      * @return Options $this
      * @access public
+     * @since 1.0
      */
     public function set($value) {
       $this->value = $value;
@@ -75,6 +82,7 @@ namespace Squeeze1_0\Api
      * @param string $value
      * @return Options $this
      * @access public
+     * @since 1.0
      */
     public function push($value) {
       if (!is_array($this->value)) return false;
@@ -94,6 +102,7 @@ namespace Squeeze1_0\Api
      * Any other types will be left to WordPress to determine.
      * @access public
      * @return bool
+     * @since 1.0
      */
     public function save()
     {
@@ -111,6 +120,7 @@ namespace Squeeze1_0\Api
      * @access private
      * @param string $string
      * @return bool
+     * @since 1.0
      */
     private function isJson($string)
     {
