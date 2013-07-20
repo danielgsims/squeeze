@@ -41,6 +41,16 @@ namespace Squeeze1_0
     /**
      * @since 1.0
      */
+    private $loadedWidgets = array();
+
+    /**
+     * @since 1.0
+     */
+    private $widgets = array();
+
+    /**
+     * @since 1.0
+     */
     private $loadedVendors = array();
 
     /**
@@ -61,6 +71,7 @@ namespace Squeeze1_0
 
       self::$instance->mapControllers($appOptions);
       self::$instance->mapPostTypes($appOptions);
+      self::$instance->mapWidgets($appOptions);
       self::$instance->activationHooks($appOptions);
 
       self::$appOptions[$appOptions['app_name']] = $appOptions;
@@ -81,12 +92,14 @@ namespace Squeeze1_0
         }
       });
 
-      foreach($this->controllers as $class) {
-        $controllerName = $appOptions['app_namespace'] .'\App\Controller\\'. $class;
-        $test = new $controllerName;
-        if(class_exists($controllerName)) {
-          $this->loadedControllers[$class] = new $controllerName;
-          $this->loadedControllers[$class]->bootstrap($appOptions);
+      if (!empty($this->controllers)) {
+        foreach($this->controllers as $class) {
+          $controllerName = $appOptions['app_namespace'] .'\App\Controller\\'. $class;
+          $test = new $controllerName;
+          if(class_exists($controllerName)) {
+            $this->loadedControllers[$class] = new $controllerName;
+            $this->loadedControllers[$class]->bootstrap($appOptions);
+          }
         }
       }
     }
@@ -104,12 +117,39 @@ namespace Squeeze1_0
         }
       });
 
-      foreach($this->postTypes as $class) {
-        $postTypeName = $appOptions['app_namespace'] .'\App\PostType\\'. $class;
+      if (!empty($this->postTypes)) {
+        foreach($this->postTypes as $class) {
+          $postTypeName = $appOptions['app_namespace'] .'\App\PostType\\'. $class;
 
-        if(class_exists($postTypeName)) {
-          $this->loadedPostTypes[$class] = new $postTypeName;
-          $this->loadedPostTypes[$class]->bootstrap($appOptions);
+          if(class_exists($postTypeName)) {
+            $this->loadedPostTypes[$class] = new $postTypeName;
+            $this->loadedPostTypes[$class]->bootstrap($appOptions);
+          }
+        }
+      }
+    }
+
+    /**
+     * @since 1.0
+     */
+    private function mapWidgets($appOptions)
+    {
+      $dirMembers = $this->listFilesInDirectory($appOptions, 'App/Widget');
+
+      array_walk($dirMembers, function($arr) {
+        if(strpos($arr, '.php') !== false) {
+          $this->widgets[] = str_replace('.php', '', $arr);
+        }
+      });
+
+      if (!empty($this->widgets)) {
+        foreach($this->widgets as $class) {
+          $widgetName = $appOptions['app_namespace'] .'\App\Widget\\'. $class;
+
+          if(class_exists($widgetName)) {
+            $this->loadedWidget[$class] = new $widgetName;
+            $this->loadedWidget[$class]->bootstrap($appOptions);
+          }
         }
       }
     }
@@ -150,6 +190,8 @@ namespace Squeeze1_0
      */
     private function listFilesInDirectory($appOptions, $directory)
     {
+      if (!file_exists($appOptions['app_path'] . $directory) ) return array();
+
       return scandir($appOptions['app_path'] . $directory);
     }
   }
