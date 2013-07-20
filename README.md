@@ -97,3 +97,16 @@ Squeeze functions as an external dependency that lives in your `wp-content/plugi
     $post = $query->fetch();
     echo $post->post_title();
     ````
+
+### A word on style
+I've consciously chosen to adhere* to PSR-2 over the WordPress code style guide. For one thing, PSR is a more widely accepted and interoperable standard. I'm making extensive use of the PSR-style autoloader, and Squeeze is built to easily integrate any PSR-compatible Composer module. PSR is a professional standard that is used by a larger percentage of the PHP community. And finally, while none of this should be taken to imply that I believe there is anything wrong with the WordPress style guide, I simply prefer and am used to using the PSR standard.
+
+At the end of the day, the most important thing isn't which style you choose to follow, or even that you're completely implementing one or another, the important thing is that you choose a coding style and implement it uniformly throughout a project.
+
+(* The notable exception is my use of two spaces rather than the four specified in PSR. It's a carryover from my language du jour, Javascript, and it's purely a personal preference.)
+
+### Authors
+Squeeze is written by me, [John Dennis Pedrie](http://johnpedrie.com). Thanks to [David Supplee](http://github.com/dwsupplee) for code reviews and useful suggestions.
+
+### License
+Squeeze is licensed under the MIT License. A copy of the MIT License may be found in the repository under `LICENSE.md`.
