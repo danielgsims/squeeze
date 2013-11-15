@@ -2,11 +2,12 @@
 
 namespace Squeeze1_0
 {
+  use \Squeeze1_0\Implementable\iBootstrapper;
 
   /**
    * @since 1.0
    */
-  class Bootstrapper
+  class Bootstrapper implements iBootstrapper
   {
     /**
      * @since 1.0
@@ -17,36 +18,6 @@ namespace Squeeze1_0
      * @since 1.0
      */
     private static $appOptions = array();
-
-    /**
-     * @since 1.0
-     */
-    private $loadedControllers = array();
-
-    /**
-     * @since 1.0
-     */
-    private $controllers = array();
-
-    /**
-     * @since 1.0
-     */
-    private $loadedPostTypes = array();
-
-    /**
-     * @since 1.0
-     */
-    private $postTypes = array();
-
-    /**
-     * @since 1.0
-     */
-    private $loadedWidgets = array();
-
-    /**
-     * @since 1.0
-     */
-    private $widgets = array();
 
     /**
      * @since 1.0
@@ -67,91 +38,23 @@ namespace Squeeze1_0
         self::$instance = new self;
       }
 
-      self::$instance->loadVendorPackages($appOptions);
+      return self::$instance->bootstrap($appOptions);
+    }
 
-      self::$instance->mapControllers($appOptions);
-      self::$instance->mapPostTypes($appOptions);
-      self::$instance->mapWidgets($appOptions);
-      self::$instance->activationHooks($appOptions);
+    public function bootstrap($appOptions) {
+      $this->loadVendorPackages($appOptions);
+      $this->activationHooks($appOptions);
 
       self::$appOptions[$appOptions['app_name']] = $appOptions;
 
+      foreach ($this->listFilesInDirectory($appOptions, 'Bootstrappers', true) as $bootstrapper) {
+        if(class_exists($bootstrapper['FQCN'])) {
+          $this->loadedBootstrappers[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
+          $this->loadedBootstrappers[$bootstrapper['FQCN']]->bootstrap($appOptions);
+        }
+      }
+
       return;
-    }
-
-    /**
-     * @since 1.0
-     */
-    private function mapControllers($appOptions)
-    {
-      $dirMembers = $this->listFilesInDirectory($appOptions, 'App/Controller');
-
-      array_walk($dirMembers, function($arr) {
-        if(strpos($arr, '.php') !== false) {
-          $this->controllers[] = str_replace('.php', '', $arr);
-        }
-      });
-
-      if (!empty($this->controllers)) {
-        foreach($this->controllers as $class) {
-          $controllerName = $appOptions['app_namespace'] .'\App\Controller\\'. $class;
-          $test = new $controllerName;
-          if(class_exists($controllerName)) {
-            $this->loadedControllers[$class] = new $controllerName;
-            $this->loadedControllers[$class]->bootstrap($appOptions);
-          }
-        }
-      }
-    }
-
-    /**
-     * @since 1.0
-     */
-    private function mapPostTypes($appOptions)
-    {
-      $dirMembers = $this->listFilesInDirectory($appOptions, 'App/PostType');
-
-      array_walk($dirMembers, function($arr) {
-        if(strpos($arr, '.php') !== false) {
-          $this->postTypes[] = str_replace('.php', '', $arr);
-        }
-      });
-
-      if (!empty($this->postTypes)) {
-        foreach($this->postTypes as $class) {
-          $postTypeName = $appOptions['app_namespace'] .'\App\PostType\\'. $class;
-
-          if(class_exists($postTypeName)) {
-            $this->loadedPostTypes[$class] = new $postTypeName;
-            $this->loadedPostTypes[$class]->bootstrap($appOptions);
-          }
-        }
-      }
-    }
-
-    /**
-     * @since 1.0
-     */
-    private function mapWidgets($appOptions)
-    {
-      $dirMembers = $this->listFilesInDirectory($appOptions, 'App/Widget');
-
-      array_walk($dirMembers, function($arr) {
-        if(strpos($arr, '.php') !== false) {
-          $this->widgets[] = str_replace('.php', '', $arr);
-        }
-      });
-
-      if (!empty($this->widgets)) {
-        foreach($this->widgets as $class) {
-          $widgetName = $appOptions['app_namespace'] .'\App\Widget\\'. $class;
-
-          if(class_exists($widgetName)) {
-            $this->loadedWidget[$class] = new $widgetName;
-            $this->loadedWidget[$class]->bootstrap($appOptions);
-          }
-        }
-      }
     }
 
     /**
@@ -187,12 +90,59 @@ namespace Squeeze1_0
 
     /**
      * @since 1.0
+     * @param array $appOptions
+     * @param string $directory
+     * @param bool $includeCoreDir If set to true, will attempt to fetch files from core directory of the same name and merge with app directory contents.
      */
-    private function listFilesInDirectory($appOptions, $directory)
+    protected function listFilesInDirectory($appOptions, $directory, $includeCoreDir = false)
     {
-      if (!file_exists($appOptions['app_path'] . $directory) ) return array();
+      // FQCN = Fully Qualified Class Name
 
-      return scandir($appOptions['app_path'] . $directory);
+      $app_dir = $appOptions['app_path'] . $directory;
+      $core_dir =  SQ_CORE_PATH . '/Squeeze1_0/' . $directory;
+      $namespaceDir = str_replace('/', '\\', $directory);
+
+      $appDirContents = array();
+      $coreDirContents = array();
+
+      $appDirFiltered = array();
+      $coreDirFiltered = array();
+
+      if (file_exists($app_dir) ) {
+        $appDirContents = scandir($app_dir);
+
+        foreach ($appDirContents as $key=>$filename) {
+          if(strpos($filename, '.php') === FALSE) continue;
+
+          $className = str_replace('.php', '', $filename);
+          $appDirFiltered[$filename] = array(
+            'path' => $app_dir,
+            'fileName' => $filename,
+            'className' => $className,
+            'FQCN' => $appOptions['app_namespace'] .'\\'. $namespaceDir .'\\'. $className
+          );
+        }
+      }
+
+      if ($includeCoreDir && file_exists($core_dir) ) {
+        $coreDirContents = scandir($core_dir);
+
+        foreach ($coreDirContents as $key=>$filename) {
+          if(strpos($filename, '.php') === FALSE) continue;
+
+          $className = str_replace('.php', '', $filename);
+          $coreDirFiltered[$filename] = array(
+            'path' => $core_dir,
+            'fileName' => $filename,
+            'className' => $className,
+            'FQCN' => 'Squeeze1_0\\'. $namespaceDir .'\\'. $className
+          );
+        }
+
+        return array_merge($coreDirFiltered, $appDirFiltered);
+      }
+
+      return $appDirFiltered;
     }
   }
 }
