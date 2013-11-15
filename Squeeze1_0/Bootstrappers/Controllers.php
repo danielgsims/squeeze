@@ -3,6 +3,7 @@
 namespace Squeeze1_0\Bootstrappers
 {
   use \Squeeze1_0\Bootstrapper;
+  use \Squeeze1_0\EnvironmentVariables;
 
   class Controllers extends Bootstrapper
   {
@@ -19,13 +20,12 @@ namespace Squeeze1_0\Bootstrappers
     /**
      * @since 1.0
      */
-    public function bootstrap($appOptions)
+    public function bootstrap(EnvironmentVariables $env = null)
     {
-      foreach ($this->listFilesInDirectory($appOptions, 'App/Controller') as $bootstrapper) {
-        // print_r($bootstrapper);exit;
+      foreach ($this->listFilesInDirectory($env, 'App/Controller') as $bootstrapper) {
         if(class_exists($bootstrapper['FQCN'])) {
           $this->loadedControllers[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
-          $this->loadedControllers[$bootstrapper['FQCN']]->bootstrap($appOptions);
+          $this->loadedControllers[$bootstrapper['FQCN']]->bootstrap($env);
         }
       }
     }

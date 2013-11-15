@@ -3,6 +3,7 @@
 namespace Squeeze1_0\Bootstrappers
 {
   use \Squeeze1_0\Bootstrapper;
+  use \Squeeze1_0\EnvironmentVariables;
 
   class PostTypes extends Bootstrapper
   {
@@ -19,12 +20,12 @@ namespace Squeeze1_0\Bootstrappers
     /**
      * @since 1.0
      */
-    public function bootstrap($appOptions)
+    public function bootstrap(EnvironmentVariables $env = null)
     {
-      foreach ($this->listFilesInDirectory($appOptions, 'App/PostType') as $bootstrapper) {
+      foreach ($this->listFilesInDirectory($env, 'App/PostType') as $bootstrapper) {
         if(class_exists($bootstrapper['FQCN'])) {
           $this->loadedPostTypes[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
-          $this->loadedPostTypes[$bootstrapper['FQCN']]->bootstrap($appOptions);
+          $this->loadedPostTypes[$bootstrapper['FQCN']]->bootstrap($env);
         }
       }
     }

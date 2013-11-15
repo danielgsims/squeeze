@@ -7,7 +7,7 @@ include "SplClassLoader.php";
 $classLoader = new Squeeze1_0\SplClassLoader('Squeeze1_0', SQ_CORE_PATH);
 $classLoader->register();
 
-$appLoader = new Squeeze1_0\SplClassLoader($options['app_namespace'], str_replace($options['app_namespace'] .'/', '', $options['app_path']));
+$appLoader = new Squeeze1_0\SplClassLoader($options['app_namespace'], $options['app_path']);
 $appLoader->register();
 
 if (file_exists(SQ_CORE_PATH .'/Settings.php')) include SQ_CORE_PATH .'/Settings.php';

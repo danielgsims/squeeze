@@ -3,6 +3,7 @@
 namespace Squeeze1_0\Bootstrappers
 {
   use \Squeeze1_0\Bootstrapper;
+  use \Squeeze1_0\EnvironmentVariables;
 
   class Widgets extends Bootstrapper
   {
@@ -19,12 +20,12 @@ namespace Squeeze1_0\Bootstrappers
     /**
      * @since 1.0
      */
-    public function bootstrap($appOptions)
+    public function bootstrap(EnvironmentVariables $env = null)
     {
-      foreach ($this->listFilesInDirectory($appOptions, 'App/Widget') as $bootstrapper) {
+      foreach ($this->listFilesInDirectory($env, 'App/Widget') as $bootstrapper) {
         if(class_exists($bootstrapper['FQCN'])) {
           $this->loadedWidget[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
-          $this->loadedWidget[$bootstrapper['FQCN']]->bootstrap($appOptions);
+          $this->loadedWidget[$bootstrapper['FQCN']]->bootstrap($env);
         }
       }
     }
