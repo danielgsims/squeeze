@@ -88,17 +88,23 @@ namespace Squeeze1_0
       if ($class) {
         $env = new $class($appOptions['environment']);
       }
+      else {
+        $env = new EnvironmentVariables($appOptions['environment']);
+      }
 
       $env->setAppOptions($appOptions);
 
       return $env;
     }
 
+    /**
+     * @since 1.0
+     */
     private function loadAppBootstrapper(EnvironmentVariables $env)
     {
       $class = $this->findClassInNamespace('Bootstrapper', $env->getAppOptions('app_namespace'));
       if ($class) {
-        $env = new $class($env);
+        $bootstrapper = new $class($env);
       }
     }
 
@@ -178,7 +184,7 @@ namespace Squeeze1_0
 
     protected function findClassInNamespace($class_name, $namespace)
     {
-      if (class_exists($namespace .'\\'. $class_name)) {
+      if (class_exists($namespace .'\\'. $class_name, false)) {
         return $namespace .'\\'. $class_name;
       }
 
