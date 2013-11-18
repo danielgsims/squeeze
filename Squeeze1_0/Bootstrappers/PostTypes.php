@@ -22,7 +22,7 @@ namespace Squeeze1_0\Bootstrappers
      */
     public function bootstrap(EnvironmentVariables $env = null)
     {
-      foreach ($this->listFilesInDirectory($env, 'App/PostType') as $bootstrapper) {
+      foreach ($this->listFilesInDirectory($env, 'PostType') as $bootstrapper) {
         if(class_exists($bootstrapper['FQCN'])) {
           $this->loadedPostTypes[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
           $this->loadedPostTypes[$bootstrapper['FQCN']]->bootstrap($env);

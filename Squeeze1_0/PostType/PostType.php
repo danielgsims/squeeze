@@ -2,6 +2,8 @@
 
 namespace Squeeze1_0\PostType
 {
+  use \ICanBoogie\Inflector;
+
   /**
    * @since 1.0
    */
@@ -172,7 +174,7 @@ namespace Squeeze1_0\PostType
      */
     private function createLabels()
     {
-      $inflector = \ICanBoogie\Inflector::get();
+      $inflector = Inflector::get();
       $label = array(
         'singular' => $inflector->singularize($this->getLabel()),
         'plural' => $inflector->pluralize($this->getLabel())

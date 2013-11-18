@@ -44,7 +44,7 @@ namespace Squeeze1_0
     }
 
     public function bootstrap(EnvironmentVariables $env = null) {
-      if ($this->appOptions['enable_composer']) {
+      if ($this->appOptions['composer']) {
         $this->loadVendorPackages($this->appOptions);
       }
 
@@ -67,11 +67,18 @@ namespace Squeeze1_0
      */
     private function loadVendorPackages($appOptions)
     {
-      if ( \file_exists($appOptions['app_path'] .'/vendor/autoload.php') ) {
-        require $appOptions['app_path'] .'/vendor/autoload.php';
+      if (is_array($appOptions['composer'])) {
+        $composer_path = $appOptions['composer']['path'] .'/autoload.php';
       }
       else {
-        throw new Exception('Packagist packages not installed');
+        $composer_path = $appOptions['app_path'] .'/vendor/autoload.php';
+      }
+
+      if ( \file_exists($composer_path) ) {
+        require_once $composer_path;
+      }
+      else {
+        throw new Exception('Packagist packages not installed where expected (Expected Path: '. $composer_path .')');
       }
     }
 
