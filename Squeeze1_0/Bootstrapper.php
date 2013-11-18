@@ -184,7 +184,7 @@ namespace Squeeze1_0
 
     protected function findClassInNamespace($class_name, $namespace)
     {
-      if (class_exists($namespace .'\\'. $class_name, false)) {
+      if (class_exists($namespace .'\\'. $class_name)) {
         return $namespace .'\\'. $class_name;
       }
 
