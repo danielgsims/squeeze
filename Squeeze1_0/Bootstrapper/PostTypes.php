@@ -1,6 +1,6 @@
 <?php
 
-namespace Squeeze1_0\Bootstrappers
+namespace Squeeze1_0\Bootstrapper
 {
   use \Squeeze1_0\Bootstrapper;
   use \Squeeze1_0\EnvironmentVariables;

@@ -2,12 +2,13 @@
 
 namespace Squeeze1_0\PostType
 {
-  use \ICanBoogie\Inflector;
+  use \Squeeze1_0\EnvironmentVariables;
+  use \Squeeze1_0\Util\LabelMaker;
 
   /**
    * @since 1.0
    */
-  class PostType
+  abstract class PostType extends LabelMaker
   {
 
     /**
@@ -28,13 +29,13 @@ namespace Squeeze1_0\PostType
     );
 
     /**
-     * default_labels
+     * defaultLabels
      * The default labels and whether they are plural or singular.
      * @var array
      * @access private
      * @since 1.0
      */
-    private $default_labels = array(
+    protected $defaultLabels = array(
       'name' => array(
         'inflection' => 'plural',
         'value' => '%s'
@@ -153,9 +154,9 @@ namespace Squeeze1_0\PostType
     /**
      * @since 1.0
      */
-    public function bootstrap($appOptions)
+    public function bootstrap(EnvironmentVariables $env)
     {
-      $this->appOptions = $appOptions;
+      $this->env = $env;
 
       $this->executeMetaBox();
 
@@ -166,24 +167,6 @@ namespace Squeeze1_0\PostType
         $this->setRewrite();
 
         add_action('init', array($this, 'execute'));
-      }
-    }
-
-    /**
-     * @since 1.0
-     */
-    private function createLabels()
-    {
-      $inflector = Inflector::get();
-      $label = array(
-        'singular' => $inflector->singularize($this->getLabel()),
-        'plural' => $inflector->pluralize($this->getLabel())
-      );
-
-      foreach ($this->default_labels as $key => $val) {
-        if (!array_key_exists($key, $this->labels)) {
-          $this->labels[$key] = sprintf($val['value'], $label[$val['inflection']]);
-        }
       }
     }
 
@@ -202,8 +185,9 @@ namespace Squeeze1_0\PostType
      */
     public function execute()
     {
+      $this->executeTaxonomy();
       $args = get_object_vars($this);
-      register_post_type( $this->getSlug(), $args );
+      register_post_type( strtolower($this->getSlug()), $args );
     }
 
     /**
@@ -221,6 +205,18 @@ namespace Squeeze1_0\PostType
     /**
      * @since 1.0
      */
+    public function executeTaxonomy()
+    {
+      if (isset($this->taxonomies)) {
+        foreach ($this->taxonomies as $taxonomy) {
+          $this->loadTaxonomy($taxonomy);
+        }
+      }
+    }
+
+    /**
+     * @since 1.0
+     */
     private function getSlug()
     {
       $className = get_called_class();
@@ -231,17 +227,9 @@ namespace Squeeze1_0\PostType
     /**
      * @since 1.0
      */
-    private function getLabel()
-    {
-      return (isset($this->label)) ? $this->label : 'Squeeze';
-    }
-
-    /**
-     * @since 1.0
-     */
     private function loadMetaBox($key)
     {
-      $className = $this->appOptions['app_namespace'] .'\App\PostType\MetaBox\\'. $key;
+      $className = $this->env->get('app_namespace') .'\PostType\MetaBox\\'. $key;
 
       if (class_exists($className)) {
         $metaBox = new $className;
@@ -251,6 +239,20 @@ namespace Squeeze1_0\PostType
         if (method_exists($metaBox, 'save')) {
           add_action('save_post', array($metaBox, 'save'));
         }
+      }
+    }
+
+    /**
+     * @since 1.0
+     */
+    private function loadTaxonomy($key)
+    {
+      $className = $this->env->getAppOptions('app_namespace') .'\PostType\Taxonomy\\'. $key;
+
+      if (class_exists($className)) {
+        $taxonomy = new $className;
+
+        $taxonomy->execute(strtolower($this->getSlug()));
       }
     }
   }

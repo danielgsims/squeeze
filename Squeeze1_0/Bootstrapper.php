@@ -52,7 +52,7 @@ namespace Squeeze1_0
       $this->activationHooks($env);
       $this->loadAppBootstrapper($env);
 
-      foreach ($this->listFilesInDirectory($env, 'Bootstrappers', true) as $bootstrapper) {
+      foreach ($this->listFilesInDirectory($env, 'Bootstrapper', true) as $filename => $bootstrapper) {
         if(class_exists($bootstrapper['FQCN'])) {
           $this->loadedBootstrappers[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
           $this->loadedBootstrappers[$bootstrapper['FQCN']]->bootstrap($env);
@@ -91,7 +91,7 @@ namespace Squeeze1_0
         $env = new EnvironmentVariables;
       };
 
-      $class = $this->findClassInNamespace('EnvironmentVariables', $appOptions['app_namespace']);
+      $class = $this->findClassInNamespace('EnvironmentVariables', $appOptions['app_namespace'], $appOptions['app_path']);
       if ($class) {
         $env = new $class($appOptions['environment']);
       }
@@ -109,7 +109,7 @@ namespace Squeeze1_0
      */
     private function loadAppBootstrapper(EnvironmentVariables $env)
     {
-      $class = $this->findClassInNamespace('Bootstrapper', $env->getAppOptions('app_namespace'));
+      $class = $this->findClassInNamespace('Bootstrapper', $env->getAppOptions('app_namespace'), $env->getAppOptions('app_path'));
       if ($class) {
         $bootstrapper = new $class($env);
       }
@@ -163,7 +163,7 @@ namespace Squeeze1_0
             'path' => $app_dir,
             'fileName' => $filename,
             'className' => $className,
-            'FQCN' => $env->getAppOptions('app_namespace') .'\\'. $namespaceDir .'\\'. $className
+            'FQCN' => '\\'. $env->getAppOptions('app_namespace') .'\\'. $namespaceDir .'\\'. $className
           );
         }
       }
@@ -179,7 +179,7 @@ namespace Squeeze1_0
             'path' => $core_dir,
             'fileName' => $filename,
             'className' => $className,
-            'FQCN' => 'Squeeze1_0\\'. $namespaceDir .'\\'. $className
+            'FQCN' => '\\Squeeze1_0\\'. $namespaceDir .'\\'. $className
           );
         }
 
@@ -191,7 +191,10 @@ namespace Squeeze1_0
 
     protected function findClassInNamespace($class_name, $namespace)
     {
-      if (class_exists($namespace .'\\'. $class_name)) {
+      $fqcn = $namespace .'\\'. $class_name;
+
+      if(strpos($fqcn, needle))
+      if (class_exists($fqcn)) {
         return $namespace .'\\'. $class_name;
       }
 
