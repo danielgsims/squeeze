@@ -151,7 +151,7 @@ namespace Squeeze1_0\PostType\Taxonomy
         $args[$key] = $val;
       }
 
-      register_taxonomy($this->getSlug(), 'bankers', $args);
+      register_taxonomy(strtolower($this->getSlug()), 'bankers', $args);
     }
   }
 }

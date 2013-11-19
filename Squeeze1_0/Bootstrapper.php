@@ -122,14 +122,16 @@ namespace Squeeze1_0
     {
       $pluginFilePath = $env->getAppOptions('app_path') .'/'. $env->getAppOptions('filename');
 
-      if (class_exists($env->getAppOptions('app_namespace') .'App\Activation')) {
-        $activationObject = $env->getAppOptions('app_namespace') .'App\Activation';
-        register_activation_hook( $pluginFilePath, array($activationObject::instance(), 'activation') );
+      $activation = $this->findClassInNamespace('Activation', $env->getAppOptions('app_namespace'));
+      if ($activation) {
+        $activationObject = new $activation;
+        register_activation_hook( $pluginFilePath, array($activationObject, 'bootstrap') );
       }
 
-      if (class_exists($env->getAppOptions('app_namespace') .'App\Deactivation')) {
-        $deactivationObject = $env->getAppOptions('app_namespace') .'App\Deactivation';
-        register_activation_hook( $pluginFilePath, array($deactivationObject::instance(), 'deactivation') );
+      $deactivation = $this->findClassInNamespace('Deactivation', $env->getAppOptions('app_namespace'));
+      if ($deactivation) {
+        $deactivationObject = new $deactivation;
+        register_activation_hook( $pluginFilePath, array($deactivationObject, 'bootstrap') );
       }
     }
 
@@ -193,7 +195,6 @@ namespace Squeeze1_0
     {
       $fqcn = $namespace .'\\'. $class_name;
 
-      if(strpos($fqcn, needle))
       if (class_exists($fqcn)) {
         return $namespace .'\\'. $class_name;
       }
