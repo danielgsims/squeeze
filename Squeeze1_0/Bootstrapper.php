@@ -12,6 +12,16 @@ namespace Squeeze1_0
     /**
      * @since 1.0
      */
+    protected $bootstrapperFolder = 'Bootstrapper';
+
+    /**
+     * @since 1.0
+     */
+    protected $scanCoreFolder = true;
+
+    /**
+     * @since 1.0
+     */
     private static $instance;
 
     /**
@@ -40,26 +50,42 @@ namespace Squeeze1_0
       }
 
       self::$instance->appOptions = $appOptions;
-      return self::$instance->bootstrap();
+
+      if (self::$instance->appOptions['composer']) {
+        self::$instance->loadVendorPackages(self::$instance->appOptions);
+      }
+
+      $env = self::$instance->loadEnvironmentObject(self::$instance->appOptions);
+      self::$instance->activationHooks($env);
+      self::$instance->loadAppBootstrapper($env);
+
+      return self::$instance->bootstrap($env);
     }
 
+    /**
+     * @since 1.0
+     */
     public function bootstrap(EnvironmentVariables $env = null) {
-      if ($this->appOptions['composer']) {
-        $this->loadVendorPackages($this->appOptions);
-      }
 
-      $env = $this->loadEnvironmentObject($this->appOptions);
-      $this->activationHooks($env);
-      $this->loadAppBootstrapper($env);
-
-      foreach ($this->listFilesInDirectory($env, 'Bootstrapper', true) as $filename => $bootstrapper) {
-        if(class_exists($bootstrapper['FQCN'])) {
-          $this->loadedBootstrappers[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
-          $this->loadedBootstrappers[$bootstrapper['FQCN']]->bootstrap($env);
-        }
-      }
+      $this->loadBootstrappers($env, $this->bootstrapperFolder, $this->scanCoreFolder);
 
       return;
+    }
+
+    /**
+     * @since 1.0
+     */
+    protected function loadBootstrappers(EnvironmentVariables $env, $folder, $scanCoreFolder = false)
+    {
+      foreach ($this->listFilesInDirectory($env, $folder, $scanCoreFolder) as $filename => $bootstrapper) {
+        if(class_exists($bootstrapper['FQCN'])) {
+          $this->loadedBootstrappers[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
+
+          if(!isset($this->loadedBootstrappers[$bootstrapper['FQCN']]->ignore) || !$this->loadedBootstrappers[$bootstrapper['FQCN']]->ignore) {
+            $this->loadedBootstrappers[$bootstrapper['FQCN']]->bootstrap($env);
+          }
+        }
+      }
     }
 
     /**
@@ -191,6 +217,9 @@ namespace Squeeze1_0
       return $appDirFiltered;
     }
 
+    /**
+     * @since 1.0
+     */
     protected function findClassInNamespace($class_name, $namespace)
     {
       $fqcn = $namespace .'\\'. $class_name;

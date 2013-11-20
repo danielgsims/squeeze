@@ -10,24 +10,21 @@ namespace Squeeze1_0\Bootstrapper
     /**
      * @since 1.0
      */
+    protected $bootstrapperFolder = 'Controller';
+
+    /**
+     * @since 1.0
+     */
+    protected $scanCoreFolder = false;
+
+    /**
+     * @since 1.0
+     */
     private $loadedControllers = array();
 
     /**
      * @since 1.0
      */
     private $controllers = array();
-
-    /**
-     * @since 1.0
-     */
-    public function bootstrap(EnvironmentVariables $env = null)
-    {
-      foreach ($this->listFilesInDirectory($env, 'Controller') as $bootstrapper) {
-        if(class_exists($bootstrapper['FQCN'])) {
-          $this->loadedControllers[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
-          $this->loadedControllers[$bootstrapper['FQCN']]->bootstrap($env);
-        }
-      }
-    }
   }
 }

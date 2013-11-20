@@ -6,6 +6,9 @@ namespace Squeeze1_0\Implementable
 
   interface iBootstrapper
   {
+    /**
+     * @since 1.0
+     */
     public function bootstrap(EnvironmentVariables $env = null);
   }
 }

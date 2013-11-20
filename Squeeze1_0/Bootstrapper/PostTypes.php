@@ -10,24 +10,21 @@ namespace Squeeze1_0\Bootstrapper
     /**
      * @since 1.0
      */
+    protected $bootstrapperFolder = 'PostType';
+
+    /**
+     * @since 1.0
+     */
+    protected $scanCoreFolder = false;
+
+    /**
+     * @since 1.0
+     */
     private $loadedPostTypes = array();
 
     /**
      * @since 1.0
      */
     private $postTypes = array();
-
-    /**
-     * @since 1.0
-     */
-    public function bootstrap(EnvironmentVariables $env = null)
-    {
-      foreach ($this->listFilesInDirectory($env, 'PostType') as $bootstrapper) {
-        if(class_exists($bootstrapper['FQCN'])) {
-          $this->loadedPostTypes[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
-          $this->loadedPostTypes[$bootstrapper['FQCN']]->bootstrap($env);
-        }
-      }
-    }
   }
 }
