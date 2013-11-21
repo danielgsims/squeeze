@@ -9,14 +9,6 @@ namespace Squeeze1_0
    */
   abstract class Activation
   {
-
-    /**
-     * @var object
-     * @static
-     * @since 1.0
-     */
-    private static $instance;
-
     /**
      * The activation function.
      *

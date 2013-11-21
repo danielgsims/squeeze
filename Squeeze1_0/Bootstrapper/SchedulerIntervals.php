@@ -3,10 +3,10 @@
 namespace Squeeze1_0\Bootstrapper
 {
   use \Squeeze1_0\Bootstrapper;
+  use \Squeeze1_0\EnvironmentVariables;
 
-  class CronIntervals extends Bootstrapper
+  class SchedulerIntervals extends Bootstrapper
   {
-    public $ignore = true;
     /**
      * @since 1.0
      */
@@ -15,7 +15,7 @@ namespace Squeeze1_0\Bootstrapper
     /**
      * @since 1.0
      */
-    protected $scanCoreFolder = true;
+    protected $scanCoreFolder = false;
 
     /**
      * @since 1.0

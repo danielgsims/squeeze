@@ -1,11 +1,25 @@
 <?php
 
-namespace Squeeze1_0\Cron
+namespace Squeeze1_0\Scheduler
 {
   use \Squeeze1_0\EnvironmentVariables;
 
-  class Interval
+  abstract class Interval
   {
+
+    /**
+     * @since 1.0
+     */
+    protected $interval;
+
+    /**
+     * @since 1.0
+     */
+    protected $display;
+
+    /**
+     * @since 1.0
+     */
     public function bootstrap(EnvironmentVariables $env)
     {
       if (!$this->interval || !$this->display) {
@@ -15,12 +29,17 @@ namespace Squeeze1_0\Cron
       add_filter('cron_schedules', array($this, 'add_cron_interval'));
     }
 
+    /**
+     * @since 1.0
+     */
     public function add_cron_interval($schedules)
     {
       $schedules[$this->getSlug()] = array(
         'interval' => $this->interval,
         'display' => $this->display
       );
+
+      return $schedules;
     }
 
     /**
