@@ -1,6 +1,6 @@
 <?php
 
-define('SQ_CORE_PATH', dirname(dirname(__FILE__)));
+if(!defined('SQ_CORE_PATH')) define('SQ_CORE_PATH', dirname(dirname(__FILE__)));
 include_once SQ_CORE_PATH .'/Squeeze1_0/Scheduler/function.php';
 return function($appOptions) {
   include_once "SplClassLoader.php";

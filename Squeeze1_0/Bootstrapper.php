@@ -27,6 +27,9 @@ namespace Squeeze1_0
      */
     private static $instance;
 
+    /**
+     * @since 1.0
+     */
     private static $appEnv = array();
 
     /**
@@ -34,7 +37,7 @@ namespace Squeeze1_0
      */
     public static function init($appOptions)
     {
-      if (!is_a(self::$instance, self)) {
+      if (!is_a(self::$instance, __CLASS__)) {
         self::$instance = new self;
       }
 
@@ -65,12 +68,16 @@ namespace Squeeze1_0
     protected function loadBootstrappers(EnvironmentVariables $env, $folder, $scanCoreFolder = false)
     {
       foreach (Finder::listFilesInDirectory($env, $folder, $scanCoreFolder) as $filename => $bootstrapper) {
-        if(class_exists($bootstrapper['FQCN'])) {
-          $this->loadedBootstrappers[$bootstrapper['FQCN']] = new $bootstrapper['FQCN'];
+        $bootstrapper = (array) $bootstrapper;
 
-          if(!isset($this->loadedBootstrappers[$bootstrapper['FQCN']]->ignore) || !$this->loadedBootstrappers[$bootstrapper['FQCN']]->ignore) {
-            $this->loadedBootstrappers[$bootstrapper['FQCN']]->bootstrap($env);
+        if (class_exists($bootstrapper['FQCN'])) {
+          $currentBootstrapper = new $bootstrapper['FQCN'];
+
+          if (!isset($currentBootstrapper->ignore) || !$currentBootstrapper->ignore) {
+            $currentBootstrapper->bootstrap($env);
           }
+
+          $this->loadedBootstrappers[$bootstrapper['FQCN']] = $currentBootstrapper;
         }
       }
     }

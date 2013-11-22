@@ -17,7 +17,7 @@ namespace Squeeze1_0
         return $this->appOptions;
       }
 
-      return $this->appOptions[$key];
+      return (isset($this->appOptions[$key])) ? $this->appOptions[$key] : false;
     }
   }
 }

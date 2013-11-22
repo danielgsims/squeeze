@@ -2,35 +2,58 @@
 
 namespace Squeeze1_0\Api
 {
+  use \arrayaccess;
+
   /**
    * A class to get, set and manage settings stored in the WordPress database.
    *
    * For each option, create a new instance of this API.
    * @since 1.0
    */
-  class Options
+  class Option implements arrayaccess
   {
 
     /**
      * @var string
-     * @access private
+     * @access protected
      * @since 1.0
      */
-    private $key;
-
-    /**
-     * @var mixed
-     * @access private
-     * @since 1.0
-     */
-    private $value;
+    protected $getter = 'get_option';
 
     /**
      * @var string
-     * @access private
+     * @access protected
      * @since 1.0
      */
-    private $encoding_type;
+    protected $setter = 'update_option';
+
+    /**
+     * @var
+     * @access protected
+     * @since 1.0
+     */
+    protected $deleter = 'delete_option';
+
+    /**
+     * @var string
+     * @access protected
+     * @since 1.0
+     */
+    protected $key;
+
+    /**
+     * @var mixed
+     * @access protected
+     * @since 1.0
+     */
+    protected $value;
+
+    /**
+     * @var string
+     * @access protected
+     * @since 1.0
+     */
+    protected $encoding_type;
 
     /**
      * Take a given key, fetch the value from the database and attempt to determine encoding type.
@@ -39,17 +62,19 @@ namespace Squeeze1_0\Api
      * @access public
      * @since 1.0
      */
-    public function __construct($key)
+    public function __construct($key, $forceAsArray = false)
     {
+      $getter_func = $this->getter;
+
       $this->key = $key;
-      $this->value = get_option($key);
+      $this->value = $getter_func($key);
 
       if (!$this->value) {
         $this->encoding_type = 'json';
       }
       else {
         if ($this->isJson($this->value)) {
-          $this->value = json_decode($this->value);
+          $this->value = (array) json_decode($this->value);
           $this->encoding_type = 'json';
         }
       }
@@ -79,19 +104,23 @@ namespace Squeeze1_0\Api
 
     /**
      * If the stored value is an array, add a value to the end.
-     * @param string $value
+     * If a key and value are specified, the given key will be used in the stored value.
+     * If not, we'll push onto the end of the array with a default key.
+     * @param mixed $keyOrValue
+     * @param mixed $value
      * @return Options $this
      * @access public
      * @since 1.0
      */
-    public function push($value) {
+    public function push($keyOrValue, $value = null) {
       if (!is_array($this->value)) return false;
 
-      if (!is_array($value)) {
-        $value = array($value);
+      if (is_null($value)) {
+        array_push($this->value, $keyOrValue);
       }
-
-      $this->value = array_merge($this->value, $value);
+      else {
+        $this->value[$keyOrValue] = $value;
+      }
 
       return $this;
     }
@@ -111,8 +140,15 @@ namespace Squeeze1_0\Api
         $value = json_encode($value);
       }
 
-      update_option($this->key, $value);
+      $this->executeSave($value);
+
       return true;
+    }
+
+    protected function executeSave($value)
+    {
+      $setter_func = $this->setter;
+      $setter_func($this->key, $value);
     }
 
     /**
@@ -126,6 +162,27 @@ namespace Squeeze1_0\Api
     {
       json_decode($string);
       return (json_last_error() == JSON_ERROR_NONE);
+    }
+
+    public function offsetSet($offset, $value) {
+      if (is_null($offset)) {
+        $this->value[] = $value;
+      }
+      else {
+        $this->value[$offset] = $value;
+      }
+    }
+
+    public function offsetExists($offset) {
+      return isset($this->value[$offset]);
+    }
+
+    public function offsetUnset($offset) {
+      unset($this->value[$offset]);
+    }
+
+    public function offsetGet($offset) {
+      return isset($this->value[$offset]) ? $this->value[$offset] : null;
     }
   }
 }

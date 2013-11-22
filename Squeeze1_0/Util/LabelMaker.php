@@ -30,6 +30,9 @@ namespace Squeeze1_0\Util
 
       foreach ($this->defaultLabels as $key => $val) {
         if (!array_key_exists($key, $this->labels)) {
+          if (!isset($val['inflection'])) {
+            $val['inflection'] = 'singular';
+          }
           $this->labels[$key] = sprintf($val['value'], $label[$val['inflection']]);
         }
       }
