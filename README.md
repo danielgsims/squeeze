@@ -132,3 +132,9 @@ Squeeze is written by me, [John Dennis Pedrie](http://johnpedrie.com). Thanks to
 
 ### License
 Squeeze is licensed under the MIT License. A copy of the MIT License may be found in the repository under `LICENSE.md`.
+
+### FWIW
+
+[![Build Status](https://drone.io/github.com/jdpedrie/squeeze/status.png)](https://drone.io/github.com/jdpedrie/squeeze/latest)
+
+(Tests are a work in progress)
