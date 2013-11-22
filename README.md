@@ -19,17 +19,19 @@ Squeeze functions as an external dependency that lives in your `wp-content/plugi
 * Manage Posts (Insert, Update, Delete, Trash)
 * Manage Comments (Insert, Update, Delete, Trash)
 * Manage WordPress Options in an object-oriented fashion.
+* Scheduled Event (WP-CRON) support.
 * Fetch and Save User Metadata
 * Add columns to the User List
 * Represents data in an object-oriented fashion
 * PDO wrapper for parameterized queries
 * MVC structure
+* Add your own features without modifying Squeeze Core using custom Bootstrappers.
 
 ### Examples
 * Create an Admin Page
 
     ```
-    cd SqueezeExample/App/Controller
+    cd SqueezeExample/SqueezeExample/Controller
     touch MyAdminPage.php
     ```
     ```
@@ -57,7 +59,7 @@ Squeeze functions as an external dependency that lives in your `wp-content/plugi
 * Create an Admin Dashboard Widget
 
     ```
-    cd SqueezeExample/App/Controller
+    cd SqueezeExample/SqueezeExample/Controller
     touch MyDashboardWidget.php
     ```
     ```
@@ -96,6 +98,26 @@ Squeeze functions as an external dependency that lives in your `wp-content/plugi
 
     $post = $query->fetch();
     echo $post->post_title();
+    ````
+
+* Create a custom bootstrapper
+
+    ````
+    cd SqueezeExample/SqueezeExample/Bootstrapper
+    touch MyCustomBootstrapper.php
+    ````
+
+    ````
+    <?php
+
+    namespace SqueezeExample\Bootstrapper
+    {
+      class MyCustomBootstrapper
+      {
+        protected $bootstrapperFolder = 'MyCustomFeature';
+        protected $scanCoreFolder = false;
+      }
+    }
     ````
 
 ### A word on style
