@@ -2,7 +2,9 @@
 
 if(!defined('SQ_CORE_PATH')) define('SQ_CORE_PATH', dirname(dirname(__FILE__)));
 include_once SQ_CORE_PATH .'/Squeeze1_0/Scheduler/function.php';
+
 return function($appOptions) {
+  include_once ABSPATH . WPINC .'/pluggable.php';
   include_once "SplClassLoader.php";
   $classLoader = new Squeeze1_0\SplClassLoader('Squeeze1_0', SQ_CORE_PATH);
   $classLoader->register();

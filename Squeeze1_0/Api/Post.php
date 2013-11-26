@@ -2,15 +2,16 @@
 
 namespace Squeeze1_0\Api
 {
+  use \WP_Post;
+
   /**
    * WordPress has a class called WP_Post
-   *
    * Sort of like WP_User whoo!
-   *
    * Oh wait, it's declared as final so I can't extend it
-   *
    * Thanks a lot guys.
    * @since 1.0
+   * @uses \WP_Post
+   * @package squeeze
    */
   class Post
   {
@@ -267,7 +268,7 @@ namespace Squeeze1_0\Api
 
     /**
      * If an ID is supplied, this class will try and fetch the post then hydrate the new instance with the details.
-     * @param null|int $ID
+     * @param null|int|WP_Post $ID
      * @uses WP_Post
      * @access public
      * @since 1.0
@@ -275,7 +276,7 @@ namespace Squeeze1_0\Api
     public function __construct($ID = null)
     {
       if (!is_null($ID)) {
-        $post = WP_Post::get_instance($ID);
+        $post = ($ID instanceof WP_Post) ? $ID : WP_Post::get_instance($ID);
         if ($post) {
           $this->hydrate($post);
         }
@@ -343,7 +344,7 @@ namespace Squeeze1_0\Api
         return $this->$key;
       }
 
-      return (isset($this->meta[$key])) ? $this->meta[$key] : null;
+      return (isset($this->meta[$key])) ? $this->meta[$key] : $this->tryToGetMetaField($key);
     }
 
     /**
@@ -426,6 +427,11 @@ namespace Squeeze1_0\Api
       }
 
       return true;
+    }
+
+    private function tryToGetMetaField($key)
+    {
+      return get_post_meta($this->ID, $key, true);
     }
   }
 }

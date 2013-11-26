@@ -74,7 +74,7 @@ namespace Squeeze1_0\Api
       }
       else {
         if ($this->isJson($this->value)) {
-          $this->value = (array) json_decode($this->value);
+          $this->value = json_decode($this->value, true);
           $this->encoding_type = 'json';
         }
       }
