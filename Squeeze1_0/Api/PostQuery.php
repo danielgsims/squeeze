@@ -19,5 +19,10 @@ namespace Squeeze1_0\Api
         }
       }
     }
+
+    public function getPosts()
+    {
+      return $this->posts;
+    }
   }
 }

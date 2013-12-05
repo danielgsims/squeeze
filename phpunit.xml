@@ -1,4 +1,5 @@
-<phpunit backupGlobals="true"
+<phpunit bootstrap="./tests/autoload.php"
+  backupGlobals="true"
   backupStaticAttributes="false"
   cacheTokens="false"
   colors="false"

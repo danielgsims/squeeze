@@ -47,9 +47,13 @@ namespace Squeeze1_0
 
       $env = self::$appEnv[$appOptions['app_name']] = self::$instance->loadEnvironmentObject($appOptions);
       self::$instance->activationHooks($env);
-      self::$instance->loadAppBootstrapper($env);
+      $appBootstrapper = self::$instance->loadAppBootstrapper($env);
 
       self::$instance->bootstrap($env);
+
+      if ($appBootstrapper && method_exists($appBootstrapper, 'afterBootstrap')) {
+        $appBootstrapper->afterBootstrap();
+      }
     }
 
     /**
@@ -132,7 +136,11 @@ namespace Squeeze1_0
       $class = Finder::findClassInNamespace('Bootstrapper', $env->getAppOptions('app_namespace'));
       if ($class) {
         $bootstrapper = new $class($env);
+
+        return $bootstrapper;
       }
+
+      return null;
     }
 
     /**

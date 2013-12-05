@@ -92,7 +92,7 @@ namespace Squeeze1_0\Util
      * @static
      * @since 1.0
      */
-    public static getFromArray($arr, $var = null)
+    public static function getFromArray($arr, $var = null)
     {
       if (is_null($var)) {
         return (!empty($arr)) ? $arr : null;

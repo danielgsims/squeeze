@@ -316,12 +316,41 @@ namespace Squeeze1_0\Api
      * @access public
      * @since 1.0
      */
-    public function set($key, $val)
+    public function set($key, $val = null)
     {
+      if (is_array($key) && is_null($val)) {
+        // Nested stuff! Let's loop through.
+        foreach ($key as $inputKey => $inputVal) {
+          $this->set($inputKey, $inputVal);
+        }
+        return $this;
+      }
+
       if (property_exists($this, $key)) {
         $this->$key = $val;
       }
       else $this->meta[$key] = $val;
+
+      return $this;
+    }
+
+    /**
+     * Add terms to a given taxonomy.
+     * @param string $taxonomy the Taxonomy key to add terms to.
+     * @param string|array $terms
+     * @access public
+     * @since 1.0
+     */
+    public function addTerms($taxonomy, $terms)
+    {
+      if(!$terms) return $this;
+
+      if (!is_array($terms)) {
+        $terms = array($terms);
+      }
+
+      $current_terms = (isset($this->tax_input[$taxonomy]) && is_array($this->tax_input[$taxonomy])) ? $this->tax_input[$taxonomy] : array();
+      $this->tax_input[$taxonomy] = array_merge($current_terms, $terms);
 
       return $this;
     }
@@ -364,6 +393,7 @@ namespace Squeeze1_0\Api
       // Insert post here.
       $this->ID = wp_insert_post($this->get());
       $this->save_meta();
+      $this->save_terms();
 
       return $this;
     }
@@ -427,6 +457,15 @@ namespace Squeeze1_0\Api
       }
 
       return true;
+    }
+
+    private function save_terms()
+    {
+      if (is_array($this->tax_input)) {
+        foreach ($this->tax_input as $tax => $terms) {
+          wp_set_object_terms($this->ID, $terms, $tax);
+        }
+      }
     }
 
     private function tryToGetMetaField($key)
