@@ -2,6 +2,8 @@
 
 namespace Squeeze1_0\Util
 {
+  use \DateTime;
+
   /**
    * Date
    * Date Helper Functions
@@ -36,7 +38,7 @@ namespace Squeeze1_0\Util
     public function __construct(DateTime $date = null)
     {
       if (is_null($date)) {
-        $this->date = new \DateTime;
+        $this->date = new DateTime;
       }
       else {
         $this->date = $date;

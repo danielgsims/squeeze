@@ -16,18 +16,4 @@ class StringTest extends PHPUnit_Framework_TestCase
     $this->assertEquals($firstCharLowerCase, $camelcase);
     $this->assertEquals($firstCharUpperCase, $herocase);
   }
-
-  public function testFirstCharUpperCase()
-  {
-    $lowercase = 'helloworld';
-    $uppercase = 'Helloworld';
-    $this->assertEquals(String::firstCharUpperCase($lowercase), $uppercase);
-  }
-
-  public function testFirstCharLowerCase()
-  {
-    $lowercase = 'helloworld';
-    $uppercase = 'Helloworld';
-    $this->assertEquals(String::firstCharLowerCase($uppercase), $lowercase);
-  }
 }

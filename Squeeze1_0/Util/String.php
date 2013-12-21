@@ -22,27 +22,10 @@ namespace Squeeze1_0\Util
       $string = join('', array_map('ucwords', explode('_', $string)));
 
       if (!$first_letter_caps) {
-        $string = self::firstCharLowerCase($string);
+        $string = lcfirst($string);
       }
 
       return $string;
-    }
-
-    public static function firstCharLowerCase($string)
-    {
-      return lcfirst($string);
-    }
-
-    /**
-     * Convert the first character of a string to uppercase.
-     * @param string $string
-     * @return string
-     * @access public
-     * @static
-     * @since 1.0
-     */
-    public static function firstCharUpperCase($string) {
-      return ucfirst($string);
     }
   }
 }
