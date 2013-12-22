@@ -18,14 +18,14 @@ namespace Squeeze1_0\Api
      * @var object
      * @since 1.0
      */
-    private $PDO;
+    protected $PDO;
 
     /**
      * The Comments Table name
      * @var string
      * @since 1.0
      */
-    private $table;
+    protected $table;
 
     /**
      * An array that's populated with any required fields that aren't filled out.
@@ -33,7 +33,7 @@ namespace Squeeze1_0\Api
      * @var array
      * @since 1.0
      */
-    private $missing_fields = array();
+    protected $missing_fields = array();
 
     /**
      * A list of fields in the comments table.
@@ -42,7 +42,7 @@ namespace Squeeze1_0\Api
      * @var array
      * @since 1.0
      */
-    private $core_fields = array(
+    protected $core_fields = array(
       'comment_ID' => false,
       'comment_post_ID' => false,
       'comment_author' => false,
@@ -65,7 +65,7 @@ namespace Squeeze1_0\Api
      * @var array
      * @since 1.0
      */
-    private $required_fields = array(
+    protected $required_fields = array(
       'comment_post_ID',
       'comment_author',
       'comment_author_email',
@@ -79,14 +79,14 @@ namespace Squeeze1_0\Api
      * @var array
      * @since 1.0
      */
-    private $meta = array();
+    protected $meta = array();
 
     /**
      * If we're trying to load an existing comment, the comment ID will be stored here
      * @var int
      * @since 1.0
      */
-    private $comment_ID;
+    protected $comment_ID;
 
     /**
      * Attempt to load a comment if $commentId is set
@@ -211,7 +211,7 @@ namespace Squeeze1_0\Api
      * @return void
      * @since 1.0
      */
-    private function hydrate($comment)
+    protected function hydrate($comment)
     {
       $this->meta = array();
       foreach ($comment as $key=>$val) {
@@ -229,7 +229,7 @@ namespace Squeeze1_0\Api
      * @return void|int
      * @since 1.0
      */
-    private function insertComment()
+    protected function insertComment()
     {
       if (!$this->core_fields['comment_date']) {
         $date = new \Squeeze1_0\Util\Date;
@@ -255,7 +255,7 @@ namespace Squeeze1_0\Api
      * @return int \Squeeze1_0\Api\Comment::comment_ID
      * @since 1.0
      */
-    private function updateComment()
+    protected function updateComment()
     {
       $vars = $this->core_fields;
       $keys = array_keys($this->core_fields);
