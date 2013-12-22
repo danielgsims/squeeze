@@ -6,6 +6,9 @@
  */
 namespace Squeeze1_0\Api
 {
+  use \Squeeze1_0\Db\PDO;
+  use \Squeeze1_0\Db\Config as dbConfig;
+
   class Comment implements \Squeeze1_0\Implementable\iApi
   {
 
@@ -92,8 +95,8 @@ namespace Squeeze1_0\Api
      */
     public function __construct($commentId = NULL)
     {
-      $this->PDO = \Squeeze1_0\Db\PDO::instance();
-      $this->table = $commentsTable = \Squeeze1_0\Db\Config::prefix() .'comments';
+      $this->PDO = PDO::instance();
+      $this->table = $commentsTable = dbConfig::prefix() .'comments';
 
       if (!is_null($commentId)) {
         $this->comment_ID = $commentId;
@@ -102,7 +105,7 @@ namespace Squeeze1_0\Api
         if (is_object($comment)) {
           $this->hydrate($comment);
 
-          $PDO = \Squeeze1_0\Db\PDO::instance();
+          $PDO = PDO::instance();
           $meta = $PDO->prepare("SELECT meta_key, meta_value FROM wp_commentmeta WHERE comment_id = :commentId");
           $meta->execute(array('commentId' => $commentId));
           $fields = $meta->fetchAll();
@@ -209,7 +212,6 @@ namespace Squeeze1_0\Api
      */
     private function hydrate($comment)
     {
-      var_dump($comment);exit;
       $this->meta = array();
       foreach ($comment as $key=>$val) {
         if (array_key_exists($key, $this->core_fields)) {

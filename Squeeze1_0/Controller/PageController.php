@@ -3,6 +3,8 @@
 namespace Squeeze1_0\Controller
 {
 
+  use \Squeeze1_0\Implementable\iController;
+
   /**
    * The base controller for implementing WordPress Admin Pages
    *
@@ -10,7 +12,7 @@ namespace Squeeze1_0\Controller
    * @abstract
    * @since 1.0
    */
-  abstract class PageController implements \Squeeze1_0\Implementable\iController
+  abstract class PageController implements iController
   {
     /**
      * An array containing the current application options.

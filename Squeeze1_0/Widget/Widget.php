@@ -2,11 +2,14 @@
 
 namespace Squeeze1_0\Widget
 {
+  use \WP_Widget;
+  use \Squeeze1_0\Implementable\iWidget;
+
   /**
    * An automatically bootstrapped implementation of WP_Widget.
    * @since 1.0
    */
-  class Widget extends \WP_Widget implements \Squeeze1_0\Implementable\iWidget
+  class Widget extends \WP_Widget implements iWidget
   {
 
     /**

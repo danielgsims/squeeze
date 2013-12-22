@@ -3,12 +3,15 @@
 namespace Squeeze1_0\Controller
 {
 
+  use \Squeeze1_0\Implementable\iController;
+  use \Squeeze1_0\Api\Menu;
+
   /**
    * The base controller for implementing WordPress Admin Pages
    * @abstract
    * @since 1.0
    */
-  abstract class AdminPageController implements \Squeeze1_0\Implementable\iController
+  abstract class AdminPageController implements iController
   {
     /**
      * An array containing the current application options.
@@ -59,7 +62,7 @@ namespace Squeeze1_0\Controller
     {
       $this->appOptions = $appOptions;
 
-      $adminMenuItem = new \Squeeze1_0\Api\Menu();
+      $adminMenuItem = new Menu();
       $adminMenuItem->setPageTitle($this->getTitle());
       $adminMenuItem->setMenuTitle($this->getMenuTitle());
       $adminMenuItem->setMenuCapability($this->getCapability());

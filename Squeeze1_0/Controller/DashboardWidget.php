@@ -3,13 +3,16 @@
 namespace Squeeze1_0\Controller
 {
 
+  use \Squeeze1_0\Implementable\iController;
+  use \Squeeze1_0\Api\DashboardWidget;
+
   /**
    * The base controller for creating Admin Dashboard Widgets.
    *
    * Extend this in your app.
    * @since 1.0
    */
-  abstract class DashboardWidget implements \Squeeze1_0\Implementable\iController
+  abstract class DashboardWidget implements iController
   {
     /**
      * An array containing the current application options.
@@ -60,7 +63,7 @@ namespace Squeeze1_0\Controller
     {
       $this->appOptions = $appOptions;
 
-      $dashboardWidget = new \Squeeze1_0\Api\DashboardWidget;
+      $dashboardWidget = new DashboardWidget;
       $dashboardWidget->setWidgetSlug($this->getSlug());
       $dashboardWidget->setWidgetTitle($this->getTitle());
       $dashboardWidget->setFunction(array($this, 'index'));

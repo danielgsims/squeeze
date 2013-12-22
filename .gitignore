@@ -3,7 +3,7 @@ node_modules
 composer.lock
 composer.json
 composer.phar
-/vendor/
+vendor/
 sami.php
 cache
 report/
