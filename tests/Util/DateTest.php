@@ -13,6 +13,11 @@ class DateTest extends PHPUnit_Framework_TestCase
     $this->sqDateObj = new Date($this->dateObj);
   }
 
+  public function testConstructor()
+  {
+    $this->assertInstanceOf('\\Squeeze1_0\\Util\\Date', $this->sqDateObj);
+  }
+
   public function testDateStorage()
   {
     $this->assertEquals($this->dateObj, $this->sqDateObj->getDate());

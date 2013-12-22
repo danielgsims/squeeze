@@ -6,3 +6,4 @@ composer.phar
 /vendor/
 sami.php
 cache
+report/

@@ -10,19 +10,6 @@ namespace Squeeze1_0\Util
   {
 
     /**
-     * Cleans the input for DB insertion
-     * @param string $string
-     * @return string
-     * @access public
-     * @static
-     * @since 1.0
-     */
-    public static function sanitize($string)
-    {
-      return mysql_real_escape_string($string);
-    }
-
-    /**
      * Attempts to fetch a given key from the _POST superglobal.
      * If no key is given, return entire array.
      * If key doesn't exist, return null
