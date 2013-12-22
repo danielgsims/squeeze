@@ -8,8 +8,9 @@ namespace Squeeze1_0\Api
 {
   use \Squeeze1_0\Db\PDO;
   use \Squeeze1_0\Db\Config as dbConfig;
+  use \Squeeze1_0\Implementable\iApi;
 
-  class Comment implements \Squeeze1_0\Implementable\iApi
+  class Comment implements iApi
   {
 
     /**
@@ -150,7 +151,7 @@ namespace Squeeze1_0\Api
      */
     public function get($key)
     {
-      if (array_key_exists($this->core_fields, $key)) {
+      if (array_key_exists($key, $this->core_fields)) {
         return $this->core_fields[$key];
       }
 

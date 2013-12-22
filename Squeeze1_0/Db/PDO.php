@@ -28,7 +28,7 @@ namespace Squeeze1_0\Db
      * @since 1.0
      */
     public function __construct() {
-      if (!is_a(self, self::$instance)) {
+      if (!is_a(__CLASS__, self::$instance)) {
         parent::__construct('mysql:host='. \DB_HOST .';dbname='. \DB_NAME, \DB_USER, \DB_PASSWORD);
         $this->setAttribute(defaultPDO::ATTR_ERRMODE, defaultPDO::ERRMODE_EXCEPTION);
         $this->setAttribute(defaultPDO::ATTR_STATEMENT_CLASS, array('\Squeeze1_0\Db\PDOStatement', array($this)));
