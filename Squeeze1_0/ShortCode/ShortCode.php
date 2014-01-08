@@ -7,11 +7,16 @@ namespace Squeeze1_0\ShortCode
   abstract class ShortCode
   {
     protected $attributes;
+    protected $content;
 
     public final function bootstrap(EnvironmentVariables $env)
     {
-      if (!property_exists($this, 'key')) {
-        throw new \Exception('$key must be defined');
+      // if (!property_exists($this, 'key')) {
+      //   throw new \Exception('$key must be defined');
+      // }
+
+      if (property_exists($this, 'enclosing') && !is_bool($this->enclosing)) {
+        throw new Exception('$enclosing must be defined as a boolean');
       }
 
       $this->execute();
@@ -19,10 +24,15 @@ namespace Squeeze1_0\ShortCode
 
     private function execute()
     {
-      add_shortcode($this->key, function($attributes) {
-        $this->attributes = shortcode_atts($this->requiredAttributes, $attributes);
+      $obj = $this;
+      add_shortcode($this->key, function($attributes, $content = null) use ($obj) {
+        if ($obj->enclosing) {
+          $obj->content = $content;
+        }
 
-        return $this->callback();
+        $obj->attributes = shortcode_atts($obj->requiredAttributes, $attributes);
+
+        return $obj->callback();
       });
     }
 
