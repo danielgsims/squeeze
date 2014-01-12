@@ -3,7 +3,7 @@
 namespace Squeeze1_0\Controller
 {
 
-  use \Squeeze1_0\Implementable\iController;
+  use Squeeze1_0\Implementable\iController;
 
   /**
    * The base controller for implementing WordPress Admin Pages

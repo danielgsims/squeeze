@@ -3,8 +3,8 @@
 namespace Squeeze1_0\Controller
 {
 
-  use \Squeeze1_0\Implementable\iController;
-  use \Squeeze1_0\Api\DashboardWidget;
+  use Squeeze1_0\Implementable\iController;
+  use Squeeze1_0\Api\DashboardWidget;
 
   /**
    * The base controller for creating Admin Dashboard Widgets.

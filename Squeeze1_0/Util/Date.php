@@ -2,7 +2,7 @@
 
 namespace Squeeze1_0\Util
 {
-  use \DateTime;
+  use DateTime;
 
   /**
    * Date

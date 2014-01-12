@@ -1,8 +1,8 @@
 <?php
 
-namespace Squeeze1_0\ShortCode
+namespace Squeeze1_0\Api
 {
-  use \Squeeze1_0\EnvironmentVariables;
+  use Squeeze1_0\EnvironmentVariables;
 
   abstract class ShortCode
   {

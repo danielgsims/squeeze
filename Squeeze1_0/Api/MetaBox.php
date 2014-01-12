@@ -1,6 +1,6 @@
 <?php
 
-namespace Squeeze1_0\PostType\MetaBox
+namespace Squeeze1_0\Api
 {
   /**
    * @since 1.0

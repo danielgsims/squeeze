@@ -2,11 +2,13 @@
 
 namespace Squeeze1_0\Api
 {
+  use WP_User;
+
   /**
    * Adds a layer of functionality on top of the default WP_User class.
    * @since 1.0
    */
-  class User extends \WP_User
+  class User extends WP_User
   {
 
     /**

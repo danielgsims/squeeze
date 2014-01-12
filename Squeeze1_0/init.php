@@ -1,7 +1,7 @@
 <?php
 
 if(!defined('SQ_CORE_PATH')) define('SQ_CORE_PATH', dirname(dirname(__FILE__)));
-include_once SQ_CORE_PATH .'/Squeeze1_0/Scheduler/function.php';
+include_once SQ_CORE_PATH .'/Squeeze1_0/Scheduler.php';
 
 return function($appOptions) {
   include_once ABSPATH . WPINC .'/pluggable.php';

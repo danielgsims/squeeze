@@ -1,8 +1,8 @@
 <?php
 
-namespace Squeeze1_0\PostType\Taxonomy
+namespace Squeeze1_0\Api
 {
-  use \Squeeze1_0\Util\LabelMaker;
+  use Squeeze1_0\Util\LabelMaker;
 
   abstract class Taxonomy extends LabelMaker
   {

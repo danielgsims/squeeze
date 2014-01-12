@@ -1,10 +1,10 @@
 <?php
 
-namespace Squeeze1_0\Scheduler
+namespace Squeeze1_0\Api
 {
-  use \Squeeze1_0\EnvironmentVariables;
+  use Squeeze1_0\EnvironmentVariables;
 
-  abstract class Interval
+  abstract class SchedulerInterval
   {
 
     /**

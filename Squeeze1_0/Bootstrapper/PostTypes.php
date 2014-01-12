@@ -2,8 +2,8 @@
 
 namespace Squeeze1_0\Bootstrapper
 {
-  use \Squeeze1_0\Bootstrapper;
-  use \Squeeze1_0\EnvironmentVariables;
+  use Squeeze1_0\Bootstrapper;
+  use Squeeze1_0\EnvironmentVariables;
 
   class PostTypes extends Bootstrapper
   {

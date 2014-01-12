@@ -2,8 +2,8 @@
 
 namespace Squeeze1_0\Api
 {
-  use \Squeeze1_0\Api\Post;
-  use \WP_Query;
+  use Squeeze1_0\Api\Post;
+  use WP_Query;
 
   class PostQuery
   {

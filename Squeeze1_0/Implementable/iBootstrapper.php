@@ -2,7 +2,7 @@
 
 namespace Squeeze1_0\Implementable
 {
-  use \Squeeze1_0\EnvironmentVariables;
+  use Squeeze1_0\EnvironmentVariables;
 
   interface iBootstrapper
   {

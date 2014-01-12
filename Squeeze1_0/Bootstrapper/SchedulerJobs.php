@@ -2,9 +2,9 @@
 
 namespace Squeeze1_0\Bootstrapper
 {
-  use \Squeeze1_0\EnvironmentVariables;
-  use \Squeeze1_0\Bootstrapper;
-  use \Squeeze1_0\Scheduler\Job;
+  use Squeeze1_0\EnvironmentVariables;
+  use Squeeze1_0\Bootstrapper;
+  use Squeeze1_0\Scheduler\Job;
 
   class SchedulerJobs extends Bootstrapper
   {

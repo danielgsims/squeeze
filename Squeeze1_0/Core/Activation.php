@@ -2,8 +2,8 @@
 
 namespace Squeeze1_0\Core
 {
-  use \Squeeze1_0\EnvironmentVariables;
-  use \Squeeze1_0\Core\Finder;
+  use Squeeze1_0\EnvironmentVariables;
+  use Squeeze1_0\Core\Finder;
 
   class Activation
   {

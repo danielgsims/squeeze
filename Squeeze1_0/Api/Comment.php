@@ -1,15 +1,15 @@
 <?php
 
-/**
- * An API for managing comments
- * @since 1.0
- */
 namespace Squeeze1_0\Api
 {
-  use \Squeeze1_0\Db\PDO;
-  use \Squeeze1_0\Db\Config as dbConfig;
-  use \Squeeze1_0\Implementable\iApi;
+  use Squeeze1_0\Db\PDO;
+  use Squeeze1_0\Db\Config as dbConfig;
+  use Squeeze1_0\Implementable\iApi;
 
+  /**
+   * An API for managing comments
+   * @since 1.0
+   */
   class Comment implements iApi
   {
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Squeeze1_0\PostType
+namespace Squeeze1_0\Api
 {
-  use \Squeeze1_0\EnvironmentVariables;
-  use \Squeeze1_0\Util\LabelMaker;
+  use Squeeze1_0\EnvironmentVariables;
+  use Squeeze1_0\Util\LabelMaker;
 
   /**
    * @since 1.0

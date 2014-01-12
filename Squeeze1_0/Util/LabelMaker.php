@@ -2,8 +2,12 @@
 
 namespace Squeeze1_0\Util
 {
-  use \ICanBoogie\Inflector;
+  use ICanBoogie\Inflector;
 
+  /**
+   * @todo Remove external dependancy
+   * @todo Add support for i18n.
+   */
   abstract class LabelMaker
   {
     protected $defaultLabels = array();

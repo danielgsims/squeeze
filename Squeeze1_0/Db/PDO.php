@@ -3,7 +3,7 @@
 namespace Squeeze1_0\Db
 {
 
-  use \PDO as defaultPDO;
+  use PDO as defaultPDO;
   /**
    * PDO Wrapper. Creates a singleton instance and connects to the database.
    *

@@ -2,10 +2,10 @@
 
 namespace Squeeze1_0
 {
-  use \Squeeze1_0\Implementable\iBootstrapper;
-  use \Squeeze1_0\Core\Activation as CoreActivation;
-  use \Squeeze1_0\Core\Deactivation as CoreDeactivation;
-  use \Squeeze1_0\Core\Finder;
+  use Squeeze1_0\Implementable\iBootstrapper;
+  use Squeeze1_0\Core\Activation as CoreActivation;
+  use Squeeze1_0\Core\Deactivation as CoreDeactivation;
+  use Squeeze1_0\Core\Finder;
 
   /**
    * @since 1.0

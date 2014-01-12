@@ -2,7 +2,7 @@
 
 namespace Squeeze1_0\Api
 {
-  use \arrayaccess;
+  use arrayaccess;
 
   /**
    * A class to get, set and manage settings stored in the WordPress database.

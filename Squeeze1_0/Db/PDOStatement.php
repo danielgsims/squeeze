@@ -3,7 +3,7 @@
 namespace Squeeze1_0\Db
 {
 
-  use \PDOStatement as defaultPDOStatement;
+  use PDOStatement as defaultPDOStatement;
 
   /**
    * Extends PHP's core PDOStatement class.

@@ -2,7 +2,7 @@
 
 namespace Squeeze1_0\Api
 {
-  use \WP_Post;
+  use WP_Post;
 
   /**
    * WordPress has a class called WP_Post

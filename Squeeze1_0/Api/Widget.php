@@ -1,15 +1,15 @@
 <?php
 
-namespace Squeeze1_0\Widget
+namespace Squeeze1_0\Api
 {
-  use \WP_Widget;
-  use \Squeeze1_0\Implementable\iWidget;
+  use WP_Widget;
+  use Squeeze1_0\Implementable\iWidget;
 
   /**
    * An automatically bootstrapped implementation of WP_Widget.
    * @since 1.0
    */
-  class Widget extends \WP_Widget implements iWidget
+  class Widget extends WP_Widget implements iWidget
   {
 
     /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace Squeeze1_0\Scheduler
+namespace Squeeze1_0\Api
 {
-  use \Squeeze1_0\EnvironmentVariables;
-  use \Squeeze1_0\Util\Date;
+  use Squeeze1_0\EnvironmentVariables;
+  use Squeeze1_0\Util\Date;
 
-  abstract class Job
+  abstract class SchedulerJob
   {
 
     private static $enqueued_jobs = array();
